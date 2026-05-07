@@ -1,0 +1,47 @@
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: 0 var(--space-5);
+  height: 48px;
+  background: var(--accent) !important;
+  color: var(--text-on-accent) !important;
+
+  .brand {
+    color: var(--text-on-accent);
+    font-weight: 600;
+    font-size: var(--font-size-lg);
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    gap: var(--space-1);
+    height: 100%;
+    align-items: center;
+
+    a.mat-mdc-button {
+      --mdc-text-button-label-text-color: var(--text-on-accent);
+      color: var(--text-on-accent);
+      opacity: 0.9;
+      &:hover { opacity: 1; }
+      &.active {
+        opacity: 1;
+        text-decoration: underline;
+        text-underline-offset: 6px;
+      }
+    }
+
+    .dashboard-link .hint {
+      margin-left: var(--space-2);
+      font-size: var(--font-size-sm);
+      opacity: 0.85;
+    }
+  }
+}
+
+.content {
+  padding: var(--space-5);
+  max-width: 1280px;
+  margin: 0 auto;
+}

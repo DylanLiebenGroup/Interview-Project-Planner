@@ -1,0 +1,61 @@
+.state {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+  padding: var(--space-4);
+  &.error { color: var(--status-overdue); }
+}
+
+table.projects {
+  width: 100%;
+  background: var(--bg-panel);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.actions-col { width: 1%; white-space: nowrap; }
+
+.name { font-weight: 600; }
+.desc { color: var(--text-muted); font-size: var(--font-size-sm); margin-top: 2px; }
+
+.owner { display: flex; align-items: center; gap: var(--space-2); }
+
+.avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  color: var(--text-on-accent);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 140px;
+}
+.progress__label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.actions {
+  display: flex;
+  gap: 0;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.action-edit     { --mdc-icon-button-icon-color: var(--accent); color: var(--accent); }
+.action-tasks    { --mdc-icon-button-icon-color: #CA5010;       color: #CA5010; }
+.action-complete { --mdc-icon-button-icon-color: var(--status-completed); color: var(--status-completed); }
+.action-progress { --mdc-icon-button-icon-color: var(--accent); color: var(--accent); }
+.action-delete   { --mdc-icon-button-icon-color: var(--status-overdue);   color: var(--status-overdue); }
+
+// Status-chip colour rules live in global styles.scss because Material 3
+// renders the chip label inside child elements that view encapsulation can't
+// reach from a component stylesheet.

@@ -1,0 +1,100 @@
+:root {
+  // Surfaces
+  --bg-app:        #F3F3F3;
+  --bg-panel:      #FFFFFF;
+  --bg-hover:      #F5F5F5;
+  --bg-selected:   #E5F1FB;
+
+  // Borders & dividers
+  --border-subtle: #E1E1E1;
+  --border-strong: #C8C8C8;
+
+  // Text
+  --text-primary:   #1F1F1F;
+  --text-secondary: #5C5C5C;
+  --text-muted:     #8A8A8A;
+  --text-on-accent: #FFFFFF;
+
+  // Accent (Windows 10 blue)
+  --accent:         #0078D4;
+  --accent-hover:   #106EBE;
+  --accent-pressed: #005A9E;
+
+  // Status colours (used for project status pills)
+  --status-not-started: #8A8A8A;
+  --status-in-progress: #0078D4;
+  --status-overdue:     #D13438;
+  --status-completed:   #107C10;
+
+  // Type
+  --font-stack: "Segoe UI", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-size-base: 14px;
+  --font-size-sm:   12px;
+  --font-size-lg:   16px;
+  --font-size-xl:   20px;
+
+  // Radius
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  // Shadows
+  --shadow-card:  0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-popup: 0 4px 16px rgba(0, 0, 0, 0.14);
+
+  // Spacing scale
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: var(--font-stack);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  background: var(--bg-app);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  &:hover { color: var(--accent-hover); text-decoration: underline; }
+}
+
+h1 { font-size: var(--font-size-xl); margin: 0 0 var(--space-4); }
+h2 { font-size: var(--font-size-lg); margin: 0 0 var(--space-3); }
+
+// Snackbar variants — colour the leading edge by status
+.mat-mdc-snack-bar-container.snack-success .mdc-snackbar__surface {
+  border-left: 4px solid var(--status-completed);
+}
+.mat-mdc-snack-bar-container.snack-error .mdc-snackbar__surface {
+  border-left: 4px solid var(--status-overdue);
+}
+.mat-mdc-snack-bar-container.snack-info .mdc-snackbar__surface {
+  border-left: 4px solid var(--status-in-progress);
+}
+
+// Status chip variants. Targeted globally because view encapsulation can't
+// reach into Material 3's chip child elements from a component stylesheet.
+@mixin status-chip($bg) {
+  background: $bg !important;
+  --mdc-chip-elevated-container-color: #{$bg};
+  .mdc-evolution-chip__text-label,
+  .mat-mdc-chip-action-label {
+    color: var(--text-on-accent) !important;
+  }
+}
+.mat-mdc-chip.chip-not_started { @include status-chip(var(--status-not-started)); }
+.mat-mdc-chip.chip-in_progress { @include status-chip(var(--status-in-progress)); }
+.mat-mdc-chip.chip-completed   { @include status-chip(var(--status-completed)); }
+.mat-mdc-chip.chip-overdue     { @include status-chip(var(--status-overdue)); }

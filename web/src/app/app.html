@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="topnav">
+  <a class="brand" routerLink="/">Project Tracker</a>
+  <nav>
+    <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a mat-button routerLink="/projects" routerLinkActive="active">Projects</a>
+    <a mat-button routerLink="/instructions" routerLinkActive="active">Instructions</a>
+    <a mat-button routerLink="/dashboard" routerLinkActive="active" class="dashboard-link">
+      Dashboard <span class="hint">← Build me</span>
+    </a>
+  </nav>
+</mat-toolbar>
+
+<main class="content">
+  <router-outlet />
+</main>
