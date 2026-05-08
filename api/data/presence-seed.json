@@ -1,0 +1,52 @@
+[
+  {
+    "user": {
+      "id": "u_01",
+      "name": "Sarah Chen",
+      "initials": "SC"
+    },
+    "projectId": "p_001",
+    "projectName": "Apollo Migration",
+    "since": "2026-05-08T08:14:22.000Z"
+  },
+  {
+    "user": {
+      "id": "u_02",
+      "name": "Marcus Reed",
+      "initials": "MR"
+    },
+    "projectId": "p_019",
+    "projectName": "Telemetry Pipeline",
+    "since": "2026-05-08T09:03:45.000Z"
+  },
+  {
+    "user": {
+      "id": "u_04",
+      "name": "Tom Williams",
+      "initials": "TW"
+    },
+    "projectId": "p_033",
+    "projectName": "Revenue Recognition Automation",
+    "since": "2026-05-08T10:27:08.000Z"
+  },
+  {
+    "user": {
+      "id": "u_06",
+      "name": "Priya Sundaram",
+      "initials": "PS"
+    },
+    "projectId": "p_016",
+    "projectName": "Kubernetes Migration",
+    "since": "2026-05-08T11:41:33.000Z"
+  },
+  {
+    "user": {
+      "id": "u_03",
+      "name": "Aisha Patel",
+      "initials": "AP"
+    },
+    "projectId": "p_031",
+    "projectName": "Customer Segmentation Engine",
+    "since": "2026-05-08T12:05:17.000Z"
+  }
+]

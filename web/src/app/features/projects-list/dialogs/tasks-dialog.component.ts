@@ -46,7 +46,7 @@ const TASK_STATUS_LABEL: Record<TaskStatus, string> = {
     MatTooltipModule,
   ],
   template: `
-    <h2 mat-dialog-title>{{ project().name }} — tasks</h2>
+    <h2 mat-dialog-title>{{ project().name }} - tasks</h2>
     <mat-dialog-content>
       <p class="muted">
         {{ project().tasksDone }}/{{ project().tasksTotal }} complete · {{ progressPct() }}%
@@ -73,7 +73,7 @@ const TASK_STATUS_LABEL: Record<TaskStatus, string> = {
       } @else if (loadError()) {
         <p class="state error">{{ loadError() }}</p>
       } @else if (tasks().length === 0) {
-        <p class="state">No tasks yet — add one above.</p>
+        <p class="state">No tasks yet - add one above.</p>
       } @else {
         <ul class="task-list">
           @for (t of tasks(); track t.id) {
@@ -90,15 +90,20 @@ const TASK_STATUS_LABEL: Record<TaskStatus, string> = {
                   (keydown.escape)="cancelTaskEdit($event, titleInput, t.title)"
                 >
               } @else {
-                <span
-                  class="task__title"
-                  matTooltip="Click to rename"
-                  matTooltipShowDelay="500"
-                  tabindex="0"
-                  role="button"
-                  (click)="startEditTask(t)"
-                  (keydown.enter)="startEditTask(t)"
-                >{{ t.title }}</span>
+                <div class="task__title-wrap">
+                  <span
+                    class="task__title"
+                    matTooltip="Click to rename"
+                    matTooltipShowDelay="500"
+                    tabindex="0"
+                    role="button"
+                    (click)="startEditTask(t)"
+                    (keydown.enter)="startEditTask(t)"
+                  >{{ t.title }}</span>
+                  @if (t.description.length > 0) {
+                    <p class="task__description">{{ t.description }}</p>
+                  }
+                </div>
               }
               <button
                 mat-icon-button
@@ -169,6 +174,18 @@ const TASK_STATUS_LABEL: Record<TaskStatus, string> = {
       border-radius: var(--radius-sm);
       &:hover { background: var(--bg-hover); }
       &:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+    }
+    .task__title-wrap { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .task__description {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: var(--font-size-sm);
+      line-height: 1.4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
     .task__title-input {
       font-family: inherit;

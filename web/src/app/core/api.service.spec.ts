@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
 import { ApiService, TaskMutationResponse, TaskDeleteResponse } from './api.service';
-import { Project, ActivityItem, Task } from './models';
+import { Project, ActivityItem, Task, TickerItem, PresenceEntry } from './models';
 
 describe('ApiService', () => {
   let service: ApiService;
@@ -108,5 +108,29 @@ describe('ApiService', () => {
     const req = httpMock.expectOne('http://localhost:3001/api/tasks/p_001_t001');
     expect(req.request.method).toBe('DELETE');
     req.flush(fake);
+  });
+
+  it('getTicker() GETs /api/ticker', () => {
+    const sample = [
+      { id: 'tk_1', kind: 'milestone' as const, message: 'A milestone', timestamp: '2026-05-08T00:00:00Z' },
+    ];
+    let received: any;
+    service.getTicker().subscribe((items: TickerItem[]) => { received = items; });
+    const req = httpMock.expectOne('http://localhost:3001/api/ticker');
+    expect(req.request.method).toBe('GET');
+    req.flush(sample);
+    expect(received).toEqual(sample);
+  });
+
+  it('getPresence() GETs /api/presence', () => {
+    const sample = [
+      { user: { id: 'u_01', name: 'X', initials: 'X' }, projectId: 'p_001', projectName: 'A', since: '2026-05-08T00:00:00Z' },
+    ];
+    let received: any;
+    service.getPresence().subscribe((items: PresenceEntry[]) => { received = items; });
+    const req = httpMock.expectOne('http://localhost:3001/api/presence');
+    expect(req.request.method).toBe('GET');
+    req.flush(sample);
+    expect(received).toEqual(sample);
   });
 });

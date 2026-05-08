@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Project, ActivityItem, Task, TaskStatus } from './models';
+import { Project, ActivityItem, Task, TaskStatus, TickerItem, PresenceEntry } from './models';
 
 const API_BASE = 'http://localhost:3001/api';
 
@@ -24,6 +24,14 @@ export class ApiService {
 
   getActivity(): Observable<ActivityItem[]> {
     return this.http.get<ActivityItem[]>(`${API_BASE}/activity`);
+  }
+
+  getTicker(): Observable<TickerItem[]> {
+    return this.http.get<TickerItem[]>(`${API_BASE}/ticker`);
+  }
+
+  getPresence(): Observable<PresenceEntry[]> {
+    return this.http.get<PresenceEntry[]>(`${API_BASE}/presence`);
   }
 
   updateProject(id: string, patch: Partial<Project>): Observable<Project> {
@@ -50,7 +58,7 @@ export class ApiService {
 
   updateTask(
     taskId: string,
-    patch: Partial<Pick<Task, 'title' | 'status'>>,
+    patch: Partial<Pick<Task, 'title' | 'description' | 'status'>>,
   ): Observable<TaskMutationResponse> {
     return this.http.patch<TaskMutationResponse>(`${API_BASE}/tasks/${taskId}`, patch);
   }

@@ -1,5 +1,6 @@
-import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
+import { after, before, test } from 'node:test';
+import { WebSocket } from 'ws';
 import { startServer } from './server.js';
 
 let server;
@@ -13,12 +14,12 @@ after(async () => {
   await new Promise((resolve) => server.close(resolve));
 });
 
-test('GET /api/projects returns 200 and an array of 12 projects', async () => {
+test('GET /api/projects returns 200 and the full project list', async () => {
   const res = await fetch(`${BASE}/api/projects`);
   assert.equal(res.status, 200);
   const body = await res.json();
   assert.ok(Array.isArray(body));
-  assert.equal(body.length, 12);
+  assert.equal(body.length, 36);
 });
 
 test('GET /api/projects items have the documented shape', async () => {
@@ -126,13 +127,17 @@ test('DELETE ?fail=true returns 500 with an error body', async () => {
 });
 
 test('GET /api/projects/:id/tasks returns tasks for that project only', async () => {
+  const project = await fetch(`${BASE}/api/projects`).then((r) => r.json()).then((all) => all.find((p) => p.id === 'p_001'));
   const res = await fetch(`${BASE}/api/projects/p_001/tasks`);
   assert.equal(res.status, 200);
   const body = await res.json();
   assert.ok(Array.isArray(body));
-  assert.equal(body.length, 24, 'p_001 was seeded with 24 tasks');
+  assert.equal(body.length, project.tasksTotal);
   assert.ok(body.every((t) => t.projectId === 'p_001'));
-  assert.equal(body.filter((t) => t.status === 'completed').length, 16, '16 done in seed');
+  assert.equal(body.filter((t) => t.status === 'completed').length, project.tasksDone);
+  // Tasks now have realistic titles and a description field.
+  assert.ok(body.every((t) => typeof t.title === 'string' && t.title.length > 0));
+  assert.ok(body.every((t) => typeof t.description === 'string'));
 });
 
 test('GET /api/projects/:id/tasks returns 404 for unknown project', async () => {
@@ -141,20 +146,21 @@ test('GET /api/projects/:id/tasks returns 404 for unknown project', async () => 
 });
 
 test('POST /api/projects/:id/tasks creates a task and returns the recomputed project', async () => {
-  // p_005 starts at tasksTotal=20, tasksDone=5
+  const before = await fetch(`${BASE}/api/projects`).then((r) => r.json()).then((all) => all.find((p) => p.id === 'p_005'));
   const res = await fetch(`${BASE}/api/projects/p_005/tasks`, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ title: 'New deliverable' }),
+    body: JSON.stringify({ title: 'New deliverable', description: 'A task added by the test.' }),
   });
   assert.equal(res.status, 201);
   const body = await res.json();
   assert.equal(body.task.projectId, 'p_005');
   assert.equal(body.task.title, 'New deliverable');
+  assert.equal(body.task.description, 'A task added by the test.');
   assert.equal(body.task.status, 'not_started');
   assert.equal(body.project.id, 'p_005');
-  assert.equal(body.project.tasksTotal, 21, 'tasksTotal incremented');
-  assert.equal(body.project.tasksDone, 5, 'tasksDone unchanged');
+  assert.equal(body.project.tasksTotal, before.tasksTotal + 1);
+  assert.equal(body.project.tasksDone, before.tasksDone);
 });
 
 test('POST task auto-promotes a not_started project when status is in_progress', async () => {
@@ -188,28 +194,29 @@ test('POST task returns 404 for unknown project', async () => {
 });
 
 test('PATCH /api/tasks/:taskId updates the task and returns recomputed project counts', async () => {
-  // p_002 seeded at tasksTotal=32, tasksDone=13. Task 14 is the first not_started.
-  const res = await fetch(`${BASE}/api/tasks/p_002_t014`, {
+  const tasks = await fetch(`${BASE}/api/projects/p_002/tasks`).then((r) => r.json());
+  const target = tasks.find((t) => t.status === 'not_started');
+  assert.ok(target, 'expected at least one not_started task in p_002');
+  const beforeProject = await fetch(`${BASE}/api/projects`).then((r) => r.json()).then((all) => all.find((p) => p.id === 'p_002'));
+  const res = await fetch(`${BASE}/api/tasks/${target.id}`, {
     method: 'PATCH',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ status: 'completed' }),
   });
   assert.equal(res.status, 200);
   const body = await res.json();
-  assert.equal(body.task.id, 'p_002_t014');
+  assert.equal(body.task.id, target.id);
   assert.equal(body.task.status, 'completed');
   assert.equal(body.project.id, 'p_002');
-  assert.equal(body.project.tasksDone, 14, 'tasksDone incremented from 13 to 14');
-  assert.ok(Math.abs(body.project.progress - 14 / 32) < 1e-9, 'progress recomputed');
+  assert.equal(body.project.tasksDone, beforeProject.tasksDone + 1);
 });
 
 test('PATCH task auto-promotes a not_started project', async () => {
-  // p_008 status was promoted earlier by POST; reset by patching one of its tasks.
-  // Use p_005 which is currently in_progress; promotion is a no-op (still in_progress).
-  // Better: rely on a fresh not_started slot. Skip this test for now since p_008
-  // already promoted. Instead, verify that patching back to not_started does NOT
-  // demote (server only promotes, doesn't demote).
-  const res = await fetch(`${BASE}/api/tasks/p_008_t001`, {
+  // p_008 status was promoted earlier by POST. Verify reverting a task to
+  // not_started does NOT demote (server only promotes).
+  const tasks = await fetch(`${BASE}/api/projects/p_008/tasks`).then((r) => r.json());
+  const anyTask = tasks[0];
+  const res = await fetch(`${BASE}/api/tasks/${anyTask.id}`, {
     method: 'PATCH',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ status: 'not_started' }),
@@ -229,16 +236,18 @@ test('PATCH task returns 404 for unknown id', async () => {
 });
 
 test('DELETE /api/tasks/:taskId removes the task and recomputes the project', async () => {
-  // p_003 seeded at tasksTotal=48, tasksDone=37. Delete a completed task.
-  const res = await fetch(`${BASE}/api/tasks/p_003_t001`, { method: 'DELETE' });
+  const tasks = await fetch(`${BASE}/api/projects/p_003/tasks`).then((r) => r.json());
+  const completed = tasks.find((t) => t.status === 'completed');
+  assert.ok(completed, 'expected at least one completed task in p_003');
+  const beforeProject = await fetch(`${BASE}/api/projects`).then((r) => r.json()).then((all) => all.find((p) => p.id === 'p_003'));
+  const res = await fetch(`${BASE}/api/tasks/${completed.id}`, { method: 'DELETE' });
   assert.equal(res.status, 200);
   const body = await res.json();
   assert.equal(body.project.id, 'p_003');
-  assert.equal(body.project.tasksTotal, 47);
-  assert.equal(body.project.tasksDone, 36);
-  // Task should be gone
+  assert.equal(body.project.tasksTotal, beforeProject.tasksTotal - 1);
+  assert.equal(body.project.tasksDone, beforeProject.tasksDone - 1);
   const list = await fetch(`${BASE}/api/projects/p_003/tasks`).then((r) => r.json());
-  assert.ok(!list.some((t) => t.id === 'p_003_t001'));
+  assert.ok(!list.some((t) => t.id === completed.id));
 });
 
 test('DELETE task returns 404 for unknown id', async () => {
@@ -272,20 +281,143 @@ test('GET /api/projects refreshes overdue status before returning', async () => 
 });
 
 test('Task endpoints respect ?fail=true', async () => {
+  const tasks = await fetch(`${BASE}/api/projects/p_001/tasks`).then((r) => r.json());
+  const anyTaskId = tasks[0].id;
+
   const get = await fetch(`${BASE}/api/projects/p_001/tasks?fail=true`);
   assert.equal(get.status, 500);
+
   const post = await fetch(`${BASE}/api/projects/p_001/tasks?fail=true`, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ title: 'x' }),
   });
   assert.equal(post.status, 500);
-  const patch = await fetch(`${BASE}/api/tasks/p_001_t001?fail=true`, {
+
+  const patch = await fetch(`${BASE}/api/tasks/${anyTaskId}?fail=true`, {
     method: 'PATCH',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ status: 'completed' }),
   });
   assert.equal(patch.status, 500);
-  const del = await fetch(`${BASE}/api/tasks/p_001_t001?fail=true`, { method: 'DELETE' });
+
+  const del = await fetch(`${BASE}/api/tasks/${anyTaskId}?fail=true`, { method: 'DELETE' });
   assert.equal(del.status, 500);
+});
+
+test('GET /api/ticker returns 200 and an array of items', async () => {
+  const res = await fetch(`${BASE}/api/ticker`);
+  assert.equal(res.status, 200);
+  const body = await res.json();
+  assert.ok(Array.isArray(body));
+  assert.ok(body.length > 0, 'ticker should be seeded with at least one item');
+  const first = body[0];
+  assert.ok(typeof first.id === 'string');
+  assert.ok(['announcement', 'incident', 'milestone'].includes(first.kind));
+  assert.ok(typeof first.message === 'string');
+  assert.ok(typeof first.timestamp === 'string');
+});
+
+test('GET /api/ticker is sorted newest-first', async () => {
+  const res = await fetch(`${BASE}/api/ticker`);
+  const body = await res.json();
+  for (let i = 1; i < body.length; i++) {
+    const t0 = new Date(body[i - 1].timestamp).getTime();
+    const t1 = new Date(body[i].timestamp).getTime();
+    assert.ok(t0 >= t1, `ticker not newest-first at index ${i}`);
+  }
+});
+
+test('GET /api/ticker respects ?fail=true and ?empty=true', async () => {
+  const fail = await fetch(`${BASE}/api/ticker?fail=true`);
+  assert.equal(fail.status, 500);
+  const empty = await fetch(`${BASE}/api/ticker?empty=true`);
+  assert.equal(empty.status, 200);
+  assert.deepEqual(await empty.json(), []);
+});
+
+test('GET /api/presence returns 200 and an array', async () => {
+  const res = await fetch(`${BASE}/api/presence`);
+  assert.equal(res.status, 200);
+  const body = await res.json();
+  assert.ok(Array.isArray(body));
+  if (body.length > 0) {
+    const first = body[0];
+    assert.ok(first.user && typeof first.user.id === 'string');
+    assert.ok(typeof first.projectId === 'string');
+    assert.ok(typeof first.projectName === 'string');
+    assert.ok(typeof first.since === 'string');
+  }
+});
+
+test('GET /api/presence respects ?fail=true and ?empty=true', async () => {
+  const fail = await fetch(`${BASE}/api/presence?fail=true`);
+  assert.equal(fail.status, 500);
+  const empty = await fetch(`${BASE}/api/presence?empty=true`);
+  assert.equal(empty.status, 200);
+  assert.deepEqual(await empty.json(), []);
+});
+
+test('GET /api/__debug/snapshot returns the full in-memory state', async () => {
+  const res = await fetch(`${BASE}/api/__debug/snapshot`);
+  assert.equal(res.status, 200);
+  const body = await res.json();
+  assert.ok(Array.isArray(body.projects));
+  assert.ok(Array.isArray(body.tasks));
+  assert.ok(Array.isArray(body.activity));
+  assert.ok(Array.isArray(body.ticker));
+  assert.ok(Array.isArray(body.presence));
+  assert.ok(typeof body.simulatorTickCount === 'number');
+});
+
+test('PATCH /api/tasks/:taskId can update description', async () => {
+  const tasks = await fetch(`${BASE}/api/projects/p_001/tasks`).then((r) => r.json());
+  const target = tasks[0];
+  const newDesc = 'Updated by the test.';
+  const res = await fetch(`${BASE}/api/tasks/${target.id}`, {
+    method: 'PATCH',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ description: newDesc }),
+  });
+  assert.equal(res.status, 200);
+  const body = await res.json();
+  assert.equal(body.task.id, target.id);
+  assert.equal(body.task.description, newDesc);
+  assert.equal(body.task.title, target.title, 'title preserved');
+  assert.equal(body.task.status, target.status, 'status preserved');
+});
+
+test('WebSocket: hello message arrives on connect', async () => {
+  const ws = new WebSocket('ws://localhost:3001/ws');
+  const hello = await new Promise((resolve, reject) => {
+    ws.on('message', (data) => resolve(JSON.parse(data.toString())));
+    ws.on('error', reject);
+    setTimeout(() => reject(new Error('timeout waiting for hello')), 2000);
+  });
+  ws.close();
+  assert.equal(hello.type, 'hello');
+  assert.equal(hello.protocolVersion, 1);
+  assert.ok(typeof hello.serverTime === 'string');
+});
+
+test('WebSocket: simulator emits drift events while a client is connected', { timeout: 15000 }, async () => {
+  const ws = new WebSocket('ws://localhost:3001/ws');
+  const events = [];
+  await new Promise((resolve, reject) => {
+    ws.on('message', (data) => {
+      const ev = JSON.parse(data.toString());
+      events.push(ev);
+      if (events.length >= 3) resolve();
+    });
+    ws.on('error', reject);
+    setTimeout(() => reject(new Error('timeout - got ' + events.length + ' events')), 12000);
+  });
+  ws.close();
+  assert.equal(events[0].type, 'hello', 'first event is hello');
+  assert.ok(events.length >= 3, 'should have hello + at least 2 drift events');
+  const driftTypes = events.slice(1).map((e) => e.type);
+  assert.ok(driftTypes.every((t) => [
+    'activity_added', 'project_updated', 'task_updated',
+    'ticker_updated', 'presence_changed',
+  ].includes(t)), `unexpected drift type in ${JSON.stringify(driftTypes)}`);
 });

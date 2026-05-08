@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
   template: `
     <article class="brief">
       <header>
-        <h1>Frontend Interview: Build a Project Dashboard</h1>
+        <h1>Frontend Take-Home: Build a Live Project Dashboard</h1>
       </header>
 
       <aside class="notice">
@@ -34,6 +34,13 @@ import { RouterLink } from '@angular/router';
           <code>inject()</code>, the new <code>&#64;if</code>/<code>&#64;for</code> control flow,
           and Angular Material).
         </p>
+        <p>
+          This is a take-home with a target effort of around a weekend (~12-16 hours). The
+          dashboard should surface live data: a ticker, stat cards, a project list, an
+          activity feed, presence info, and a footer that reflects the WebSocket connection
+          state. The server's data <em>drifts</em> every few seconds - your dashboard should
+          react.
+        </p>
       </section>
 
       <section>
@@ -41,24 +48,34 @@ import { RouterLink } from '@angular/router';
 
         <h3>Must-have - without these, the build doesn't ship</h3>
         <ol>
-          <li><strong>Fetch and display projects.</strong> Call <code>apiService.getProjects()</code>. Render the list (table, card grid - your choice).</li>
-          <li><strong>Stat cards row.</strong> Four cards across the top: <em>Total</em>, <em>In progress</em>, <em>Overdue</em>, <em>Completed</em>. Each shows a count derived from the projects data.</li>
-          <li><strong>Loading state.</strong> While projects are fetching, show a loading indicator. The API delay varies (20–500ms) - your loading UI should feel intentional under both conditions.</li>
-          <li><strong>Error state.</strong> If the API fails (test with <code>?fail=true</code>), show a clear error message. Don't render the dashboard as if it were empty.</li>
+          <li><strong>Stat cards row.</strong> Four cards across the top: <em>Total</em>, <em>In progress</em>, <em>Overdue</em>, <em>Completed</em>. Counts derived from the projects data.</li>
+          <li><strong>Project list/table.</strong> Render projects with status, owner, progress, and due date.</li>
+          <li><strong>Loading state.</strong> While data is fetching, show a skeleton at the right height. The API delay varies (20-500ms) - your loading UI should feel intentional.</li>
+          <li><strong>Error state.</strong> If a fetch fails (test with <code>?fail=true</code>), show a clear inline error within that section. Don't blank the dashboard.</li>
+          <li><strong>Footer.</strong> Always-visible footer with the WebSocket connection state ("live" / "reconnecting" / "offline"), last-sync timestamp, and a build label.</li>
+          <li><strong>Layout-shift discipline.</strong> Reserve space before data arrives. The dashboard must not flash, jump, or push content around when data lands or when WS events arrive.</li>
         </ol>
 
         <h3>Should-have - depth and polish</h3>
-        <ol start="5">
-          <li><strong>Activity feed.</strong> Call <code>apiService.getActivity()</code> and render the recent activity list somewhere on the dashboard. Format timestamps in a friendly way ("2h ago", or another sensible format).</li>
-          <li><strong>Responsive layout.</strong> Looks good on a typical desktop (≥1280px) and at 1920×1080 with 125% Windows scaling (effective ~1536×864 - common in our user base). Acceptable down to ~768px. Stat cards stack or wrap; the project list remains usable.</li>
-          <li><strong>Visual polish.</strong> Consistent spacing, sensible typography, hover states where appropriate. Status should be visually distinguishable (a coloured badge or pill, not just text). Use Angular Material components, the existing CSS variables in <code>styles.scss</code>, or roll your own - all are fine; arbitrary styling is not.</li>
+        <ol start="7">
+          <li><strong>Activity feed.</strong> Render recent activity (<code>getActivity()</code>). Friendly timestamps ("2h ago" or similar). New items prepend without push-jumping the visible list.</li>
+          <li><strong>Responsive layout.</strong> Looks good on a typical desktop (≥1280px) and at 1920×1080 with 125% Windows scaling (~1536×864). Acceptable down to ~768px.</li>
+          <li><strong>Visual polish.</strong> Status pills, hover states, spacing rhythm, type hierarchy. Use Angular Material, the existing CSS variables in <code>styles.scss</code>, or roll your own.</li>
+          <li><strong>Custom spinner.</strong> Material's <code>mat-progress-spinner</code> is fine for momentary states. For your primary loading boundaries (projects panel, activity feed), build something intentional - skeleton, dot-pulse, branded spinner, scanning bar.</li>
+          <li><strong>Polling.</strong> At least one section auto-refreshes on an interval, smoothly (no flicker). Sensible cadence (≥1s; the server tick is ~3s).</li>
+          <li><strong>Ticker.</strong> Slim banner at top with rotating live items from <code>getTicker()</code>. Fixed height; never resizes the page.</li>
+          <li><strong>Dialogs.</strong> At least one interaction opens a dialog you built (e.g., a project quick-view or a confirm dialog). The <code>/projects</code> page has working dialogs to learn from.</li>
+          <li><strong>Independent section loads.</strong> Each section owns its own loading/error state. One slow request must not block the rest of the dashboard.</li>
         </ol>
 
         <h3>Nice-to-have - if there's time</h3>
-        <ol start="8">
-          <li><strong>Filter or sort the project list.</strong> Pick one (status filter, owner filter, sort by due date). Use Angular signals or computed values.</li>
-          <li><strong>Empty state.</strong> Test with <code>?empty=true</code>. Show something useful when there are no projects/activity instead of a blank panel.</li>
-          <li><strong>Component decomposition.</strong> Break the dashboard into 2–3 smaller components (e.g. <code>StatCard</code>, <code>ProjectListItem</code>, <code>ActivityFeed</code>) rather than one big file.</li>
+        <ol start="15">
+          <li><strong>WebSockets.</strong> Use <code>WsService.events$</code> to replace polling on at least one section, or to add live presence/push-toast updates.</li>
+          <li><strong>Filter or sort.</strong> The project list - pick one (status filter, owner filter, sort by due date).</li>
+          <li><strong>Empty state.</strong> Test with <code>?empty=true</code> on every endpoint. Show something deliberate, not a blank panel.</li>
+          <li><strong>Animated updates.</strong> New items fade or slide in - no flashing.</li>
+          <li><strong>Optimistic UI.</strong> On at least one mutation, update the UI before the server confirms.</li>
+          <li><strong>Component decomposition.</strong> Break the dashboard into small, focused components (e.g., <code>StatCard</code>, <code>ProjectListItem</code>, <code>ActivityFeed</code>).</li>
         </ol>
       </section>
 
@@ -75,17 +92,40 @@ import { RouterLink } from '@angular/router';
 <pre><code>{{ activitySample }}</code></pre>
         <p><code>type</code> is one of: <code>"task_completed"</code> | <code>"project_created"</code> | <code>"comment_added"</code> | <code>"status_changed"</code>.</p>
 
+        <h3><code>GET /api/ticker</code></h3>
+        <p>Returns the most recent ~12 ticker items, newest first. <code>kind</code> is one of: <code>"announcement"</code> | <code>"incident"</code> | <code>"milestone"</code>.</p>
+<pre><code>{{ tickerSample }}</code></pre>
+
+        <h3><code>GET /api/presence</code></h3>
+        <p>Returns who is "viewing" what. Drifts on the server every several ticks.</p>
+<pre><code>{{ presenceSample }}</code></pre>
+
+        <h3>WebSocket - <code>ws://localhost:3001/ws</code></h3>
+        <p>
+          Server-push only. Use the pre-wired <code>WsService</code> in <code>core/ws.service.ts</code> -
+          <strong>do not open the socket yourself</strong>. The service handles connect, reconnect,
+          and exposes a typed event stream.
+        </p>
+<pre><code>{{ wsEventSample }}</code></pre>
+        <p>
+          Each event carries enough state for the client to update without re-fetching.
+          <code>task_updated</code> and <code>project_updated</code> include the recomputed parent
+          project, mirroring the existing mutation-response pattern.
+        </p>
+
         <h3>Test modes</h3>
         <ul>
           <li><code>?fail=true</code> - returns 500 with <code>&#123; "error": "Something went wrong" &#125;</code>.</li>
           <li><code>?empty=true</code> - returns <code>[]</code>.</li>
+          <li>Drift continues regardless of test toggles - polling and WS still produce changing data.</li>
         </ul>
-        <p>All endpoints share a 20–500ms artificial delay. Use Chrome DevTools network throttling to verify your loading UI behaves under slower conditions.</p>
+        <p>All endpoints share a 20-500ms artificial delay. Use Chrome DevTools network throttling to verify your loading UI behaves under slower conditions.</p>
 
         <h3>Mutation endpoints</h3>
         <p class="muted">
-          These power the existing <a routerLink="/projects">/projects</a> page. They aren't required for the
-          dashboard build, but are documented here so you can extend things if you have time.
+          These power the existing <a routerLink="/projects">/projects</a> page. They aren't required
+          for the dashboard build, but are documented here so you can extend things if you have time.
+          <code>Task</code> now has a <code>description</code> field; mutation responses include it.
         </p>
 
         <h4><code>PATCH /api/projects/:id</code></h4>
@@ -103,11 +143,10 @@ import { RouterLink } from '@angular/router';
         <h4><code>GET /api/projects/:id/tasks</code></h4>
         <p>Returns the tasks for a project. Supports <code>?empty=true</code> and <code>?fail=true</code>.</p>
 <pre><code>{{ taskSample }}</code></pre>
-        <p>Task <code>status</code> is one of: <code>"not_started"</code> | <code>"in_progress"</code> | <code>"completed"</code>.</p>
 
         <h4><code>POST /api/projects/:id/tasks</code></h4>
         <p>
-          Creates a task on the given project. Body: <code>&#123; title: string, status?: TaskStatus &#125;</code>.
+          Creates a task on the given project. Body: <code>&#123; title: string, description?: string, status?: TaskStatus &#125;</code>.
           Returns <code>201</code> with both the new task and the recomputed project so the UI can update
           counts in one round-trip. <code>400</code> if title is missing or blank.
         </p>
@@ -115,9 +154,8 @@ import { RouterLink } from '@angular/router';
 
         <h4><code>PATCH /api/tasks/:taskId</code></h4>
         <p>
-          Updates a task's <code>title</code> or <code>status</code>. Same response shape as POST
-          (<code>&#123; task, project &#125;</code>). The server recomputes <code>tasksDone</code> and
-          <code>progress</code> on the parent project.
+          Updates a task's <code>title</code>, <code>description</code>, or <code>status</code>. Same response
+          shape as POST (<code>&#123; task, project &#125;</code>).
         </p>
 
         <h4><code>DELETE /api/tasks/:taskId</code></h4>
@@ -134,34 +172,64 @@ import { RouterLink } from '@angular/router';
         <h2>What's pre-wired for you</h2>
         <ul>
           <li>
-            <code>ApiService</code> in <code>core/api.service.ts</code> - read methods (<code>getProjects()</code>,
-            <code>getActivity()</code>, <code>getTasks(projectId)</code>) and mutation methods
+            <code>ApiService</code> in <code>core/api.service.ts</code> - all read methods
+            (<code>getProjects()</code>, <code>getActivity()</code>, <code>getTasks(id)</code>,
+            <code>getTicker()</code>, <code>getPresence()</code>) and mutation methods
             (<code>updateProject</code>, <code>deleteProject</code>, <code>createTask</code>,
-            <code>updateTask</code>, <code>deleteTask</code>) all already typed.
+            <code>updateTask</code>, <code>deleteTask</code>) already typed and ready.
+            <strong>Do not add new methods to ApiService</strong> - everything you need is there.
           </li>
-          <li><code>Project</code>, <code>ActivityItem</code>, <code>Task</code>, <code>ProjectStatus</code>, and <code>TaskStatus</code> types in <code>core/models.ts</code>.</li>
+          <li>
+            <code>WsService</code> in <code>core/ws.service.ts</code> - typed event stream
+            (<code>events$</code>), connection state signal (<code>connectionState()</code>), and last-event
+            timestamp signal (<code>lastEventAt()</code>). Auto-reconnects on drop.
+            <strong>Do not open WebSockets yourself</strong> - subscribe to the service.
+          </li>
+          <li><code>Project</code>, <code>ActivityItem</code>, <code>Task</code>, <code>TickerItem</code>, <code>PresenceEntry</code>, <code>WsEvent</code>, and the status enums in <code>core/models.ts</code>.</li>
           <li><code>ToastService</code> in <code>core/toast.service.ts</code> wraps <code>MatSnackBar</code> with <code>success/error/info</code> methods if you need notifications.</li>
           <li>The <code>/dashboard</code> route is already registered. You only need to fill in <code>features/dashboard/dashboard.component.ts</code>.</li>
         </ul>
       </section>
 
       <section>
-        <h2>Tips</h2>
-        <ul>
-          <li>Commit when you finish each tier so we can see your progress.</li>
-          <li>If you're stuck, talk it through - we're not grading silence.</li>
-          <li>Polish matters, but only after Must-have works.</li>
-          <li>The laptop's display may not match the test resolutions; resize the browser window to verify.</li>
-          <li>The site uses Angular Material with the azure-blue prebuilt theme. CSS variables in <code>styles.scss</code> hold the rest of the palette. Use Material components, extend the tokens, or roll your own - just be intentional.</li>
-        </ul>
+        <h2>How to submit</h2>
+        <ol>
+          <li>Push your work to a private repository under your own GitHub account.</li>
+          <li>Add the reviewer (we'll send their handle) as a collaborator (read access is enough).</li>
+          <li>Reply to the original email with the repo URL.</li>
+        </ol>
+        <p>
+          Commit as you finish each tier (Must / Should / Nice). We read the commit history -
+          it tells us how you sequenced the work, where you got stuck, and what you cleaned up
+          before submitting. Don't squash. Don't hide. Honest commits beat polished ones.
+        </p>
       </section>
 
       <section>
         <h2>What we're looking for</h2>
         <ul>
-          <li>Idiomatic Angular 20+.</li>
-          <li>Real handling of loading, error, and empty states.</li>
-          <li>Visual taste - does the dashboard feel considered?</li>
+          <li>Idiomatic Angular 20+ - signals, standalone, <code>inject()</code>, the new control flow.</li>
+          <li>Real handling of loading, error, and empty states across <em>every</em> data source - not just the projects panel.</li>
+          <li>Independent section loading. The dashboard never blanks because one fetch is slow or one section errored.</li>
+          <li>Layout-shift discipline. Reserved heights, sensible skeletons, no flashing.</li>
+          <li>Considered choice between polling and WS. Either one shipped well beats both shipped sloppy.</li>
+          <li>Visual taste. Spacing rhythm, type hierarchy, status differentiation.</li>
+          <li>Honest commit history. Tier-marked, attributable, debuggable.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Tips</h2>
+        <ul>
+          <li>Don't gate the whole dashboard on one fetch. Each section owns its own loading state.</li>
+          <li>Reserve space before data arrives. A skeleton at the right height is worth more than an exact shimmer.</li>
+          <li>Polling vs WS: if you're not sure, ship polling first. The brief lists WS in the Nice tier - it's a stretch, not a baseline.</li>
+          <li>Pick a sensible polling cadence. The server tick is ~3s; polling at &lt;1s is just noise.</li>
+          <li>Custom spinner: Material's <code>mat-progress-spinner</code> is fine for momentary states. For your primary loaders, build something intentional.</li>
+          <li>Drift is real. The data changes every few seconds. If your projects panel doesn't react to a status change you can <em>see</em> coming through the activity feed, that's a bug.</li>
+          <li>Commit when you finish each tier so we can see your progress.</li>
+          <li>If <code>npm start</code> hangs on the web side: delete <code>web/.angular/</code> and <code>web/node_modules/</code>, then re-run <code>npm install --prefix web</code>.</li>
+          <li>If port 3001 or 4300 is in use: <code>npx kill-port 3001 4300</code>, then <code>npm start</code> again.</li>
         </ul>
       </section>
 
@@ -253,11 +321,40 @@ export class InstructionsComponent {
   }
 ]`;
 
+  readonly tickerSample = `[
+  {
+    "id": "tk_a91b",
+    "kind": "milestone",
+    "message": "Apollo Migration just hit 70%",
+    "projectId": "p_001",
+    "projectName": "Apollo Migration",
+    "timestamp": "2026-05-08T14:02:11Z"
+  }
+]`;
+
+  readonly presenceSample = `[
+  {
+    "user": { "id": "u_03", "name": "Sarah Chen", "initials": "SC" },
+    "projectId": "p_001",
+    "projectName": "Apollo Migration",
+    "since": "2026-05-08T14:01:50Z"
+  }
+]`;
+
+  readonly wsEventSample = `// Sample events received via WsService.events$:
+{ "type": "hello", "serverTime": "2026-05-08T14:02:00Z", "protocolVersion": 1 }
+{ "type": "activity_added", "item": { /* ActivityItem */ } }
+{ "type": "project_updated", "project": { /* Project */ } }
+{ "type": "task_updated", "task": { /* Task */ }, "project": { /* recomputed parent */ } }
+{ "type": "ticker_updated", "item": { /* TickerItem */ } }
+{ "type": "presence_changed", "entries": [ /* PresenceEntry[] */ ] }`;
+
   readonly taskSample = `[
   {
     "id": "p_001_t001",
     "projectId": "p_001",
-    "title": "Task 1",
+    "title": "Audit existing OAuth scopes",
+    "description": "Walk through the current scope map, flag deprecated grants, and document the migration target for each.",
     "status": "completed"
   }
 ]`;
@@ -267,6 +364,7 @@ export class InstructionsComponent {
     "id": "p_001_t025",
     "projectId": "p_001",
     "title": "New deliverable",
+    "description": "",
     "status": "not_started"
   },
   "project": {

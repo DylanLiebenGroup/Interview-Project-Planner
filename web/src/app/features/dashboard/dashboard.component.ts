@@ -4,15 +4,25 @@ import { RouterLink } from '@angular/router';
 /**
  * Build the dashboard here. Full brief: /instructions
  *
- * API service is pre-wired in core/api.service.ts:
- *   - apiService.getProjects()   → Observable<Project[]>
- *   - apiService.getActivity()   → Observable<ActivityItem[]>
+ * Pre-wired services in core/:
+ *   ApiService - full read + mutation surface, including new endpoints
+ *     getProjects()  → Observable<Project[]>
+ *     getActivity()  → Observable<ActivityItem[]>
+ *     getTasks(id)   → Observable<Task[]>
+ *     getTicker()    → Observable<TickerItem[]>
+ *     getPresence()  → Observable<PresenceEntry[]>
  *
- * Tier checklist:
- *   Must:   stat cards (Total / In Progress / Overdue / Completed),
- *           project list/table, loading + error states
- *   Should: activity feed, responsive layout, visual polish
- *   Nice:   filter or sort, empty state, status badge component
+ *   WsService - typed WebSocket client with auto-reconnect
+ *     events$            Observable<WsEvent>
+ *     connectionState()  Signal<'connecting' | 'live' | 'reconnecting' | 'offline'>
+ *     lastEventAt()      Signal<Date | null>
+ *
+ *   ToastService - success/error/info wrappers around MatSnackBar
+ *
+ * Required sections (see /instructions for tier mapping):
+ *   ticker, stat cards, projects panel, activity feed, presence strip, footer
+ *
+ * The brief is tiered Must / Should / Nice. Read it before coding.
  *
  * Good luck!
  */

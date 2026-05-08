@@ -48,5 +48,38 @@ export interface Task {
   id: string;
   projectId: string;
   title: string;
+  description: string;
   status: TaskStatus;
 }
+
+export type TickerKind = 'announcement' | 'incident' | 'milestone';
+
+export interface TickerItem {
+  id: string;
+  kind: TickerKind;
+  message: string;
+  projectId?: string;
+  projectName?: string;
+  timestamp: string;
+}
+
+export interface PresenceEntry {
+  user: Actor;
+  projectId: string;
+  projectName: string;
+  since: string;
+}
+
+export type WsConnectionState =
+  | 'connecting'
+  | 'live'
+  | 'reconnecting'
+  | 'offline';
+
+export type WsEvent =
+  | { type: 'hello';            serverTime: string; protocolVersion: 1 }
+  | { type: 'activity_added';   item: ActivityItem }
+  | { type: 'project_updated';  project: Project }
+  | { type: 'task_updated';     task: Task; project: Project }
+  | { type: 'ticker_updated';   item: TickerItem }
+  | { type: 'presence_changed'; entries: PresenceEntry[] };

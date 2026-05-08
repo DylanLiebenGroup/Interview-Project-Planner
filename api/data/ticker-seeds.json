@@ -1,0 +1,104 @@
+[
+  {
+    "id": "tk_seed_01",
+    "kind": "announcement",
+    "message": "Quarterly Planning finalized - Q3 roadmap published in Notion",
+    "timestamp": "2026-05-08T08:15:00Z"
+  },
+  {
+    "id": "tk_seed_02",
+    "kind": "incident",
+    "message": "Auth service memory leak detected, pod restart cycle initiated",
+    "timestamp": "2026-05-08T09:42:00Z"
+  },
+  {
+    "id": "tk_seed_03",
+    "kind": "milestone",
+    "message": "Apollo Migration crossed 65% completion - two modules shipped to staging",
+    "projectId": "p_001",
+    "projectName": "Apollo Migration",
+    "timestamp": "2026-05-07T14:20:00Z"
+  },
+  {
+    "id": "tk_seed_04",
+    "kind": "announcement",
+    "message": "Database maintenance scheduled Saturday 02:00–04:00 UTC, expect brief service interruptions",
+    "timestamp": "2026-05-08T10:30:00Z"
+  },
+  {
+    "id": "tk_seed_05",
+    "kind": "incident",
+    "message": "Webhook delivery latency spiked to 8s - investigating batch processor queue",
+    "timestamp": "2026-05-07T16:05:00Z"
+  },
+  {
+    "id": "tk_seed_06",
+    "kind": "milestone",
+    "message": "SSO Integration reached 100% - SAML and OIDC now live in production",
+    "projectId": "p_006",
+    "projectName": "SSO Integration",
+    "timestamp": "2026-05-06T11:30:00Z"
+  },
+  {
+    "id": "tk_seed_07",
+    "kind": "announcement",
+    "message": "New on-call schedule effective Monday - check #ops-announcements for assignments",
+    "timestamp": "2026-05-08T07:45:00Z"
+  },
+  {
+    "id": "tk_seed_08",
+    "kind": "incident",
+    "message": "Search indexing lag increased to 42 minutes - Elasticsearch cluster resizing underway",
+    "timestamp": "2026-05-07T20:15:00Z"
+  },
+  {
+    "id": "tk_seed_09",
+    "kind": "milestone",
+    "message": "CI/CD Pipeline Modernisation fully operational - all deployments now via GitHub Actions",
+    "projectId": "p_030",
+    "projectName": "CI/CD Pipeline Modernisation",
+    "timestamp": "2026-05-05T13:10:00Z"
+  },
+  {
+    "id": "tk_seed_10",
+    "kind": "announcement",
+    "message": "All-hands sync rescheduled to Wednesday 3pm PT - culture talk and Q2 retro included",
+    "timestamp": "2026-05-08T09:00:00Z"
+  },
+  {
+    "id": "tk_seed_11",
+    "kind": "milestone",
+    "message": "Accessibility Compliance Initiative hit 55% - form interactions and colour contrast pass WCAG AA",
+    "projectId": "p_024",
+    "projectName": "Accessibility Compliance Initiative",
+    "timestamp": "2026-05-04T15:45:00Z"
+  },
+  {
+    "id": "tk_seed_12",
+    "kind": "announcement",
+    "message": "Promotion and compensation cycles opened - submit self-reviews by May 20th",
+    "timestamp": "2026-05-07T08:00:00Z"
+  },
+  {
+    "id": "tk_seed_13",
+    "kind": "milestone",
+    "message": "Infrastructure Cost Optimisation saved 22% YTD - Reserved Instance swap complete",
+    "projectId": "p_025",
+    "projectName": "Infrastructure Cost Optimisation",
+    "timestamp": "2026-05-03T10:20:00Z"
+  },
+  {
+    "id": "tk_seed_14",
+    "kind": "milestone",
+    "message": "Payment Gateway Update reached 55% - 3DS2 integration in code review",
+    "projectId": "p_007",
+    "projectName": "Payment Gateway Update",
+    "timestamp": "2026-05-06T17:30:00Z"
+  },
+  {
+    "id": "tk_seed_15",
+    "kind": "announcement",
+    "message": "Internal security audit report released - no critical findings, three minor issues logged in JIRA",
+    "timestamp": "2026-05-08T11:25:00Z"
+  }
+]

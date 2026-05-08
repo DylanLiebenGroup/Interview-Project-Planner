@@ -73,7 +73,7 @@ a {
 h1 { font-size: var(--font-size-xl); margin: 0 0 var(--space-4); }
 h2 { font-size: var(--font-size-lg); margin: 0 0 var(--space-3); }
 
-// Snackbar variants — colour the leading edge by status
+// Snackbar variants - colour the leading edge by status
 .mat-mdc-snack-bar-container.snack-success .mdc-snackbar__surface {
   border-left: 4px solid var(--status-completed);
 }

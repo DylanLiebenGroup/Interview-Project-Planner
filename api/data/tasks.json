@@ -1,0 +1,5483 @@
+[
+  {
+    "id": "p_001_t001",
+    "projectId": "p_001",
+    "title": "Audit existing OAuth scopes",
+    "description": "Walk through the current scope map, flag deprecated grants, and document the migration target for each.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t002",
+    "projectId": "p_001",
+    "title": "Wire up SAML metadata exchange",
+    "description": "Implement IdP metadata fetch + cache layer, including signature validation against trusted certs.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t003",
+    "projectId": "p_001",
+    "title": "Migrate session token storage",
+    "description": "Move session tokens from cookies to a server-side store with proper TTL handling.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t004",
+    "projectId": "p_001",
+    "title": "Update token refresh flow",
+    "description": "Replace the legacy refresh endpoint with the new platform's OIDC-compliant refresh path.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t005",
+    "projectId": "p_001",
+    "title": "Document rollback playbook",
+    "description": "Step-by-step doc covering reverting from new auth to legacy if customer impact is detected.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t006",
+    "projectId": "p_001",
+    "title": "Build user export tool",
+    "description": "CLI to dump user records from legacy auth into the new platform's import format.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t007",
+    "projectId": "p_001",
+    "title": "Set up integration tests",
+    "description": "End-to-end tests for the login -> token -> protected-resource flow against staging.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t008",
+    "projectId": "p_001",
+    "title": "Add audit logging",
+    "description": "Emit structured audit events on every auth decision for compliance review.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t009",
+    "projectId": "p_001",
+    "title": "Configure rate limiting",
+    "description": "Per-IP and per-user rate limits on the auth endpoints with Redis-backed counters.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t010",
+    "projectId": "p_001",
+    "title": "Migrate password reset flow",
+    "description": "New flow with email verification and time-bounded reset tokens.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t011",
+    "projectId": "p_001",
+    "title": "Cutover plan review",
+    "description": "Stakeholder review of the cutover sequence including the read-only window.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t012",
+    "projectId": "p_001",
+    "title": "Smoke test in staging",
+    "description": "Run the full smoke suite against staging with realistic load.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t013",
+    "projectId": "p_001",
+    "title": "Capacity-plan the new platform",
+    "description": "Estimate peak QPS based on current legacy traffic + 30% headroom.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t014",
+    "projectId": "p_001",
+    "title": "Set up monitoring dashboards",
+    "description": "Datadog dashboards for latency, error rate, and token-issue rate.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t015",
+    "projectId": "p_001",
+    "title": "Patch known CVEs in dependencies",
+    "description": "Update express-session and related crypto libraries to their patched versions.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t016",
+    "projectId": "p_001",
+    "title": "Review CORS configuration",
+    "description": "Audit allowed origins on the new platform; remove wildcards inherited from legacy.",
+    "status": "completed"
+  },
+  {
+    "id": "p_001_t017",
+    "projectId": "p_001",
+    "title": "Train support team",
+    "description": "Internal session covering the new auth flow and likely customer questions.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_001_t018",
+    "projectId": "p_001",
+    "title": "Create migration FAQ",
+    "description": "Internal FAQ covering common gotchas during the cutover window.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_001_t019",
+    "projectId": "p_001",
+    "title": "Validate token signature rotation",
+    "description": "Confirm the new platform rotates signing keys without dropping in-flight sessions.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_001_t020",
+    "projectId": "p_001",
+    "title": "Decommission legacy endpoints",
+    "description": "Final removal of the legacy auth routes once cutover is stable.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_001_t021",
+    "projectId": "p_001",
+    "title": "Tune connection pool sizes",
+    "description": "Resize the Postgres connection pool to handle the new platform's peak fan-out.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_001_t022",
+    "projectId": "p_001",
+    "title": "Backfill missing user attributes",
+    "description": "One-off job to populate `last_login_at` for users who never logged into legacy.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_001_t023",
+    "projectId": "p_001",
+    "title": "Run penetration test",
+    "description": "Engage external pentester for the new auth surface area before launch.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_001_t024",
+    "projectId": "p_001",
+    "title": "Final cutover dry run",
+    "description": "Full cutover rehearsal in staging with the support team standing by.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t001",
+    "projectId": "p_002",
+    "title": "Run user research interviews",
+    "description": "Schedule and run 8 interviews with active customers about the current portal pain points.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t002",
+    "projectId": "p_002",
+    "title": "Synthesize research findings",
+    "description": "Cluster interview themes into 3-5 prioritised problem statements.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t003",
+    "projectId": "p_002",
+    "title": "Sketch new IA",
+    "description": "Draft 2-3 navigation structures based on the prioritised user tasks.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t004",
+    "projectId": "p_002",
+    "title": "IA card-sort with users",
+    "description": "Run a closed card sort with 10 customers to validate the new structure.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t005",
+    "projectId": "p_002",
+    "title": "Design system audit",
+    "description": "Inventory existing components and flag those that need updating for the new IA.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t006",
+    "projectId": "p_002",
+    "title": "New tokens for spacing/type",
+    "description": "Update spacing and typography tokens to support a denser portal layout.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t007",
+    "projectId": "p_002",
+    "title": "Redesign account home",
+    "description": "Hi-fi mocks for the new account landing page with quick actions.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t008",
+    "projectId": "p_002",
+    "title": "Redesign billing page",
+    "description": "Hi-fi mocks for the rebuilt billing flow including invoice history.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t009",
+    "projectId": "p_002",
+    "title": "Redesign support tickets",
+    "description": "Hi-fi mocks for the support ticket inbox and detail views.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t010",
+    "projectId": "p_002",
+    "title": "Component spec - Quick Actions card",
+    "description": "Detailed spec for the Quick Actions component including responsive behaviour.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t011",
+    "projectId": "p_002",
+    "title": "Component spec - Billing summary",
+    "description": "Detailed spec for the new billing summary card with edge-case states.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t012",
+    "projectId": "p_002",
+    "title": "Implement new sidebar nav",
+    "description": "Build the redesigned sidebar with collapsible sections and mobile sheet variant.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t013",
+    "projectId": "p_002",
+    "title": "Implement account home",
+    "description": "Wire up the redesigned account home against the existing API.",
+    "status": "completed"
+  },
+  {
+    "id": "p_002_t014",
+    "projectId": "p_002",
+    "title": "Implement billing page",
+    "description": "Build the new billing flow against the billing API.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t015",
+    "projectId": "p_002",
+    "title": "Implement support tickets",
+    "description": "Build the redesigned support inbox and ticket detail views.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t016",
+    "projectId": "p_002",
+    "title": "A/B test setup",
+    "description": "Configure GrowthBook to flip 10% of traffic to the new portal.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t017",
+    "projectId": "p_002",
+    "title": "Analytics instrumentation",
+    "description": "Add tracking for the new core flows so we can compare to baseline.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t018",
+    "projectId": "p_002",
+    "title": "Accessibility audit",
+    "description": "WCAG 2.1 AA review of the new pages with keyboard and screen-reader testing.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t019",
+    "projectId": "p_002",
+    "title": "Fix accessibility issues",
+    "description": "Address findings from the audit, focusing on focus management and ARIA labels.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t020",
+    "projectId": "p_002",
+    "title": "Localisation review",
+    "description": "Confirm the new pages handle long German strings and right-to-left layout.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t021",
+    "projectId": "p_002",
+    "title": "Performance audit",
+    "description": "Lighthouse score and bundle-size comparison against the legacy portal.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t022",
+    "projectId": "p_002",
+    "title": "Optimise critical CSS",
+    "description": "Inline critical CSS for the account home to improve first paint.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t023",
+    "projectId": "p_002",
+    "title": "Image asset audit",
+    "description": "Convert PNG illustrations to optimised SVGs where possible.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t024",
+    "projectId": "p_002",
+    "title": "Set up visual regression",
+    "description": "Percy snapshots for the redesigned pages so future changes don't silently regress.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t025",
+    "projectId": "p_002",
+    "title": "Soft launch to opt-in users",
+    "description": "Allow customers to opt into the new portal via a beta toggle.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t026",
+    "projectId": "p_002",
+    "title": "Collect beta feedback",
+    "description": "In-app feedback widget on the beta portal; weekly review of submissions.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t027",
+    "projectId": "p_002",
+    "title": "Iterate on top feedback themes",
+    "description": "Address the top 3 issues raised in beta before general availability.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t028",
+    "projectId": "p_002",
+    "title": "Plan deprecation of legacy portal",
+    "description": "Timeline and customer comms for sunsetting the old portal.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t029",
+    "projectId": "p_002",
+    "title": "Train customer success team",
+    "description": "Internal session walking CS through the new portal so they can support customers.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t030",
+    "projectId": "p_002",
+    "title": "Migration guide for power users",
+    "description": "Doc highlighting changes for customers who used the legacy portal heavily.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t031",
+    "projectId": "p_002",
+    "title": "Set up customer-facing changelog",
+    "description": "New /portal/whats-new page so customers can see what changed.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_002_t032",
+    "projectId": "p_002",
+    "title": "Final QA pass",
+    "description": "Cross-browser, cross-device QA before flipping the default to the new portal.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_003_t001",
+    "projectId": "p_003",
+    "title": "Bootstrap React Native project",
+    "description": "Set up the new RN monorepo with Expo config, TS strict mode, and shared package structure.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t002",
+    "projectId": "p_003",
+    "title": "Configure iOS build pipeline",
+    "description": "Fastlane lanes for dev, staging, and production iOS builds with automatic code signing.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t003",
+    "projectId": "p_003",
+    "title": "Configure Android build pipeline",
+    "description": "Gradle flavors for dev/staging/prod; set up keystore management and play-store upload.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t004",
+    "projectId": "p_003",
+    "title": "Migrate authentication module",
+    "description": "Port the legacy WebView-based auth to react-native-app-auth with biometric unlock support.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t005",
+    "projectId": "p_003",
+    "title": "Implement offline data layer",
+    "description": "WatermelonDB schema and sync adapter so the app works without connectivity.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t006",
+    "projectId": "p_003",
+    "title": "Design offline conflict resolution",
+    "description": "Define merge strategy for records edited offline on multiple devices simultaneously.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t007",
+    "projectId": "p_003",
+    "title": "Implement push notification registration",
+    "description": "FCM + APNs token registration with server-side fan-out to both platforms.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t008",
+    "projectId": "p_003",
+    "title": "Build notification preference screen",
+    "description": "UI for users to opt in/out of each notification category with per-channel toggles.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t009",
+    "projectId": "p_003",
+    "title": "Deep-link routing",
+    "description": "Universal links on iOS and App Links on Android with shared route config in RN.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t010",
+    "projectId": "p_003",
+    "title": "Port home feed to React Native",
+    "description": "Convert the web feed component to a FlatList with infinite scroll and skeleton loading.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t011",
+    "projectId": "p_003",
+    "title": "Port account settings screen",
+    "description": "Settings screen including profile edit, password change, and two-factor enable/disable.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t012",
+    "projectId": "p_003",
+    "title": "Port notification centre",
+    "description": "Inbox-style notification centre with mark-read, delete, and deep-link-on-tap.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t013",
+    "projectId": "p_003",
+    "title": "Implement local caching for images",
+    "description": "react-native-fast-image with LRU cache config to avoid re-fetching avatars and thumbnails.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t014",
+    "projectId": "p_003",
+    "title": "Implement background sync",
+    "description": "Background fetch task that syncs WatermelonDB records when the app is backgrounded.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t015",
+    "projectId": "p_003",
+    "title": "Build onboarding carousel",
+    "description": "Three-screen onboarding with value props, skip option, and completion telemetry.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t016",
+    "projectId": "p_003",
+    "title": "Add crash reporting",
+    "description": "Sentry RN integration with breadcrumbs, user context, and custom error boundaries.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t017",
+    "projectId": "p_003",
+    "title": "Add analytics events",
+    "description": "Amplitude events for all core flows; confirm parity with existing web analytics plan.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t018",
+    "projectId": "p_003",
+    "title": "Implement biometric lock screen",
+    "description": "FaceID/TouchID / Android biometrics gate on app foreground after configurable idle timeout.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t019",
+    "projectId": "p_003",
+    "title": "Dark mode support",
+    "description": "Respect system dark-mode preference using react-native-paper ThemeProvider tokens.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t020",
+    "projectId": "p_003",
+    "title": "Accessibility: screen-reader labels",
+    "description": "Add accessibilityLabel, accessibilityHint, and accessibilityRole to all interactive elements.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t021",
+    "projectId": "p_003",
+    "title": "Accessibility: minimum touch targets",
+    "description": "Audit tap targets; pad any element below 44×44 pt to meet HIG and Material guidelines.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t022",
+    "projectId": "p_003",
+    "title": "Performance profiling - JS thread",
+    "description": "Profile the feed list render with Flipper; target <16 ms frame budget on mid-range Android.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t023",
+    "projectId": "p_003",
+    "title": "Performance profiling - native thread",
+    "description": "Use Instruments and Android Profiler to catch native-layer jank during scroll.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t024",
+    "projectId": "p_003",
+    "title": "Resolve iOS 17 deprecation warnings",
+    "description": "Address UIWebView and NSURLConnection warnings surfaced by Xcode 15 upgrade.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t025",
+    "projectId": "p_003",
+    "title": "Resolve Android 14 edge-to-edge",
+    "description": "Update window insets handling for Android 14's enforced edge-to-edge display mode.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t026",
+    "projectId": "p_003",
+    "title": "Localisation - extract strings",
+    "description": "Run i18next-parser on the RN codebase; add missing keys to the en-US base file.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t027",
+    "projectId": "p_003",
+    "title": "Localisation - QA French locale",
+    "description": "Device-level QA of the French locale with a native speaker reviewing key screens.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t028",
+    "projectId": "p_003",
+    "title": "Implement force-update gate",
+    "description": "Check minimum supported version on launch; show blocking upgrade sheet if below threshold.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t029",
+    "projectId": "p_003",
+    "title": "TestFlight / Internal Test Track setup",
+    "description": "Configure TestFlight groups for iOS and Google Play Internal Test Track for Android.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t030",
+    "projectId": "p_003",
+    "title": "Beta tester recruitment",
+    "description": "Recruit 30 volunteer beta testers from the customer success contact list.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t031",
+    "projectId": "p_003",
+    "title": "Fix beta round 1 issues",
+    "description": "Triage and fix the top 10 issues reported by beta testers in round 1.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t032",
+    "projectId": "p_003",
+    "title": "Fix beta round 2 issues",
+    "description": "Triage and fix the top issues from round 2; focus on stability and data sync.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t033",
+    "projectId": "p_003",
+    "title": "App Store screenshots",
+    "description": "Generate framed screenshots for all required iPhone and iPad size classes.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t034",
+    "projectId": "p_003",
+    "title": "Google Play screenshots",
+    "description": "Generate framed screenshots for phone, 7-inch tablet, and 10-inch tablet.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t035",
+    "projectId": "p_003",
+    "title": "App Store metadata copywriting",
+    "description": "Write title, subtitle, description, and keywords optimised for ASO.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t036",
+    "projectId": "p_003",
+    "title": "Google Play listing copywriting",
+    "description": "Short description, full description, and feature graphic for the Play Store listing.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t037",
+    "projectId": "p_003",
+    "title": "Privacy policy & data disclosure",
+    "description": "Update privacy policy to cover new data collected by the v2 app; add App Privacy labels.",
+    "status": "completed"
+  },
+  {
+    "id": "p_003_t038",
+    "projectId": "p_003",
+    "title": "Submit to App Store review",
+    "description": "Final binary submission with all required metadata, ratings, and export compliance.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_003_t039",
+    "projectId": "p_003",
+    "title": "Submit to Google Play review",
+    "description": "Production release to Play Store; resolve any pre-launch report blockers.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_003_t040",
+    "projectId": "p_003",
+    "title": "Post-launch monitoring setup",
+    "description": "Sentry alert rules for crash-rate spikes; custom Datadog dashboard for DAU, session length.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_003_t041",
+    "projectId": "p_003",
+    "title": "Post-launch A/B: onboarding variant",
+    "description": "Set up a GrowthBook experiment for a shorter 2-screen onboarding vs. the 3-screen default.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_003_t042",
+    "projectId": "p_003",
+    "title": "Address App Store rejection - if any",
+    "description": "Contingency task: resolve rejection feedback and resubmit within 48 hours.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_003_t043",
+    "projectId": "p_003",
+    "title": "Document push notification architecture",
+    "description": "ADR covering FCM/APNs integration, token refresh, and server fan-out design.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_003_t044",
+    "projectId": "p_003",
+    "title": "Document offline sync architecture",
+    "description": "ADR for WatermelonDB sync strategy, conflict resolution, and edge-case handling.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_003_t045",
+    "projectId": "p_003",
+    "title": "Decommission legacy Cordova app",
+    "description": "Remove Cordova build configs and legacy JS bridge code after v2 is stable in production.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_003_t046",
+    "projectId": "p_003",
+    "title": "Retro: mobile v2 launch",
+    "description": "Team retrospective capturing what went well, what didn't, and improvements for the next release.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_003_t047",
+    "projectId": "p_003",
+    "title": "Sprint demo to stakeholders",
+    "description": "Live demo of the v2 app on physical devices for the product leadership team.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_003_t048",
+    "projectId": "p_003",
+    "title": "Handover docs to mobile team",
+    "description": "Comprehensive handover doc so the ongoing mobile team can own the codebase post-launch.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_004_t001",
+    "projectId": "p_004",
+    "title": "Audit existing cron jobs",
+    "description": "Catalogue all cron-based ETL jobs, their schedules, upstream sources, and downstream consumers.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t002",
+    "projectId": "p_004",
+    "title": "Design Kafka topic schema",
+    "description": "Define Avro schemas for each event type; register in Confluent Schema Registry with compatibility rules.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t003",
+    "projectId": "p_004",
+    "title": "Set up schema registry",
+    "description": "Deploy Confluent Schema Registry to the staging cluster; configure backward-compatible defaults.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t004",
+    "projectId": "p_004",
+    "title": "Create producer library",
+    "description": "Shared Python library wrapping confluent-kafka with schema validation, retry, and metrics.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t005",
+    "projectId": "p_004",
+    "title": "Create consumer library",
+    "description": "Shared consumer wrapper with at-least-once delivery, offset commit strategy, and dead-letter routing.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t006",
+    "projectId": "p_004",
+    "title": "Design dead-letter queue strategy",
+    "description": "Define DLQ per topic with max-retry policy, poison-message tagging, and alerting on accumulation.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t007",
+    "projectId": "p_004",
+    "title": "Migrate events: user_signup",
+    "description": "Replace the user_signup cron batch with a real-time Kafka event emitted on registration.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t008",
+    "projectId": "p_004",
+    "title": "Migrate events: order_placed",
+    "description": "Replace the order batch with a Kafka event published transactionally from the order service.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t009",
+    "projectId": "p_004",
+    "title": "Migrate events: payment_settled",
+    "description": "Emit payment_settled events from the billing service with idempotency key in headers.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t010",
+    "projectId": "p_004",
+    "title": "Migrate events: subscription_changed",
+    "description": "Event-driven subscription state changes replacing the nightly plan-diff cron.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t011",
+    "projectId": "p_004",
+    "title": "Migrate events: churn_signal",
+    "description": "Emit churn_signal events from the engagement scorer, replacing the weekly batch export.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t012",
+    "projectId": "p_004",
+    "title": "Build ETL DAG: user attribution",
+    "description": "Airflow DAG consuming user_signup events and enriching with UTM attribution from the CRM.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t013",
+    "projectId": "p_004",
+    "title": "Build ETL DAG: revenue roll-up",
+    "description": "Airflow DAG aggregating order_placed + payment_settled into the revenue fact table.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t014",
+    "projectId": "p_004",
+    "title": "Build ETL DAG: churn model features",
+    "description": "DAG that materialises the feature set for the churn prediction model from Kafka events.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t015",
+    "projectId": "p_004",
+    "title": "Backfill: user_signup historical",
+    "description": "One-off Spark job to backfill historical signups into the new Kafka-backed fact table.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t016",
+    "projectId": "p_004",
+    "title": "Backfill: order history",
+    "description": "Spark backfill for order records from 2022 onward into the new event-sourced store.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t017",
+    "projectId": "p_004",
+    "title": "Set up consumer lag monitoring",
+    "description": "Datadog metrics for consumer group lag per topic; alert if lag exceeds 5-minute window.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t018",
+    "projectId": "p_004",
+    "title": "Tune Kafka partition count",
+    "description": "Profile throughput on staging; set partition counts to achieve target 10k events/sec per topic.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t019",
+    "projectId": "p_004",
+    "title": "Implement exactly-once for payments",
+    "description": "Enable Kafka transactions on the payment_settled producer to prevent double-counting revenue.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t020",
+    "projectId": "p_004",
+    "title": "Load test the pipeline",
+    "description": "Simulate 2× peak load on staging; measure end-to-end latency and consumer throughput.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t021",
+    "projectId": "p_004",
+    "title": "Data quality checks",
+    "description": "Great Expectations suite on the Kafka-backed fact tables; alert on schema drift or null spikes.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t022",
+    "projectId": "p_004",
+    "title": "Deprecate cron job: user_signup",
+    "description": "Remove the legacy signup batch after the Kafka consumer has been stable for 2 weeks.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t023",
+    "projectId": "p_004",
+    "title": "Deprecate cron job: revenue",
+    "description": "Retire the revenue cron after the Airflow DAG output matches historical data within 0.1%.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t024",
+    "projectId": "p_004",
+    "title": "Deprecate cron job: churn",
+    "description": "Remove the churn batch after the new feature pipeline has been validated by the data science team.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t025",
+    "projectId": "p_004",
+    "title": "Runbook: DLQ remediation",
+    "description": "Step-by-step runbook for inspecting, replaying, and clearing dead-letter queue messages.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t026",
+    "projectId": "p_004",
+    "title": "Runbook: consumer restart procedure",
+    "description": "Documented procedure for safely restarting consumers without losing or duplicating events.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t027",
+    "projectId": "p_004",
+    "title": "Security: encrypt PII in transit",
+    "description": "Confirm TLS 1.3 end-to-end for all Kafka brokers; add field-level encryption for email fields.",
+    "status": "completed"
+  },
+  {
+    "id": "p_004_t028",
+    "projectId": "p_004",
+    "title": "Final sign-off and retro",
+    "description": "Stakeholder sign-off on pipeline parity with legacy; team retro and lessons-learned doc.",
+    "status": "completed"
+  },
+  {
+    "id": "p_005_t001",
+    "projectId": "p_005",
+    "title": "Charting library evaluation",
+    "description": "Score Recharts, Victory, and Observable Plot against our criteria: bundle size, customisability, and accessibility.",
+    "status": "completed"
+  },
+  {
+    "id": "p_005_t002",
+    "projectId": "p_005",
+    "title": "Select and scaffold charting library",
+    "description": "Install the chosen library, configure tree-shaking, and build a shared Chart wrapper component.",
+    "status": "completed"
+  },
+  {
+    "id": "p_005_t003",
+    "projectId": "p_005",
+    "title": "Define metrics query API",
+    "description": "Design the REST endpoint shape for flexible metric queries: dimensions, filters, date range, granularity.",
+    "status": "completed"
+  },
+  {
+    "id": "p_005_t004",
+    "projectId": "p_005",
+    "title": "Implement metrics query layer",
+    "description": "ClickHouse query builder that compiles the API parameters to optimised SQL with result caching.",
+    "status": "completed"
+  },
+  {
+    "id": "p_005_t005",
+    "projectId": "p_005",
+    "title": "Build KPI summary cards",
+    "description": "Row of metric cards for MAU, MRR, churn rate, and NPS with sparkline trends.",
+    "status": "completed"
+  },
+  {
+    "id": "p_005_t006",
+    "projectId": "p_005",
+    "title": "Build time-series line chart",
+    "description": "Interactive line chart with hover tooltip, legend toggle, and configurable date-range selector.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t007",
+    "projectId": "p_005",
+    "title": "Build retention cohort chart",
+    "description": "Heatmap cohort table showing D1/D7/D30 retention by signup week.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t008",
+    "projectId": "p_005",
+    "title": "Build funnel chart",
+    "description": "Step funnel for the core activation flow with drop-off rates and absolute counts.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t009",
+    "projectId": "p_005",
+    "title": "Implement dimension drill-down",
+    "description": "Click any chart segment to filter the entire dashboard by that dimension value.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t010",
+    "projectId": "p_005",
+    "title": "Implement date range picker",
+    "description": "Preset ranges (7d, 30d, 90d, custom) that sync across all charts via URL params.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t011",
+    "projectId": "p_005",
+    "title": "CSV export for each chart",
+    "description": "Download button per chart that exports the underlying query result as a named CSV.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t012",
+    "projectId": "p_005",
+    "title": "PDF report export",
+    "description": "Server-side puppeteer render of the full dashboard to a styled PDF with logo and date range.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t013",
+    "projectId": "p_005",
+    "title": "Query result caching layer",
+    "description": "Redis cache with 5-minute TTL for ClickHouse query results; cache-key based on query fingerprint.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t014",
+    "projectId": "p_005",
+    "title": "Add loading skeletons",
+    "description": "Skeleton placeholders sized to each chart while queries are in flight.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t015",
+    "projectId": "p_005",
+    "title": "Add empty states",
+    "description": "Illustrated empty states for charts when the selected date range has no data.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t016",
+    "projectId": "p_005",
+    "title": "Set up dashboard permissions",
+    "description": "Role-based access: internal users see all metrics; external partners see only their tenant slice.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t017",
+    "projectId": "p_005",
+    "title": "Performance: lazy-load off-screen charts",
+    "description": "IntersectionObserver to defer chart rendering until scrolled into view, cutting initial LCP.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t018",
+    "projectId": "p_005",
+    "title": "Accessibility: keyboard navigation",
+    "description": "Full keyboard control of chart interactions including tooltip, legend, and drill-down.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t019",
+    "projectId": "p_005",
+    "title": "Write user guide",
+    "description": "Internal Notion doc explaining each chart, the underlying metric definitions, and drill-down usage.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_005_t020",
+    "projectId": "p_005",
+    "title": "Stakeholder review and sign-off",
+    "description": "Demo to product leadership; collect feedback and prioritise any final tweaks before launch.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_006_t001",
+    "projectId": "p_006",
+    "title": "Discover enterprise customer IdPs",
+    "description": "Survey the 12 enterprise customers to capture their IdP vendor (Okta/Azure AD/Ping) and preferred protocol.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t002",
+    "projectId": "p_006",
+    "title": "SAML SP metadata endpoint",
+    "description": "Expose a /saml/metadata endpoint generating valid SP metadata XML signed with our cert.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t003",
+    "projectId": "p_006",
+    "title": "SAML ACS handler",
+    "description": "Implement the Assertion Consumer Service endpoint, verifying assertion signature and extracting name ID.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t004",
+    "projectId": "p_006",
+    "title": "SAML single logout",
+    "description": "Implement SP-initiated and IdP-initiated single logout flows.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t005",
+    "projectId": "p_006",
+    "title": "OIDC discovery endpoint",
+    "description": "Implement /.well-known/openid-configuration with correct issuer, JWKS URI, and scopes.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t006",
+    "projectId": "p_006",
+    "title": "OIDC authorisation code flow",
+    "description": "Full auth code + PKCE flow with token endpoint, userinfo endpoint, and ID token validation.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t007",
+    "projectId": "p_006",
+    "title": "Group claim mapping UI",
+    "description": "Admin UI for mapping IdP group claims to our internal roles; stored per-tenant in the database.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t008",
+    "projectId": "p_006",
+    "title": "Just-in-time provisioning",
+    "description": "Auto-create user accounts on first SSO login using attributes from the SAML assertion.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t009",
+    "projectId": "p_006",
+    "title": "Test with Okta",
+    "description": "End-to-end SSO test with a live Okta sandbox; validate login, logout, and JIT provisioning.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t010",
+    "projectId": "p_006",
+    "title": "Test with Azure AD",
+    "description": "End-to-end SSO test with Azure AD; validate group claims and role mapping.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t011",
+    "projectId": "p_006",
+    "title": "Test with Google Workspace",
+    "description": "End-to-end SSO test with Google as IdP via OIDC.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t012",
+    "projectId": "p_006",
+    "title": "Session lifetime alignment",
+    "description": "Respect IdP session duration; force re-auth when the upstream session expires.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t013",
+    "projectId": "p_006",
+    "title": "Fallback to password auth",
+    "description": "Admin toggle to allow password login for SSO users in case of IdP outage.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t014",
+    "projectId": "p_006",
+    "title": "Audit log SSO events",
+    "description": "Emit audit events for SSO login, logout, provisioning, and group-mapping changes.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t015",
+    "projectId": "p_006",
+    "title": "Security review",
+    "description": "Threat-model the new SSO surface; verify XML injection mitigations and replay-attack prevention.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t016",
+    "projectId": "p_006",
+    "title": "Customer onboarding runbook",
+    "description": "Step-by-step guide for customer IT admins to configure our SP in their IdP.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t017",
+    "projectId": "p_006",
+    "title": "Internal admin UI for SSO config",
+    "description": "Support-team UI for viewing and overriding SSO configuration per tenant.",
+    "status": "completed"
+  },
+  {
+    "id": "p_006_t018",
+    "projectId": "p_006",
+    "title": "Production rollout - phase 1 customers",
+    "description": "Enable SSO for the 3 pilot enterprise customers and confirm logins before broader rollout.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t001",
+    "projectId": "p_007",
+    "title": "PCI scope review",
+    "description": "Map every system that touches card data; identify scope reduction opportunities before the new gateway.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t002",
+    "projectId": "p_007",
+    "title": "Vendor evaluation",
+    "description": "Score Stripe, Adyen, and Braintree on fee structure, 3DS2 support, and integration complexity.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t003",
+    "projectId": "p_007",
+    "title": "New gateway sandbox setup",
+    "description": "Configure sandbox credentials, test card numbers, and webhook endpoints in the chosen gateway.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t004",
+    "projectId": "p_007",
+    "title": "Implement 3DS2 challenge flow",
+    "description": "Client-side 3DS2 device fingerprinting and challenge iframe with server-side completion handling.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t005",
+    "projectId": "p_007",
+    "title": "Migrate card tokenisation",
+    "description": "Replace legacy vault tokens with the new gateway's token format; run a dual-write period.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t006",
+    "projectId": "p_007",
+    "title": "Migrate recurring billing",
+    "description": "Port subscription charge logic to the new gateway SDK; validate charge amounts match legacy.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t007",
+    "projectId": "p_007",
+    "title": "Implement webhook receiver",
+    "description": "Verify gateway webhook signatures; idempotently process payment_succeeded, payment_failed events.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t008",
+    "projectId": "p_007",
+    "title": "Webhook retry and dead-letter",
+    "description": "Exponential backoff retry for webhook processing; route permanent failures to a DLQ with alerting.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t009",
+    "projectId": "p_007",
+    "title": "Refund flow - full refund",
+    "description": "Admin-initiated full refund via the new gateway API with immediate ledger adjustment.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t010",
+    "projectId": "p_007",
+    "title": "Refund flow - partial refund",
+    "description": "Partial refund support with amount validation and customer receipt email.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t011",
+    "projectId": "p_007",
+    "title": "Dispute handling",
+    "description": "Ingest gateway dispute webhooks; flag the order in our system and notify the finance team.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t012",
+    "projectId": "p_007",
+    "title": "Multi-currency support",
+    "description": "Extend the payment flow to support EUR and GBP settlements alongside existing USD.",
+    "status": "completed"
+  },
+  {
+    "id": "p_007_t013",
+    "projectId": "p_007",
+    "title": "Fraud rule configuration",
+    "description": "Configure gateway-level fraud rules (velocity limits, IP block lists) for our risk profile.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_007_t014",
+    "projectId": "p_007",
+    "title": "Load test checkout flow",
+    "description": "Simulate 500 concurrent checkouts on staging; confirm latency and error rate are within SLA.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_007_t015",
+    "projectId": "p_007",
+    "title": "Legacy gateway parallel run",
+    "description": "Two-week dual-run routing 5% of live traffic to the new gateway and comparing outcomes.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_007_t016",
+    "projectId": "p_007",
+    "title": "Update PCI DSS documentation",
+    "description": "Revise the SAQ-A-EP and network diagram to reflect the new gateway integration.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_007_t017",
+    "projectId": "p_007",
+    "title": "Finance team handover",
+    "description": "Train the finance team on the new gateway dashboard: settlement reports, refunds, and disputes.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_007_t018",
+    "projectId": "p_007",
+    "title": "Customer receipt template update",
+    "description": "Update receipt email template to reference the new gateway's transaction ID format.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_007_t019",
+    "projectId": "p_007",
+    "title": "Decommission legacy gateway",
+    "description": "Remove legacy gateway credentials, SDK, and routes after a stable 30-day parallel run.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_007_t020",
+    "projectId": "p_007",
+    "title": "Post-launch monitoring",
+    "description": "Alert rules for payment failure rate spikes; Datadog dashboard for authorisation rates by country.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_007_t021",
+    "projectId": "p_007",
+    "title": "Penetration test",
+    "description": "External pentest focused on the 3DS2 implementation and webhook receiver.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_007_t022",
+    "projectId": "p_007",
+    "title": "Compliance sign-off",
+    "description": "QSA sign-off on the updated PCI scope before decommissioning the legacy gateway.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t001",
+    "projectId": "p_008",
+    "title": "Elasticsearch cluster provisioning",
+    "description": "Spin up a 3-node Elasticsearch cluster on AWS OpenSearch with the required shard and replica config.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t002",
+    "projectId": "p_008",
+    "title": "Design index mapping",
+    "description": "Define field types, analyzers, and dynamic mapping rules for the product and help-article indices.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t003",
+    "projectId": "p_008",
+    "title": "Build indexing pipeline",
+    "description": "Python service consuming change-data-capture events and writing to Elasticsearch via the bulk API.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t004",
+    "projectId": "p_008",
+    "title": "Seed historical data",
+    "description": "One-off script to index all existing products and help articles into the new cluster.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t005",
+    "projectId": "p_008",
+    "title": "Implement query API",
+    "description": "REST endpoint wrapping Elasticsearch multi-match and bool queries; normalise scoring to [0,1].",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t006",
+    "projectId": "p_008",
+    "title": "Relevance tuning - round 1",
+    "description": "Run Elasticsearch's ranking evaluation API against 50 labelled queries; adjust field boosts.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t007",
+    "projectId": "p_008",
+    "title": "Implement autocomplete",
+    "description": "Completion suggester for the search input with prefix matching and fuzzy-spell tolerance.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t008",
+    "projectId": "p_008",
+    "title": "Implement faceted filtering",
+    "description": "Aggregation-based filters for category, price range, and tag with live counts.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t009",
+    "projectId": "p_008",
+    "title": "Synonym dictionary",
+    "description": "Domain-specific synonym file (e.g. \"billing\" → \"invoice\", \"cancel\" → \"terminate\") for improved recall.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t010",
+    "projectId": "p_008",
+    "title": "Relevance tuning - round 2",
+    "description": "Second evaluation pass after synonym and boost changes; target NDCG@10 ≥ 0.72.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t011",
+    "projectId": "p_008",
+    "title": "Zero-results monitoring",
+    "description": "Log and alert on queries returning zero results; review weekly to identify dictionary gaps.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t012",
+    "projectId": "p_008",
+    "title": "Index lifecycle management",
+    "description": "Configure ILM policy to roll over indices and delete shards older than 90 days.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t013",
+    "projectId": "p_008",
+    "title": "Performance: caching popular queries",
+    "description": "Redis cache for the top 1000 queries by frequency; TTL 10 minutes.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t014",
+    "projectId": "p_008",
+    "title": "Search analytics dashboard",
+    "description": "Internal dashboard showing query volume, zero-result rate, and top clicked results.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_008_t015",
+    "projectId": "p_008",
+    "title": "Cutover and legacy deprecation",
+    "description": "Route all search traffic to Elasticsearch; remove the legacy Postgres full-text search queries.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_009_t001",
+    "projectId": "p_009",
+    "title": "Define audit event schema",
+    "description": "Enumerate all auditable actions; agree on a schema with actor, action, resource, timestamp, metadata.",
+    "status": "completed"
+  },
+  {
+    "id": "p_009_t002",
+    "projectId": "p_009",
+    "title": "Choose append-only store",
+    "description": "Evaluate Postgres with insert-only policy, TimescaleDB, and a dedicated audit SaaS; document trade-offs.",
+    "status": "completed"
+  },
+  {
+    "id": "p_009_t003",
+    "projectId": "p_009",
+    "title": "Implement event ingestion endpoint",
+    "description": "Internal HTTP endpoint accepting signed audit event payloads from services; idempotent on event ID.",
+    "status": "completed"
+  },
+  {
+    "id": "p_009_t004",
+    "projectId": "p_009",
+    "title": "Instrument auth service",
+    "description": "Emit audit events for login, logout, failed login, and token refresh from the auth service.",
+    "status": "completed"
+  },
+  {
+    "id": "p_009_t005",
+    "projectId": "p_009",
+    "title": "Instrument admin actions",
+    "description": "Emit audit events for all admin CRUD operations on users, teams, and billing.",
+    "status": "completed"
+  },
+  {
+    "id": "p_009_t006",
+    "projectId": "p_009",
+    "title": "Instrument data exports",
+    "description": "Emit audit events whenever a bulk export of customer data is initiated.",
+    "status": "completed"
+  },
+  {
+    "id": "p_009_t007",
+    "projectId": "p_009",
+    "title": "Build query API",
+    "description": "REST endpoint for querying audit events by actor, resource, date range, and action type.",
+    "status": "completed"
+  },
+  {
+    "id": "p_009_t008",
+    "projectId": "p_009",
+    "title": "Build admin UI for audit log",
+    "description": "Filterable, paginated audit log table in the admin portal with export-to-CSV.",
+    "status": "completed"
+  },
+  {
+    "id": "p_009_t009",
+    "projectId": "p_009",
+    "title": "Implement retention policy",
+    "description": "Automated purge of audit records older than 7 years (configurable per compliance tier).",
+    "status": "not_started"
+  },
+  {
+    "id": "p_009_t010",
+    "projectId": "p_009",
+    "title": "GDPR export",
+    "description": "On-demand export of all audit events associated with a specific user ID for data subject requests.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_009_t011",
+    "projectId": "p_009",
+    "title": "GDPR erasure - pseudonymisation",
+    "description": "Replace PII in old audit events with a salted hash on user deletion, preserving the audit trail.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_009_t012",
+    "projectId": "p_009",
+    "title": "Immutable storage backup",
+    "description": "Nightly export of the audit log to S3 with Object Lock enabled (WORM compliance).",
+    "status": "not_started"
+  },
+  {
+    "id": "p_009_t013",
+    "projectId": "p_009",
+    "title": "Tamper-evidence hash chain",
+    "description": "Chain SHA-256 hashes across consecutive audit records so any deletion is detectable.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_009_t014",
+    "projectId": "p_009",
+    "title": "Performance: index optimisation",
+    "description": "Add composite indexes on (actor_id, created_at) and (resource_id, created_at) for common queries.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_009_t015",
+    "projectId": "p_009",
+    "title": "Security review",
+    "description": "Confirm the ingestion endpoint is not accessible externally; verify event signing key rotation procedure.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_009_t016",
+    "projectId": "p_009",
+    "title": "Compliance sign-off",
+    "description": "Legal and compliance team review of the audit log coverage against SOC 2 CC7 requirements.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_010_t001",
+    "projectId": "p_010",
+    "title": "Map existing activation funnel",
+    "description": "Instrument and visualise the current signup-to-first-value funnel with Mixpanel.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t002",
+    "projectId": "p_010",
+    "title": "Identify drop-off points",
+    "description": "Analyse the funnel data to find the top 3 steps where users abandon.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t003",
+    "projectId": "p_010",
+    "title": "User interviews - onboarding friction",
+    "description": "Run 6 interviews with recently churned trial users to understand what blocked activation.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t004",
+    "projectId": "p_010",
+    "title": "Design progressive disclosure model",
+    "description": "Define the ordered sequence of onboarding steps and the criteria for advancing each milestone.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t005",
+    "projectId": "p_010",
+    "title": "Design milestone UI",
+    "description": "Hi-fi mocks for the checklist sidebar widget, milestone celebration modal, and progress ring.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t006",
+    "projectId": "p_010",
+    "title": "Implement milestone tracking service",
+    "description": "Backend service tracking which onboarding milestones each user has completed.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t007",
+    "projectId": "p_010",
+    "title": "Implement checklist sidebar",
+    "description": "React component for the collapsible onboarding checklist that persists across sessions.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t008",
+    "projectId": "p_010",
+    "title": "Implement celebration modal",
+    "description": "Confetti animation modal shown on completing each milestone with a next-step CTA.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t009",
+    "projectId": "p_010",
+    "title": "Implement progress ring",
+    "description": "Animated SVG ring in the nav bar showing overall onboarding completion percentage.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t010",
+    "projectId": "p_010",
+    "title": "Integrate with product features",
+    "description": "Hook milestone completion events into feature-flag unlocks (e.g. unlock advanced features at 80%).",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t011",
+    "projectId": "p_010",
+    "title": "A/B variant A: email nudge sequence",
+    "description": "Automated email sequence nudging users to incomplete milestones at days 1, 3, and 7.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t012",
+    "projectId": "p_010",
+    "title": "A/B variant B: in-app tooltip tour",
+    "description": "Contextual tooltip tour that appears when users hover over locked features.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t013",
+    "projectId": "p_010",
+    "title": "Set up GrowthBook experiment",
+    "description": "Configure 50/50 split between email nudge and tooltip tour variants.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t014",
+    "projectId": "p_010",
+    "title": "Drop-off analytics instrumentation",
+    "description": "Amplitude events for every milestone view, completion, and skip action.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t015",
+    "projectId": "p_010",
+    "title": "Personalised checklist by use case",
+    "description": "Show different milestone sequences for \"developer\", \"marketer\", and \"ops\" personas selected at signup.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t016",
+    "projectId": "p_010",
+    "title": "Empty-state CTAs",
+    "description": "Replace blank empty states in core features with onboarding-aware CTAs pointing to the next milestone.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t017",
+    "projectId": "p_010",
+    "title": "In-app help tooltips",
+    "description": "Contextual help tooltip on each feature linked from the checklist, explaining the feature value.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t018",
+    "projectId": "p_010",
+    "title": "QA: milestone state persistence",
+    "description": "Verify milestone state survives logout, browser refresh, and cross-device login.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t019",
+    "projectId": "p_010",
+    "title": "Measure experiment results",
+    "description": "After 2 weeks, analyse activation and D30 retention lift for each variant.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t020",
+    "projectId": "p_010",
+    "title": "Iterate based on results",
+    "description": "Implement the winning variant improvements and wind down the losing variant.",
+    "status": "completed"
+  },
+  {
+    "id": "p_010_t021",
+    "projectId": "p_010",
+    "title": "Handover to growth team",
+    "description": "Hand over the milestone framework to the growth team with full Notion documentation.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t001",
+    "projectId": "p_011",
+    "title": "Audit existing email templates",
+    "description": "Catalogue all transactional email templates; flag those using inline styles incompatible with MJML.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t002",
+    "projectId": "p_011",
+    "title": "Set up MJML pipeline",
+    "description": "MJML compilation step in CI that outputs client-compatible HTML and a plain-text fallback.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t003",
+    "projectId": "p_011",
+    "title": "Build template editor UI",
+    "description": "Admin UI for creating and editing email templates with live MJML preview and variable substitution.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t004",
+    "projectId": "p_011",
+    "title": "Migrate welcome email",
+    "description": "Re-implement the welcome email in MJML; QA across Gmail, Outlook, Apple Mail, and mobile clients.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t005",
+    "projectId": "p_011",
+    "title": "Migrate password reset email",
+    "description": "MJML rewrite of the password reset template with branded header and clear CTA button.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t006",
+    "projectId": "p_011",
+    "title": "Migrate billing receipt email",
+    "description": "MJML billing receipt with itemised line items, tax, and a link to the invoice PDF.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t007",
+    "projectId": "p_011",
+    "title": "i18n extraction and tooling",
+    "description": "Extract all string literals from templates into i18n keys; set up a translation workflow with Lokalise.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t008",
+    "projectId": "p_011",
+    "title": "Translate templates - French",
+    "description": "Localise all 3 core email templates into French with review by a native speaker.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t009",
+    "projectId": "p_011",
+    "title": "Translate templates - German",
+    "description": "Localise all 3 core email templates into German with review by a native speaker.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t010",
+    "projectId": "p_011",
+    "title": "Deliverability: SPF, DKIM, DMARC",
+    "description": "Verify and tighten SPF, DKIM signing, and DMARC policy; confirm p=reject alignment.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t011",
+    "projectId": "p_011",
+    "title": "Bounce handling",
+    "description": "Process hard bounces from the sending provider webhook; auto-suppress bounced addresses.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t012",
+    "projectId": "p_011",
+    "title": "Complaint handling",
+    "description": "Process spam complaints from postmaster feedback loops; suppress complainers from marketing lists.",
+    "status": "completed"
+  },
+  {
+    "id": "p_011_t013",
+    "projectId": "p_011",
+    "title": "Unsubscribe flow",
+    "description": "One-click List-Unsubscribe header plus a web-based preference centre for transactional opt-out.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_011_t014",
+    "projectId": "p_011",
+    "title": "Deliverability monitoring",
+    "description": "Set up GlockApps or similar for weekly inbox placement reports across major clients.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t001",
+    "projectId": "p_012",
+    "title": "Content audit",
+    "description": "Catalogue all existing help centre articles; identify gaps, duplicates, and outdated content.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t002",
+    "projectId": "p_012",
+    "title": "Taxonomy design",
+    "description": "Define the category tree and tagging schema for help articles; validate with the support team.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t003",
+    "projectId": "p_012",
+    "title": "CMS evaluation",
+    "description": "Evaluate Contentful, Sanity, and Notion API as authoring backends; recommend based on workflow fit.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t004",
+    "projectId": "p_012",
+    "title": "CMS setup and schema",
+    "description": "Configure the chosen CMS with content types for articles, categories, and reusable content blocks.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t005",
+    "projectId": "p_012",
+    "title": "Author training",
+    "description": "Train the 4 support writers on the new CMS; document style guide and publishing workflow.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t006",
+    "projectId": "p_012",
+    "title": "Migrate existing articles",
+    "description": "Bulk-import the 200 existing articles into the CMS; map to the new taxonomy.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t007",
+    "projectId": "p_012",
+    "title": "Design public-facing style",
+    "description": "Hi-fi mocks for the knowledge base home, category pages, and article detail view.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t008",
+    "projectId": "p_012",
+    "title": "Design system tokens for KB",
+    "description": "Custom colour, type, and spacing tokens for the KB so it can be whitelabelled per enterprise customer.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t009",
+    "projectId": "p_012",
+    "title": "Implement KB home page",
+    "description": "React-rendered home with featured articles, category grid, and global search bar.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t010",
+    "projectId": "p_012",
+    "title": "Implement category listing page",
+    "description": "Category page with article list, pagination, and breadcrumb navigation.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t011",
+    "projectId": "p_012",
+    "title": "Implement article detail page",
+    "description": "Article detail with table of contents, code block highlighting, and related articles sidebar.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t012",
+    "projectId": "p_012",
+    "title": "Implement full-text search",
+    "description": "Algolia integration for instant search with highlighted excerpts and category filters.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t013",
+    "projectId": "p_012",
+    "title": "Implement search autocomplete",
+    "description": "Instant autocomplete suggestions as the user types in the search bar.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t014",
+    "projectId": "p_012",
+    "title": "Set up CDN for assets",
+    "description": "CloudFront distribution for all static KB assets; configure cache headers for images and scripts.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t015",
+    "projectId": "p_012",
+    "title": "Implement image optimisation",
+    "description": "Next/image or cloudinary pipeline to serve correctly-sized WebP images to each device.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t016",
+    "projectId": "p_012",
+    "title": "SEO: meta tags and structured data",
+    "description": "Open Graph tags and Article schema.org markup on every KB article.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t017",
+    "projectId": "p_012",
+    "title": "SEO: sitemap and robots.txt",
+    "description": "Auto-generated sitemap.xml from the CMS; robots.txt allowing only the sitemap and article paths.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t018",
+    "projectId": "p_012",
+    "title": "SEO: canonical URLs",
+    "description": "Canonical tag on every page to prevent duplicate content from category/tag intersections.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t019",
+    "projectId": "p_012",
+    "title": "Analytics: article helpfulness rating",
+    "description": "\"Was this helpful?\" widget on each article with results piped to the support team dashboard.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t020",
+    "projectId": "p_012",
+    "title": "Analytics: search-term tracking",
+    "description": "Log search queries and click-through rates to identify content gaps.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t021",
+    "projectId": "p_012",
+    "title": "Implement article versioning",
+    "description": "CMS-level version history so authors can revert to a previous draft.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t022",
+    "projectId": "p_012",
+    "title": "Implement draft preview",
+    "description": "Shareable preview URL for draft articles so stakeholders can review before publishing.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t023",
+    "projectId": "p_012",
+    "title": "Whitelabel theming",
+    "description": "Per-tenant logo and accent colour override for enterprise customers who embed the KB.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t024",
+    "projectId": "p_012",
+    "title": "Accessibility audit",
+    "description": "WCAG 2.1 AA review of all KB page templates; focus on heading hierarchy and image alt text.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t025",
+    "projectId": "p_012",
+    "title": "Fix accessibility issues",
+    "description": "Address findings from the audit; in particular, improve keyboard nav on the autocomplete widget.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t026",
+    "projectId": "p_012",
+    "title": "Performance: Core Web Vitals",
+    "description": "Target LCP < 2.5 s, CLS < 0.1, INP < 200 ms across the three page templates.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t027",
+    "projectId": "p_012",
+    "title": "Performance: lazy-load images",
+    "description": "loading=\"lazy\" + Intersection Observer for images below the fold on article pages.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t028",
+    "projectId": "p_012",
+    "title": "Redirects for old help URLs",
+    "description": "301 redirects from the legacy Zendesk URL structure to the new KB paths.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t029",
+    "projectId": "p_012",
+    "title": "Announce to customers",
+    "description": "In-app banner and email to all users announcing the new knowledge base.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_012_t030",
+    "projectId": "p_012",
+    "title": "Ongoing governance plan",
+    "description": "Quarterly content audit process, owner assignments per category, and style-guide maintenance schedule.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_013_t001",
+    "projectId": "p_013",
+    "title": "Evaluate 2FA methods",
+    "description": "Compare TOTP, SMS OTP, and hardware key options for suitability across our customer segments.",
+    "status": "completed"
+  },
+  {
+    "id": "p_013_t002",
+    "projectId": "p_013",
+    "title": "Implement TOTP enrollment flow",
+    "description": "QR code display, backup code generation, and TOTP secret storage with AES-256 at rest.",
+    "status": "completed"
+  },
+  {
+    "id": "p_013_t003",
+    "projectId": "p_013",
+    "title": "Implement TOTP verification",
+    "description": "TOTP code check on login with ±30-second clock-skew tolerance and rate limiting.",
+    "status": "completed"
+  },
+  {
+    "id": "p_013_t004",
+    "projectId": "p_013",
+    "title": "Implement SMS OTP as fallback",
+    "description": "Twilio SMS OTP with 5-minute expiry; limit to 3 attempts before lockout.",
+    "status": "completed"
+  },
+  {
+    "id": "p_013_t005",
+    "projectId": "p_013",
+    "title": "Recovery code flow",
+    "description": "8-digit single-use recovery codes; redisplay once at enrollment with download prompt.",
+    "status": "completed"
+  },
+  {
+    "id": "p_013_t006",
+    "projectId": "p_013",
+    "title": "Admin: view and reset 2FA",
+    "description": "Support admin can view 2FA status and trigger a reset email for locked-out users.",
+    "status": "completed"
+  },
+  {
+    "id": "p_013_t007",
+    "projectId": "p_013",
+    "title": "Enforcement policy",
+    "description": "Org-level setting to require 2FA for all members; grace period configuration (3 / 7 / 14 days).",
+    "status": "completed"
+  },
+  {
+    "id": "p_013_t008",
+    "projectId": "p_013",
+    "title": "In-app 2FA nudge",
+    "description": "Persistent banner nudging users without 2FA to enroll; dismissable once per week.",
+    "status": "completed"
+  },
+  {
+    "id": "p_013_t009",
+    "projectId": "p_013",
+    "title": "Email: 2FA enrolled confirmation",
+    "description": "Transactional email confirming 2FA enrollment with a link to manage settings.",
+    "status": "completed"
+  },
+  {
+    "id": "p_013_t010",
+    "projectId": "p_013",
+    "title": "Email: new device recognised",
+    "description": "Alert email when a login occurs from a previously unseen device or IP range.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_013_t011",
+    "projectId": "p_013",
+    "title": "Trusted device management",
+    "description": "UI for users to view and revoke trusted devices stored as long-lived device tokens.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_013_t012",
+    "projectId": "p_013",
+    "title": "Audit log 2FA events",
+    "description": "Emit audit events for enrollment, verification success/failure, and recovery code use.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_013_t013",
+    "projectId": "p_013",
+    "title": "Security review",
+    "description": "Threat-model the TOTP and SMS flows; verify brute-force protection and secret storage.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_013_t014",
+    "projectId": "p_013",
+    "title": "QA matrix",
+    "description": "Cross-browser and mobile test of the enrollment and verification flows.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_013_t015",
+    "projectId": "p_013",
+    "title": "Rollout communications",
+    "description": "Email and in-app announcement of the new 2FA feature with setup guide link.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_013_t016",
+    "projectId": "p_013",
+    "title": "Metrics dashboard",
+    "description": "Track 2FA adoption rate, lockout frequency, and recovery code usage over time.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_013_t017",
+    "projectId": "p_013",
+    "title": "Deprecate SMS-only auth",
+    "description": "After 90% TOTP adoption, retire the SMS-only auth fallback for non-enterprise tiers.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_013_t018",
+    "projectId": "p_013",
+    "title": "Compliance mapping",
+    "description": "Map 2FA controls to SOC 2 CC6.1 and ISO 27001 A.9.4; update the security control register.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_013_t019",
+    "projectId": "p_013",
+    "title": "User guide",
+    "description": "Help-centre article explaining 2FA options, how to enroll, and how to recover access.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_013_t020",
+    "projectId": "p_013",
+    "title": "Post-launch retro",
+    "description": "Team retro covering adoption metrics, support ticket volume, and UX friction points.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_014_t001",
+    "projectId": "p_014",
+    "title": "Audit existing webhook delivery",
+    "description": "Document current delivery path: queue depth, retry logic, timeout settings, and failure modes.",
+    "status": "completed"
+  },
+  {
+    "id": "p_014_t002",
+    "projectId": "p_014",
+    "title": "Define delivery SLA",
+    "description": "Agree on target delivery latency P99 and max retry window with product and customer success.",
+    "status": "completed"
+  },
+  {
+    "id": "p_014_t003",
+    "projectId": "p_014",
+    "title": "Implement HMAC signature validation",
+    "description": "Add HMAC-SHA256 payload signing; provide verification code snippets in docs for all SDK languages.",
+    "status": "completed"
+  },
+  {
+    "id": "p_014_t004",
+    "projectId": "p_014",
+    "title": "Implement exponential backoff retry",
+    "description": "Retry failed deliveries at 1 s, 5 s, 30 s, 5 m, 30 m, 2 h, 24 h before marking permanently failed.",
+    "status": "completed"
+  },
+  {
+    "id": "p_014_t005",
+    "projectId": "p_014",
+    "title": "Dead-letter queue for failed webhooks",
+    "description": "Route permanently failed webhooks to a DLQ; notify the customer via in-app alert.",
+    "status": "completed"
+  },
+  {
+    "id": "p_014_t006",
+    "projectId": "p_014",
+    "title": "Webhook event log UI",
+    "description": "Per-endpoint delivery log showing each attempt: timestamp, response code, latency, and payload.",
+    "status": "completed"
+  },
+  {
+    "id": "p_014_t007",
+    "projectId": "p_014",
+    "title": "Manual replay from event log",
+    "description": "Allow customers to replay any event from the last 72 hours from the webhook log UI.",
+    "status": "completed"
+  },
+  {
+    "id": "p_014_t008",
+    "projectId": "p_014",
+    "title": "Endpoint health scoring",
+    "description": "Track consecutive failure rate per endpoint; auto-disable after 100 consecutive failures with an email alert.",
+    "status": "completed"
+  },
+  {
+    "id": "p_014_t009",
+    "projectId": "p_014",
+    "title": "Re-enable endpoint flow",
+    "description": "UI and email flow for customers to acknowledge the issue and re-enable a disabled endpoint.",
+    "status": "completed"
+  },
+  {
+    "id": "p_014_t010",
+    "projectId": "p_014",
+    "title": "Concurrent delivery limits",
+    "description": "Cap concurrent in-flight requests per endpoint to 10 to avoid overwhelming slow receivers.",
+    "status": "completed"
+  },
+  {
+    "id": "p_014_t011",
+    "projectId": "p_014",
+    "title": "Payload size limits",
+    "description": "Enforce a 64 KB limit per webhook payload; log and alert if an event would be truncated.",
+    "status": "completed"
+  },
+  {
+    "id": "p_014_t012",
+    "projectId": "p_014",
+    "title": "Deliverability metrics dashboard",
+    "description": "Internal Datadog dashboard showing delivery rate, retry depth distribution, and DLQ depth.",
+    "status": "completed"
+  },
+  {
+    "id": "p_014_t013",
+    "projectId": "p_014",
+    "title": "Customer-facing status page",
+    "description": "Real-time webhook delivery status widget on the customer dashboard, showing 7-day success rate.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_014_t014",
+    "projectId": "p_014",
+    "title": "IP allowlist for webhook source",
+    "description": "Publish a stable list of egress IPs; provide a UI widget showing current source IP ranges.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_014_t015",
+    "projectId": "p_014",
+    "title": "Load test delivery pipeline",
+    "description": "Simulate 10× peak event volume; confirm the queue drains within SLA.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_014_t016",
+    "projectId": "p_014",
+    "title": "Security review",
+    "description": "Verify TLS 1.2+ enforcement on all outbound connections; check for SSRF in endpoint URL handling.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_014_t017",
+    "projectId": "p_014",
+    "title": "Documentation update",
+    "description": "Rewrite the webhook developer guide to cover signatures, retry behaviour, and replay.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_014_t018",
+    "projectId": "p_014",
+    "title": "Changelog and customer comms",
+    "description": "In-app changelog entry and email to customers with existing endpoints about the new features.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_014_t019",
+    "projectId": "p_014",
+    "title": "Monitor post-launch delivery rate",
+    "description": "Alert if the 1-hour delivery success rate drops below 99%; page on-call if below 95%.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_014_t020",
+    "projectId": "p_014",
+    "title": "Retro",
+    "description": "Team retro after 30 days with delivery metrics, support ticket reduction, and next improvements.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t001",
+    "projectId": "p_015",
+    "title": "Define health score model",
+    "description": "Agree on the signals (login frequency, feature adoption, support tickets, NPS) and weights for the health score.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t002",
+    "projectId": "p_015",
+    "title": "Data sourcing - product usage",
+    "description": "Pipeline pulling daily active feature usage from the analytics warehouse into the health model.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t003",
+    "projectId": "p_015",
+    "title": "Data sourcing - support tickets",
+    "description": "Join Zendesk ticket volume and CSAT scores into the health model on a daily basis.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t004",
+    "projectId": "p_015",
+    "title": "Data sourcing - NPS",
+    "description": "Import NPS scores from Delighted into the health model; handle missing data gracefully.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t005",
+    "projectId": "p_015",
+    "title": "Health score computation job",
+    "description": "Scheduled dbt model computing composite health scores per account on a daily cadence.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t006",
+    "projectId": "p_015",
+    "title": "Health score API",
+    "description": "REST endpoint returning current and 90-day trend of health scores for a given account ID.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t007",
+    "projectId": "p_015",
+    "title": "Build account health card",
+    "description": "React component showing a health score gauge, 90-day sparkline, and key signal indicators.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t008",
+    "projectId": "p_015",
+    "title": "Build account list with health",
+    "description": "Sortable/filterable account list showing health score, tier, ARR, and last login.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t009",
+    "projectId": "p_015",
+    "title": "Risk segment view",
+    "description": "Red/amber/green segmentation view highlighting accounts that changed risk band this week.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t010",
+    "projectId": "p_015",
+    "title": "Drill-down: usage breakdown",
+    "description": "Expand an account card to see per-feature usage heatmap for the last 30 days.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t011",
+    "projectId": "p_015",
+    "title": "Drill-down: support history",
+    "description": "Expand to see the last 5 support tickets with status and CSAT scores.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t012",
+    "projectId": "p_015",
+    "title": "Alerts: health score drop",
+    "description": "Email and Slack alert to the account CSM when an account's health score drops by 15+ points in 7 days.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t013",
+    "projectId": "p_015",
+    "title": "Alerts: churn risk tier change",
+    "description": "Alert when an account moves into the red risk tier for the first time.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t014",
+    "projectId": "p_015",
+    "title": "CSM notes on accounts",
+    "description": "Free-text notes field per account visible only to the CS team; timestamped and attributed.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t015",
+    "projectId": "p_015",
+    "title": "Playbook linking",
+    "description": "Link a standardised intervention playbook to each risk tier so CSMs know the next action.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t016",
+    "projectId": "p_015",
+    "title": "Export to CSV",
+    "description": "One-click export of the current account list view with all health score columns.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t017",
+    "projectId": "p_015",
+    "title": "Salesforce sync",
+    "description": "Push health score and risk tier to Salesforce Account object daily for use in renewal workflows.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t018",
+    "projectId": "p_015",
+    "title": "Access control",
+    "description": "CSMs see only their portfolio; CS managers see all accounts; product team sees aggregates only.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t019",
+    "projectId": "p_015",
+    "title": "QA: data accuracy check",
+    "description": "Verify 20 sampled accounts by comparing dashboard values against source system records.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t020",
+    "projectId": "p_015",
+    "title": "Training for CS team",
+    "description": "Lunch-and-learn session walking the CS team through the new dashboard and alert workflows.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t021",
+    "projectId": "p_015",
+    "title": "Rollout monitoring",
+    "description": "Track dashboard daily active users and time-on-page after launch; iterate on UX friction.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_015_t022",
+    "projectId": "p_015",
+    "title": "Quarterly model review",
+    "description": "Scheduled quarterly review of health score model weights against actual churn outcomes.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t001",
+    "projectId": "p_016",
+    "title": "Audit current VM infrastructure",
+    "description": "Catalogue all services, their resource allocations, dependencies, and scaling behaviour on VMs.",
+    "status": "completed"
+  },
+  {
+    "id": "p_016_t002",
+    "projectId": "p_016",
+    "title": "Design target Kubernetes architecture",
+    "description": "Define namespaces, resource quotas, network policies, and service mesh (Istio vs Linkerd) choice.",
+    "status": "completed"
+  },
+  {
+    "id": "p_016_t003",
+    "projectId": "p_016",
+    "title": "Cluster provisioning on EKS",
+    "description": "Terraform module for an EKS cluster with managed node groups, IRSA, and VPC configuration.",
+    "status": "completed"
+  },
+  {
+    "id": "p_016_t004",
+    "projectId": "p_016",
+    "title": "Set up ingress controller",
+    "description": "Deploy Nginx ingress controller with cert-manager for automatic TLS via Let's Encrypt.",
+    "status": "completed"
+  },
+  {
+    "id": "p_016_t005",
+    "projectId": "p_016",
+    "title": "Containerise API service",
+    "description": "Dockerfile for the API service with multi-stage build, non-root user, and health check endpoint.",
+    "status": "completed"
+  },
+  {
+    "id": "p_016_t006",
+    "projectId": "p_016",
+    "title": "Containerise worker service",
+    "description": "Dockerfile for the background worker; test graceful shutdown handling in Kubernetes.",
+    "status": "completed"
+  },
+  {
+    "id": "p_016_t007",
+    "projectId": "p_016",
+    "title": "Containerise frontend",
+    "description": "Nginx-based container for the SPA with proper cache headers and environment injection.",
+    "status": "completed"
+  },
+  {
+    "id": "p_016_t008",
+    "projectId": "p_016",
+    "title": "Helm chart for API service",
+    "description": "Helm chart with configurable replicas, resource limits, liveness/readiness probes, and HPA.",
+    "status": "completed"
+  },
+  {
+    "id": "p_016_t009",
+    "projectId": "p_016",
+    "title": "Helm chart for worker service",
+    "description": "Helm chart for the worker with appropriate anti-affinity and pod disruption budget.",
+    "status": "completed"
+  },
+  {
+    "id": "p_016_t010",
+    "projectId": "p_016",
+    "title": "Helm chart for frontend",
+    "description": "Helm chart for the frontend nginx container with ingress annotation for TLS.",
+    "status": "completed"
+  },
+  {
+    "id": "p_016_t011",
+    "projectId": "p_016",
+    "title": "Set up ArgoCD for GitOps",
+    "description": "ArgoCD installation and ApplicationSet config syncing from the deploy repository.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t012",
+    "projectId": "p_016",
+    "title": "Implement horizontal pod autoscaling",
+    "description": "HPA on the API service targeting 70% CPU utilisation; load test to verify scale-out.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t013",
+    "projectId": "p_016",
+    "title": "Configure persistent volumes",
+    "description": "EBS CSI driver and StorageClass for stateful workloads; set reclaim policy to Retain.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t014",
+    "projectId": "p_016",
+    "title": "Migrate Postgres to RDS",
+    "description": "Provision RDS Postgres with multi-AZ; migrate data from the VM-based Postgres instance.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t015",
+    "projectId": "p_016",
+    "title": "Migrate Redis to ElastiCache",
+    "description": "Provision ElastiCache Redis cluster; update service configs to point at the new endpoint.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t016",
+    "projectId": "p_016",
+    "title": "Set up cluster monitoring",
+    "description": "kube-prometheus-stack with Grafana dashboards for pod CPU/memory, request rates, and error rates.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t017",
+    "projectId": "p_016",
+    "title": "Set up log aggregation",
+    "description": "Fluent Bit DaemonSet shipping container logs to CloudWatch Logs with structured JSON parsing.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t018",
+    "projectId": "p_016",
+    "title": "Network policy hardening",
+    "description": "Default-deny network policies with explicit allow rules between services.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t019",
+    "projectId": "p_016",
+    "title": "RBAC configuration",
+    "description": "Least-privilege RBAC roles for CI/CD pipelines, on-call engineers, and read-only analysts.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t020",
+    "projectId": "p_016",
+    "title": "Canary deployment for API",
+    "description": "Argo Rollouts canary strategy for API deployments: 10% canary → analysis → full rollout.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t021",
+    "projectId": "p_016",
+    "title": "Disaster recovery runbook",
+    "description": "Runbook for cluster failure: EKS node group recreation, pod rescheduling, and data restore.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t022",
+    "projectId": "p_016",
+    "title": "Load test on Kubernetes",
+    "description": "k6 load test at 2× peak; verify autoscaling, resource limits, and error rates under pressure.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t023",
+    "projectId": "p_016",
+    "title": "Traffic cutover - staging",
+    "description": "Cut staging traffic to Kubernetes; run for 1 week before prod cutover.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t024",
+    "projectId": "p_016",
+    "title": "Traffic cutover - production",
+    "description": "Controlled production cutover with 5% → 25% → 100% traffic shift and rollback criteria.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t025",
+    "projectId": "p_016",
+    "title": "Decommission legacy VMs",
+    "description": "Terminate VM instances after 30-day stable run on Kubernetes; update DNS TTLs.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t026",
+    "projectId": "p_016",
+    "title": "Cost optimisation pass",
+    "description": "Right-size node groups based on actual utilisation; add Spot instances for worker nodes.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t027",
+    "projectId": "p_016",
+    "title": "Update on-call runbooks",
+    "description": "Rewrite all incident runbooks to reference kubectl commands and ArgoCD rollback steps.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t028",
+    "projectId": "p_016",
+    "title": "Team training on kubectl and ArgoCD",
+    "description": "Workshop covering day-to-day operations: deployments, log access, and scaling commands.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t029",
+    "projectId": "p_016",
+    "title": "Architecture decision record",
+    "description": "ADR documenting the Kubernetes migration rationale, trade-offs, and future evolution plan.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_016_t030",
+    "projectId": "p_016",
+    "title": "Post-migration cost report",
+    "description": "Compare monthly infrastructure cost before and after migration; present savings to leadership.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_017_t001",
+    "projectId": "p_017",
+    "title": "Audit current feature flag usage",
+    "description": "Catalogue all flags in the codebase: name, age, owner, rollout %, and last modified date.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t002",
+    "projectId": "p_017",
+    "title": "Delete stale flags",
+    "description": "Remove flags that have been at 100% for more than 90 days; clean up associated code branches.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t003",
+    "projectId": "p_017",
+    "title": "Evaluate flag service options",
+    "description": "Compare LaunchDarkly, Unleash, and Flagsmith on SDK support, targeting, and pricing.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t004",
+    "projectId": "p_017",
+    "title": "Set up Unleash self-hosted",
+    "description": "Deploy Unleash on Kubernetes with Postgres backend; configure admin SSO via the existing IdP.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t005",
+    "projectId": "p_017",
+    "title": "Define flag taxonomy",
+    "description": "Naming convention, tag schema, and required metadata (owner, expiry date, description) for all flags.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t006",
+    "projectId": "p_017",
+    "title": "Migrate existing flags to Unleash",
+    "description": "Bulk-import current flag definitions into Unleash; validate that all SDK reads resolve correctly.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t007",
+    "projectId": "p_017",
+    "title": "Replace legacy SDK with Unleash SDK",
+    "description": "Swap the existing in-house flag client for the Unleash SDK across all backend services.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t008",
+    "projectId": "p_017",
+    "title": "Replace legacy SDK in frontend",
+    "description": "Integrate Unleash React SDK; verify flag evaluation works with SSR and client hydration.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t009",
+    "projectId": "p_017",
+    "title": "Implement user targeting",
+    "description": "Set up user attribute targeting (plan tier, signup date, country) in Unleash.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t010",
+    "projectId": "p_017",
+    "title": "Implement percentage rollouts",
+    "description": "Configure gradual rollout strategy with sticky user assignment (consistent per session).",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t011",
+    "projectId": "p_017",
+    "title": "Flag lifecycle enforcement",
+    "description": "CI check that blocks merging a flag older than 180 days without an explicit extension approval.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t012",
+    "projectId": "p_017",
+    "title": "Flag dashboard enhancements",
+    "description": "Custom Unleash dashboard view showing flags by owner, age, and rollout stage.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t013",
+    "projectId": "p_017",
+    "title": "Audit log for flag changes",
+    "description": "Forward Unleash webhook events to the audit log service on every flag toggle or config change.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t014",
+    "projectId": "p_017",
+    "title": "Experiment integration",
+    "description": "Connect Unleash flag impressions to the GrowthBook experiment tracking pipeline.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t015",
+    "projectId": "p_017",
+    "title": "Documentation",
+    "description": "Internal guide covering flag creation, targeting, rollout, and cleanup lifecycle.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t016",
+    "projectId": "p_017",
+    "title": "Training session",
+    "description": "Live demo for all engineers of the new Unleash admin UI and SDK patterns.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t017",
+    "projectId": "p_017",
+    "title": "Monitor SDK error rate",
+    "description": "Alert if the Unleash SDK falls back to default values (indicating connectivity issues) for > 1% of evaluations.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t018",
+    "projectId": "p_017",
+    "title": "Performance: SDK initialisation time",
+    "description": "Verify flag bootstrap load adds < 50 ms to server cold-start and < 10 ms to client hydration.",
+    "status": "completed"
+  },
+  {
+    "id": "p_017_t019",
+    "projectId": "p_017",
+    "title": "Post-refactor flag count report",
+    "description": "Report showing flag count reduction and estimated developer time saved from lifecycle enforcement.",
+    "status": "completed"
+  },
+  {
+    "id": "p_018_t001",
+    "projectId": "p_018",
+    "title": "Inventory all third-party vendors",
+    "description": "Compile a complete list of SaaS tools, APIs, and sub-processors with their data access scope.",
+    "status": "completed"
+  },
+  {
+    "id": "p_018_t002",
+    "projectId": "p_018",
+    "title": "Classify vendors by data sensitivity",
+    "description": "Categorise each vendor as high / medium / low risk based on the data they can access.",
+    "status": "completed"
+  },
+  {
+    "id": "p_018_t003",
+    "projectId": "p_018",
+    "title": "Send security questionnaires",
+    "description": "Dispatch the SIG Lite questionnaire to all high-risk vendors; track response status.",
+    "status": "completed"
+  },
+  {
+    "id": "p_018_t004",
+    "projectId": "p_018",
+    "title": "Review SOC 2 reports",
+    "description": "Obtain and review SOC 2 Type II reports for all critical infrastructure vendors.",
+    "status": "completed"
+  },
+  {
+    "id": "p_018_t005",
+    "projectId": "p_018",
+    "title": "Review penetration test reports",
+    "description": "Request and assess the latest pen-test report from each high-risk vendor.",
+    "status": "completed"
+  },
+  {
+    "id": "p_018_t006",
+    "projectId": "p_018",
+    "title": "Review data processing agreements",
+    "description": "Verify DPAs are in place and signed with all vendors processing personal data.",
+    "status": "completed"
+  },
+  {
+    "id": "p_018_t007",
+    "projectId": "p_018",
+    "title": "Review GDPR adequacy",
+    "description": "Confirm each vendor's data transfer mechanism (SCCs, adequacy decision) for cross-border transfers.",
+    "status": "completed"
+  },
+  {
+    "id": "p_018_t008",
+    "projectId": "p_018",
+    "title": "Sub-processor disclosure update",
+    "description": "Update the public sub-processor list on our privacy page with any newly discovered vendors.",
+    "status": "completed"
+  },
+  {
+    "id": "p_018_t009",
+    "projectId": "p_018",
+    "title": "Offboard non-compliant vendor - A",
+    "description": "Identify a replacement and migrate data off a vendor that failed to provide a SOC 2 report.",
+    "status": "completed"
+  },
+  {
+    "id": "p_018_t010",
+    "projectId": "p_018",
+    "title": "Offboard non-compliant vendor - B",
+    "description": "Terminate and data-delete relationship with a vendor processing data outside agreed scope.",
+    "status": "completed"
+  },
+  {
+    "id": "p_018_t011",
+    "projectId": "p_018",
+    "title": "Contract renewal risk flags",
+    "description": "Add compliance status check to the vendor contract renewal workflow so renewals trigger a re-review.",
+    "status": "completed"
+  },
+  {
+    "id": "p_018_t012",
+    "projectId": "p_018",
+    "title": "Vendor risk register",
+    "description": "Create and publish an internal vendor risk register with ratings, review dates, and open findings.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_018_t013",
+    "projectId": "p_018",
+    "title": "Annual review schedule",
+    "description": "Set up calendar reminders for annual SOC 2 re-review for each high-risk vendor.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_018_t014",
+    "projectId": "p_018",
+    "title": "Procurement gate",
+    "description": "Add a mandatory security review gate to the procurement process for any new vendor spend > $5k/year.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_018_t015",
+    "projectId": "p_018",
+    "title": "Report to leadership",
+    "description": "Executive summary of compliance gaps found, actions taken, and residual risk.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_018_t016",
+    "projectId": "p_018",
+    "title": "Update security control register",
+    "description": "Reflect the vendor compliance controls in the ISO 27001 / SOC 2 control register.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t001",
+    "projectId": "p_019",
+    "title": "Define telemetry event taxonomy",
+    "description": "Agree on event naming conventions, required fields (schema version, source, timestamp), and forbidden PII.",
+    "status": "completed"
+  },
+  {
+    "id": "p_019_t002",
+    "projectId": "p_019",
+    "title": "Evaluate collection libraries",
+    "description": "Benchmark Segment, RudderStack, and a custom Kafka-based approach on latency, cost, and privacy controls.",
+    "status": "completed"
+  },
+  {
+    "id": "p_019_t003",
+    "projectId": "p_019",
+    "title": "Deploy RudderStack self-hosted",
+    "description": "RudderStack on Kubernetes with ClickHouse destination and Postgres config database.",
+    "status": "completed"
+  },
+  {
+    "id": "p_019_t004",
+    "projectId": "p_019",
+    "title": "Implement client-side SDK",
+    "description": "Wrap the RudderStack JS SDK with our event taxonomy helpers and PII scrubbing.",
+    "status": "completed"
+  },
+  {
+    "id": "p_019_t005",
+    "projectId": "p_019",
+    "title": "Implement server-side SDK",
+    "description": "Node.js wrapper for server-side event emission with schema validation before dispatch.",
+    "status": "completed"
+  },
+  {
+    "id": "p_019_t006",
+    "projectId": "p_019",
+    "title": "PII scrubbing middleware",
+    "description": "Pre-processor that redacts email, name, and IP fields before events reach the data warehouse.",
+    "status": "completed"
+  },
+  {
+    "id": "p_019_t007",
+    "projectId": "p_019",
+    "title": "Migrate web app events",
+    "description": "Port existing Segment events to the new pipeline; confirm parity of event names and properties.",
+    "status": "completed"
+  },
+  {
+    "id": "p_019_t008",
+    "projectId": "p_019",
+    "title": "Migrate mobile app events",
+    "description": "Port iOS and Android Amplitude events to the new pipeline via RudderStack mobile SDK.",
+    "status": "completed"
+  },
+  {
+    "id": "p_019_t009",
+    "projectId": "p_019",
+    "title": "ClickHouse schema for events",
+    "description": "Design the events table with efficient partition key, sorting key, and TTL for 2-year retention.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t010",
+    "projectId": "p_019",
+    "title": "Build real-time event stream",
+    "description": "Kafka topic consuming raw events for real-time features (e.g. live user count widget).",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t011",
+    "projectId": "p_019",
+    "title": "dbt models for core metrics",
+    "description": "dbt models materialising MAU, DAU, feature adoption, and funnel metrics from raw events.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t012",
+    "projectId": "p_019",
+    "title": "Backfill historical events",
+    "description": "One-time migration of 18 months of Segment events into ClickHouse using Spark.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t013",
+    "projectId": "p_019",
+    "title": "Data quality monitoring",
+    "description": "Great Expectations suite checking event schema, null rates, and volume anomalies daily.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t014",
+    "projectId": "p_019",
+    "title": "Event debugger tool",
+    "description": "Internal tool for engineers to see live events they're emitting during development.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t015",
+    "projectId": "p_019",
+    "title": "Privacy review",
+    "description": "Legal and privacy team sign-off on the PII scrubbing policy and data retention schedule.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t016",
+    "projectId": "p_019",
+    "title": "Cost monitoring",
+    "description": "ClickHouse storage cost alerts; set a budget alert at 80% of monthly ClickHouse storage cap.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t017",
+    "projectId": "p_019",
+    "title": "Documentation: event catalog",
+    "description": "Searchable internal catalog of all defined events with owners, properties, and sample payloads.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t018",
+    "projectId": "p_019",
+    "title": "Training for product and engineering",
+    "description": "Workshop on how to instrument new features, browse the event catalog, and query ClickHouse.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t019",
+    "projectId": "p_019",
+    "title": "Deprecate legacy Segment contract",
+    "description": "Cancel or downgrade the Segment subscription after full migration is verified.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t020",
+    "projectId": "p_019",
+    "title": "Post-migration data audit",
+    "description": "Compare 30-day metric totals from the new pipeline against the legacy Segment dashboard.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_019_t021",
+    "projectId": "p_019",
+    "title": "Ongoing pipeline health dashboard",
+    "description": "Grafana dashboard tracking event volume, ingestion latency, schema error rate, and DLQ depth.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t001",
+    "projectId": "p_020",
+    "title": "Audit Phase 1 GraphQL schema",
+    "description": "Review the existing schema for N+1 query patterns, missing pagination, and inconsistent naming.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t002",
+    "projectId": "p_020",
+    "title": "Define Phase 2 scope",
+    "description": "Agree with product which new domains (billing, notifications, teams) to add in Phase 2.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t003",
+    "projectId": "p_020",
+    "title": "Implement DataLoader for all resolvers",
+    "description": "Replace per-row DB queries with batched DataLoader calls; measure before/after query count.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t004",
+    "projectId": "p_020",
+    "title": "Add billing domain to schema",
+    "description": "Invoice, payment method, and subscription types with queries and mutations.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t005",
+    "projectId": "p_020",
+    "title": "Add teams domain to schema",
+    "description": "Team, member, invitation, and permission types with full CRUD mutations.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t006",
+    "projectId": "p_020",
+    "title": "Add notifications domain to schema",
+    "description": "Notification type, mark-read mutation, and a subscription for real-time delivery.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t007",
+    "projectId": "p_020",
+    "title": "Implement GraphQL subscriptions",
+    "description": "WebSocket-based subscriptions using graphql-ws for the notifications domain.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t008",
+    "projectId": "p_020",
+    "title": "Schema stitching for legacy REST",
+    "description": "Wrap 3 legacy REST endpoints as GraphQL resolvers so the client can migrate incrementally.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t009",
+    "projectId": "p_020",
+    "title": "Implement persisted queries",
+    "description": "Apollo persisted query support to reduce request payload and enable CDN caching.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t010",
+    "projectId": "p_020",
+    "title": "Implement query complexity limits",
+    "description": "Assign complexity scores to fields; reject queries above a threshold to prevent abuse.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t011",
+    "projectId": "p_020",
+    "title": "Implement depth limits",
+    "description": "Reject queries nested beyond 7 levels to prevent runaway joins.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t012",
+    "projectId": "p_020",
+    "title": "Field-level authorisation",
+    "description": "GraphQL shield rules ensuring users can only read fields within their permission scope.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t013",
+    "projectId": "p_020",
+    "title": "Pagination standardisation",
+    "description": "Migrate all list fields to Relay-style cursor pagination; deprecate offset-based variants.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t014",
+    "projectId": "p_020",
+    "title": "Error handling standardisation",
+    "description": "Consistent error extension format (code, message, path) across all resolvers.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t015",
+    "projectId": "p_020",
+    "title": "Generate TypeScript types from schema",
+    "description": "graphql-codegen pipeline producing typed resolvers and client hooks from the SDL.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t016",
+    "projectId": "p_020",
+    "title": "Schema documentation",
+    "description": "Add descriptions to all types and fields; publish the schema to an internal GraphQL explorer.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t017",
+    "projectId": "p_020",
+    "title": "Performance baseline",
+    "description": "Measure P50/P95/P99 resolver latency for the top 20 most-used queries before Phase 2.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t018",
+    "projectId": "p_020",
+    "title": "Performance regression tests",
+    "description": "Automated query performance tests in CI that fail if P95 latency regresses by > 20%.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t019",
+    "projectId": "p_020",
+    "title": "Migration guide for client teams",
+    "description": "Guide for the web and mobile teams on migrating from REST to GraphQL for Phase 2 domains.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t020",
+    "projectId": "p_020",
+    "title": "Deprecation: mark REST endpoints",
+    "description": "Add Deprecation headers and sunset dates to REST endpoints that now have GraphQL equivalents.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t021",
+    "projectId": "p_020",
+    "title": "Monitoring: resolver-level metrics",
+    "description": "Apollo Studio or custom Datadog metrics per resolver for latency and error rate.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t022",
+    "projectId": "p_020",
+    "title": "Load test GraphQL layer",
+    "description": "k6 script hitting the top 10 queries at 5× current peak load; confirm no regressions.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t023",
+    "projectId": "p_020",
+    "title": "Security review",
+    "description": "Check for introspection exposure in prod, rate limiting on subscriptions, and auth bypass in resolvers.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_020_t024",
+    "projectId": "p_020",
+    "title": "Phase 2 launch announcement",
+    "description": "Developer changelog entry and internal briefing for all client teams.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_021_t001",
+    "projectId": "p_021",
+    "title": "Define rate limit policy",
+    "description": "Agree on limits per tier (free / growth / enterprise) and per endpoint class (read / write / bulk).",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t002",
+    "projectId": "p_021",
+    "title": "Evaluate rate limit algorithms",
+    "description": "Compare token bucket, leaky bucket, and sliding window counter; document trade-offs.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t003",
+    "projectId": "p_021",
+    "title": "Implement Redis sliding window counter",
+    "description": "Lua script in Redis implementing the sliding window algorithm with microsecond precision.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t004",
+    "projectId": "p_021",
+    "title": "Build rate limit middleware",
+    "description": "Express middleware reading the counter and returning 429 with Retry-After and X-RateLimit-* headers.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t005",
+    "projectId": "p_021",
+    "title": "Tier-based limit lookup",
+    "description": "Middleware resolves the caller's plan tier from the JWT and applies the corresponding limit config.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t006",
+    "projectId": "p_021",
+    "title": "Per-endpoint limit overrides",
+    "description": "Config-driven per-endpoint overrides for endpoints with different cost profiles (e.g. bulk import).",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t007",
+    "projectId": "p_021",
+    "title": "Burst allowance",
+    "description": "Token bucket burst window of 2× the sustained rate for up to 5 seconds to absorb traffic spikes.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t008",
+    "projectId": "p_021",
+    "title": "Rate limit exemptions",
+    "description": "Signed exemption tokens that bypass limits for internal services and monitoring probes.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t009",
+    "projectId": "p_021",
+    "title": "Developer-facing error messages",
+    "description": "Clear 429 response body with limit, remaining, and reset fields plus a docs link.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t010",
+    "projectId": "p_021",
+    "title": "Limit headers on all responses",
+    "description": "Add X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset to every API response.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t011",
+    "projectId": "p_021",
+    "title": "Rate limit dashboard",
+    "description": "Grafana dashboard showing 429 rate, top throttled callers, and Redis counter lag.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t012",
+    "projectId": "p_021",
+    "title": "Alert on sustained throttling",
+    "description": "Alert the account CSM when a customer is hitting limits more than 50 times per hour.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t013",
+    "projectId": "p_021",
+    "title": "Self-service limit increase request",
+    "description": "In-dashboard UI for customers to request a temporary limit increase with a business justification.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t014",
+    "projectId": "p_021",
+    "title": "Load test",
+    "description": "k6 script sending traffic at 3× limit; confirm 429s fire correctly and Redis remains stable.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t015",
+    "projectId": "p_021",
+    "title": "SDK updates",
+    "description": "Update all official SDKs to handle 429 with exponential backoff and surface the limit headers.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t016",
+    "projectId": "p_021",
+    "title": "Documentation update",
+    "description": "Rewrite the rate limits reference page with the new limits per tier and endpoint.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t017",
+    "projectId": "p_021",
+    "title": "Backwards compatibility review",
+    "description": "Confirm existing customers are not already above the new limits before enabling enforcement.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t018",
+    "projectId": "p_021",
+    "title": "Phased rollout",
+    "description": "Enable limits in warn-only mode for 2 weeks (log but don't block), then enable blocking.",
+    "status": "completed"
+  },
+  {
+    "id": "p_021_t019",
+    "projectId": "p_021",
+    "title": "Post-launch review",
+    "description": "Review 429 rates, customer complaints, and Redis performance after 30 days.",
+    "status": "completed"
+  },
+  {
+    "id": "p_022_t001",
+    "projectId": "p_022",
+    "title": "Map data categories and owners",
+    "description": "Catalogue all data types stored, their retention requirements, and the team responsible for each.",
+    "status": "completed"
+  },
+  {
+    "id": "p_022_t002",
+    "projectId": "p_022",
+    "title": "Legal review of retention requirements",
+    "description": "Work with legal to confirm retention periods for financial, personal, and operational data.",
+    "status": "completed"
+  },
+  {
+    "id": "p_022_t003",
+    "projectId": "p_022",
+    "title": "Design retention policy schema",
+    "description": "Data model for retention policies: category, max_age_days, action (delete / anonymise), owner.",
+    "status": "completed"
+  },
+  {
+    "id": "p_022_t004",
+    "projectId": "p_022",
+    "title": "Implement automated purge jobs",
+    "description": "Scheduled Airflow DAGs that delete or anonymise records beyond their retention window.",
+    "status": "completed"
+  },
+  {
+    "id": "p_022_t005",
+    "projectId": "p_022",
+    "title": "Purge job for user PII",
+    "description": "Anonymise deleted-user PII (name, email, IP) in all tables; replace with a pseudonymous token.",
+    "status": "completed"
+  },
+  {
+    "id": "p_022_t006",
+    "projectId": "p_022",
+    "title": "Purge job for payment logs",
+    "description": "Delete raw payment logs older than 7 years; confirm financial records are retained per PCI DSS.",
+    "status": "completed"
+  },
+  {
+    "id": "p_022_t007",
+    "projectId": "p_022",
+    "title": "Purge job for analytics events",
+    "description": "Truncate raw analytics events older than 2 years; aggregates are retained indefinitely.",
+    "status": "completed"
+  },
+  {
+    "id": "p_022_t008",
+    "projectId": "p_022",
+    "title": "Purge job for audit logs",
+    "description": "Flag audit log records for deletion after the configured retention period; preserve hash chain integrity.",
+    "status": "completed"
+  },
+  {
+    "id": "p_022_t009",
+    "projectId": "p_022",
+    "title": "Data subject deletion workflow",
+    "description": "End-to-end workflow for GDPR right-to-erasure requests: identify, anonymise, confirm in 30 days.",
+    "status": "completed"
+  },
+  {
+    "id": "p_022_t010",
+    "projectId": "p_022",
+    "title": "Data subject access request workflow",
+    "description": "Automated export of all data held for a user; delivered as a secure download link.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_022_t011",
+    "projectId": "p_022",
+    "title": "Consent management integration",
+    "description": "Record and honour marketing consent decisions across all downstream data stores.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_022_t012",
+    "projectId": "p_022",
+    "title": "Data lineage documentation",
+    "description": "Document where each data category is stored, how it flows between systems, and where it's deleted.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_022_t013",
+    "projectId": "p_022",
+    "title": "Retention policy audit trail",
+    "description": "Log every automated purge operation with record count and job run ID for compliance evidence.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_022_t014",
+    "projectId": "p_022",
+    "title": "Privacy impact assessment",
+    "description": "Formal PIA for the new retention automation covering risks and mitigations.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_022_t015",
+    "projectId": "p_022",
+    "title": "DPA updates",
+    "description": "Update data processing agreements to reflect the new retention periods and automation.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_022_t016",
+    "projectId": "p_022",
+    "title": "Staff training",
+    "description": "Training for engineers on data minimisation principles and how to use the new purge workflows.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_022_t017",
+    "projectId": "p_022",
+    "title": "Compliance dashboard",
+    "description": "Internal dashboard showing purge job status, records processed, and last successful run per category.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_022_t018",
+    "projectId": "p_022",
+    "title": "External audit preparation",
+    "description": "Package evidence for the annual SOC 2 audit: job logs, policy docs, and test results.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_022_t019",
+    "projectId": "p_022",
+    "title": "Quarterly data map review",
+    "description": "Process to review and update the data category map each quarter as new features ship.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_023_t001",
+    "projectId": "p_023",
+    "title": "Developer survey",
+    "description": "Survey all engineers on the top 5 friction points in the current development workflow.",
+    "status": "completed"
+  },
+  {
+    "id": "p_023_t002",
+    "projectId": "p_023",
+    "title": "Define platform scope",
+    "description": "Based on survey, agree on Phase 1 scope: service scaffolding, local dev, CI templates, runbooks.",
+    "status": "completed"
+  },
+  {
+    "id": "p_023_t003",
+    "projectId": "p_023",
+    "title": "Service scaffolding CLI",
+    "description": "CLI tool (`platform new-service`) generating a opinionated service skeleton with Dockerfile, Helm chart, and CI config.",
+    "status": "completed"
+  },
+  {
+    "id": "p_023_t004",
+    "projectId": "p_023",
+    "title": "Local dev environment",
+    "description": "Docker Compose-based local environment with all dependencies; single `platform up` to start.",
+    "status": "completed"
+  },
+  {
+    "id": "p_023_t005",
+    "projectId": "p_023",
+    "title": "Shared CI pipeline templates",
+    "description": "Reusable GitHub Actions workflow templates for build, test, lint, security scan, and deploy.",
+    "status": "completed"
+  },
+  {
+    "id": "p_023_t006",
+    "projectId": "p_023",
+    "title": "Secret management integration",
+    "description": "Platform CLI command to fetch secrets from Vault into the local dev environment.",
+    "status": "completed"
+  },
+  {
+    "id": "p_023_t007",
+    "projectId": "p_023",
+    "title": "Service catalog",
+    "description": "Internal service catalog listing all services, their owners, runbooks, and health status.",
+    "status": "completed"
+  },
+  {
+    "id": "p_023_t008",
+    "projectId": "p_023",
+    "title": "Runbook template",
+    "description": "Standardised runbook template pre-populated by the scaffolding CLI with service-specific alert links.",
+    "status": "completed"
+  },
+  {
+    "id": "p_023_t009",
+    "projectId": "p_023",
+    "title": "Golden paths documentation",
+    "description": "Step-by-step guides for the most common tasks: add an API endpoint, add a feature flag, add a metric.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_023_t010",
+    "projectId": "p_023",
+    "title": "Automated dependency updates",
+    "description": "Renovate bot configured with automerge for patch updates in non-critical services.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_023_t011",
+    "projectId": "p_023",
+    "title": "Security scanning in CI",
+    "description": "Trivy container scanning and Semgrep SAST integrated into the shared CI templates.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_023_t012",
+    "projectId": "p_023",
+    "title": "Deploy smoke tests",
+    "description": "Shared smoke test step in the deploy pipeline that blocks promotion if health checks fail.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_023_t013",
+    "projectId": "p_023",
+    "title": "Platform office hours",
+    "description": "Weekly 30-minute office hours for engineers to get help with platform tooling.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_023_t014",
+    "projectId": "p_023",
+    "title": "Platform adoption metrics",
+    "description": "Track CLI usage, service catalog views, and CI template adoption rate over time.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_023_t015",
+    "projectId": "p_023",
+    "title": "Phase 2 planning",
+    "description": "Roadmap for Phase 2 based on remaining survey friction points and adoption metrics.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_023_t016",
+    "projectId": "p_023",
+    "title": "Documentation site",
+    "description": "MkDocs site for all platform documentation, auto-deployed from the platform mono-repo.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_023_t017",
+    "projectId": "p_023",
+    "title": "Onboarding integration",
+    "description": "Add platform CLI setup to the new-engineer onboarding checklist.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_023_t018",
+    "projectId": "p_023",
+    "title": "Feedback loop",
+    "description": "Lightweight feedback form in the platform CLI and docs site for continuous improvement.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_024_t001",
+    "projectId": "p_024",
+    "title": "WCAG 2.1 audit - marketing site",
+    "description": "Automated (axe-core) + manual audit of the marketing site against WCAG 2.1 AA criteria.",
+    "status": "completed"
+  },
+  {
+    "id": "p_024_t002",
+    "projectId": "p_024",
+    "title": "WCAG 2.1 audit - application",
+    "description": "Automated + manual audit of the main application against WCAG 2.1 AA; screen-reader testing on NVDA and VoiceOver.",
+    "status": "completed"
+  },
+  {
+    "id": "p_024_t003",
+    "projectId": "p_024",
+    "title": "Prioritise audit findings",
+    "description": "Classify findings by severity (blocker / major / minor) and estimate fix effort for each.",
+    "status": "completed"
+  },
+  {
+    "id": "p_024_t004",
+    "projectId": "p_024",
+    "title": "Fix: keyboard navigation - modals",
+    "description": "Implement focus trap in all modal dialogs with correct return focus on close.",
+    "status": "completed"
+  },
+  {
+    "id": "p_024_t005",
+    "projectId": "p_024",
+    "title": "Fix: keyboard navigation - menus",
+    "description": "Ensure all dropdown and context menus are fully operable by keyboard only.",
+    "status": "completed"
+  },
+  {
+    "id": "p_024_t006",
+    "projectId": "p_024",
+    "title": "Fix: colour contrast - text",
+    "description": "Update text colours that fail 4.5:1 contrast ratio; apply via design tokens to ensure consistency.",
+    "status": "completed"
+  },
+  {
+    "id": "p_024_t007",
+    "projectId": "p_024",
+    "title": "Fix: colour contrast - icons",
+    "description": "Update icon colours on interactive elements to meet 3:1 contrast against adjacent background.",
+    "status": "completed"
+  },
+  {
+    "id": "p_024_t008",
+    "projectId": "p_024",
+    "title": "Fix: form labels",
+    "description": "Add explicit <label> elements to all form inputs that currently use only placeholder text.",
+    "status": "completed"
+  },
+  {
+    "id": "p_024_t009",
+    "projectId": "p_024",
+    "title": "Fix: image alt text",
+    "description": "Audit all <img> tags; add meaningful alt text or empty alt for decorative images.",
+    "status": "completed"
+  },
+  {
+    "id": "p_024_t010",
+    "projectId": "p_024",
+    "title": "Fix: skip navigation link",
+    "description": "Add a visible-on-focus \"Skip to main content\" link as the first focusable element on each page.",
+    "status": "completed"
+  },
+  {
+    "id": "p_024_t011",
+    "projectId": "p_024",
+    "title": "Fix: ARIA landmark roles",
+    "description": "Add appropriate landmark roles (main, nav, aside, footer) to each page template.",
+    "status": "completed"
+  },
+  {
+    "id": "p_024_t012",
+    "projectId": "p_024",
+    "title": "Fix: live region for toasts",
+    "description": "Announce toast notifications via aria-live=\"polite\" so screen-reader users hear them.",
+    "status": "completed"
+  },
+  {
+    "id": "p_024_t013",
+    "projectId": "p_024",
+    "title": "Fix: table headers",
+    "description": "Add <th> and scope attributes to all data tables; remove tables used for layout.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_024_t014",
+    "projectId": "p_024",
+    "title": "Fix: timeout warnings",
+    "description": "Warn users 30 seconds before session timeout with a focusable dialog to extend the session.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_024_t015",
+    "projectId": "p_024",
+    "title": "Automated a11y tests in CI",
+    "description": "jest-axe checks on all page-level components; fail CI if any critical violations are introduced.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_024_t016",
+    "projectId": "p_024",
+    "title": "Accessibility statement",
+    "description": "Publish a WCAG 2.1 AA conformance statement with known exceptions and a feedback email.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_024_t017",
+    "projectId": "p_024",
+    "title": "Training for design and engineering",
+    "description": "Half-day workshop on accessible design patterns, ARIA best practices, and testing tools.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_024_t018",
+    "projectId": "p_024",
+    "title": "Quarterly a11y regression review",
+    "description": "Quarterly scheduled audit of new features against the a11y checklist before release.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_024_t019",
+    "projectId": "p_024",
+    "title": "Assistive technology user testing",
+    "description": "Test the application with 3 real assistive-technology users; capture qualitative feedback.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_024_t020",
+    "projectId": "p_024",
+    "title": "Remediate user testing findings",
+    "description": "Address the top issues uncovered in assistive technology user testing sessions.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_024_t021",
+    "projectId": "p_024",
+    "title": "Legal review - ADA/EAA compliance",
+    "description": "Legal sign-off confirming the remediated application meets ADA Title III and European Accessibility Act requirements.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_024_t022",
+    "projectId": "p_024",
+    "title": "Publish accessibility roadmap",
+    "description": "Public-facing roadmap on the accessibility statement page showing planned improvements and timelines.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_025_t001",
+    "projectId": "p_025",
+    "title": "Cloud cost audit",
+    "description": "Pull 6-month billing data from AWS Cost Explorer; identify the top 10 cost drivers.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t002",
+    "projectId": "p_025",
+    "title": "Right-size EC2 / EKS nodes",
+    "description": "Compare CloudWatch utilisation vs provisioned size; downsize any node > 30% headroom.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t003",
+    "projectId": "p_025",
+    "title": "Reserved instance analysis",
+    "description": "Model 1-year vs 3-year RI coverage for stable baseline workloads; quantify savings.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t004",
+    "projectId": "p_025",
+    "title": "Purchase Reserved Instances",
+    "description": "Buy RIs for the identified stable workloads; update cost allocation tags.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t005",
+    "projectId": "p_025",
+    "title": "Spot instances for batch workloads",
+    "description": "Move Spark EMR clusters and nightly batch jobs to Spot; implement interruption handling.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t006",
+    "projectId": "p_025",
+    "title": "S3 lifecycle policies",
+    "description": "Add lifecycle rules to move objects to Intelligent-Tiering after 30 days; delete after the retention period.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t007",
+    "projectId": "p_025",
+    "title": "RDS storage optimisation",
+    "description": "Enable storage autoscaling; identify and drop unused databases consuming > 100 GB.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t008",
+    "projectId": "p_025",
+    "title": "ElastiCache rightsizing",
+    "description": "Review Redis memory utilisation; downsize over-provisioned cache clusters.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t009",
+    "projectId": "p_025",
+    "title": "Eliminate idle resources",
+    "description": "Terminate EC2 instances, load balancers, and NAT gateways with zero traffic for > 14 days.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t010",
+    "projectId": "p_025",
+    "title": "Implement cost allocation tags",
+    "description": "Tag all resources by team, environment, and product; enable Cost Explorer grouping.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t011",
+    "projectId": "p_025",
+    "title": "Cost anomaly detection",
+    "description": "AWS Cost Anomaly Detection alerts for any service with > 20% week-on-week spend increase.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t012",
+    "projectId": "p_025",
+    "title": "Monthly cost review process",
+    "description": "Establish a monthly cross-team cost review meeting with owner-level spend reports.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t013",
+    "projectId": "p_025",
+    "title": "Data transfer cost reduction",
+    "description": "Move inter-AZ traffic to same-AZ where latency allows; reduce cross-region replication scope.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t014",
+    "projectId": "p_025",
+    "title": "CloudFront cache hit rate improvement",
+    "description": "Tune cache behaviours and TTLs to raise the CloudFront hit rate from 65% to > 85%.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t015",
+    "projectId": "p_025",
+    "title": "Savings dashboard",
+    "description": "Grafana dashboard showing monthly spend by service vs budget; track savings realised vs target.",
+    "status": "completed"
+  },
+  {
+    "id": "p_025_t016",
+    "projectId": "p_025",
+    "title": "Target: 20% cost reduction report",
+    "description": "Compile a report quantifying cost reduction achieved at the 90-day mark.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t001",
+    "projectId": "p_026",
+    "title": "User research: billing pain points",
+    "description": "Interview 6 customers about their current billing experience; identify top friction areas.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t002",
+    "projectId": "p_026",
+    "title": "Design invoice history page",
+    "description": "Hi-fi mocks for a searchable invoice list with status badges, PDF download, and date filtering.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t003",
+    "projectId": "p_026",
+    "title": "Design payment method management",
+    "description": "Mocks for adding, removing, and setting a default payment method with card brand icons.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t004",
+    "projectId": "p_026",
+    "title": "Design subscription management",
+    "description": "Mocks for plan upgrades, downgrades, seat changes, and scheduled cancellation.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t005",
+    "projectId": "p_026",
+    "title": "Design usage-based metering view",
+    "description": "Mocks for a real-time metering gauge showing consumption against the plan limit.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t006",
+    "projectId": "p_026",
+    "title": "Implement invoice history API",
+    "description": "Paginated REST endpoint returning invoice records with status, amount, and PDF URL.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t007",
+    "projectId": "p_026",
+    "title": "Implement invoice PDF generation",
+    "description": "Puppeteer-based PDF service rendering a branded invoice template with tax line items.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t008",
+    "projectId": "p_026",
+    "title": "Implement payment method API",
+    "description": "Stripe PaymentMethod API integration for listing, adding, and removing cards.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t009",
+    "projectId": "p_026",
+    "title": "Implement subscription change API",
+    "description": "Stripe Subscription API for plan changes with proration preview and confirmation step.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t010",
+    "projectId": "p_026",
+    "title": "Implement usage metering API",
+    "description": "Endpoint returning current period usage by meter name for the authenticated account.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t011",
+    "projectId": "p_026",
+    "title": "Implement invoice history page",
+    "description": "React page wired to the invoice API with search, filter, and PDF download.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t012",
+    "projectId": "p_026",
+    "title": "Implement payment method page",
+    "description": "React page for managing payment methods with Stripe Elements for secure card input.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t013",
+    "projectId": "p_026",
+    "title": "Implement subscription page",
+    "description": "React page for plan management with proration preview modal before confirming changes.",
+    "status": "completed"
+  },
+  {
+    "id": "p_026_t014",
+    "projectId": "p_026",
+    "title": "Implement metering page",
+    "description": "React usage gauge page with a plan-limit indicator and historical usage chart.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_026_t015",
+    "projectId": "p_026",
+    "title": "Tax ID management",
+    "description": "Allow business customers to add a VAT / GST / EIN number that appears on invoices.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_026_t016",
+    "projectId": "p_026",
+    "title": "Billing email updates",
+    "description": "Update the billing receipt email to link to the new portal invoice page.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_026_t017",
+    "projectId": "p_026",
+    "title": "Accessibility audit",
+    "description": "WCAG 2.1 AA review of all billing portal pages; focus on error messages and payment form labels.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_026_t018",
+    "projectId": "p_026",
+    "title": "PCI compliance check",
+    "description": "Confirm no card data touches our servers; verify Stripe.js is the only field rendering card inputs.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_026_t019",
+    "projectId": "p_026",
+    "title": "QA: payment scenarios",
+    "description": "Test all edge cases: declined card, expired card, 3DS challenge, free trial expiry.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_026_t020",
+    "projectId": "p_026",
+    "title": "Soft launch to enterprise customers",
+    "description": "Enable the portal for the 10 largest accounts first; collect feedback before general availability.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_026_t021",
+    "projectId": "p_026",
+    "title": "General availability rollout",
+    "description": "Enable the billing portal for all customers; update help-centre docs and send announcement email.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_026_t022",
+    "projectId": "p_026",
+    "title": "Post-launch support ticket delta",
+    "description": "Compare billing-related support ticket volume before and after the portal launch.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_027_t001",
+    "projectId": "p_027",
+    "title": "Map all personal data stores",
+    "description": "Data mapping exercise cataloguing every table/field containing personal data with its legal basis.",
+    "status": "completed"
+  },
+  {
+    "id": "p_027_t002",
+    "projectId": "p_027",
+    "title": "Implement consent record store",
+    "description": "Postgres table tracking user consent events: what was consented to, timestamp, and version of the policy.",
+    "status": "completed"
+  },
+  {
+    "id": "p_027_t003",
+    "projectId": "p_027",
+    "title": "Consent UI - marketing preferences",
+    "description": "Granular marketing consent checkboxes in account settings with timestamped recording of changes.",
+    "status": "completed"
+  },
+  {
+    "id": "p_027_t004",
+    "projectId": "p_027",
+    "title": "Consent UI - cookie banner",
+    "description": "Cookie consent banner with functional/analytics/marketing categories; integrates with OneTrust or custom solution.",
+    "status": "completed"
+  },
+  {
+    "id": "p_027_t005",
+    "projectId": "p_027",
+    "title": "Data subject access request UI",
+    "description": "Admin UI for the privacy team to initiate, track, and deliver DSARs within the 30-day SLA.",
+    "status": "completed"
+  },
+  {
+    "id": "p_027_t006",
+    "projectId": "p_027",
+    "title": "DSAR export automation",
+    "description": "Automated job that collects all personal data for a given user across all services and packages it as a ZIP.",
+    "status": "completed"
+  },
+  {
+    "id": "p_027_t007",
+    "projectId": "p_027",
+    "title": "Right to erasure workflow",
+    "description": "Step-by-step workflow: identify all data, anonymise PII, log the erasure, and notify the user.",
+    "status": "completed"
+  },
+  {
+    "id": "p_027_t008",
+    "projectId": "p_027",
+    "title": "Right to erasure - audit log pseudonymisation",
+    "description": "Replace PII in audit log entries with a salted user hash on erasure to preserve the audit trail.",
+    "status": "completed"
+  },
+  {
+    "id": "p_027_t009",
+    "projectId": "p_027",
+    "title": "Right to portability export",
+    "description": "Machine-readable JSON export of user-generated data (content, settings, history) for portability requests.",
+    "status": "completed"
+  },
+  {
+    "id": "p_027_t010",
+    "projectId": "p_027",
+    "title": "Breach notification runbook",
+    "description": "Runbook for a personal data breach: detection, containment, assessment, DPA notification within 72 hours.",
+    "status": "completed"
+  },
+  {
+    "id": "p_027_t011",
+    "projectId": "p_027",
+    "title": "Privacy policy update",
+    "description": "Rewrite the privacy policy to accurately reflect the new data flows, retention periods, and consent options.",
+    "status": "completed"
+  },
+  {
+    "id": "p_027_t012",
+    "projectId": "p_027",
+    "title": "Cookie policy update",
+    "description": "Update the cookie policy to list all cookies, their purpose, duration, and third-party providers.",
+    "status": "completed"
+  },
+  {
+    "id": "p_027_t013",
+    "projectId": "p_027",
+    "title": "DPA library",
+    "description": "Template DPAs for customers (as controllers) and for sub-processors; maintain a signed-DPA register.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_027_t014",
+    "projectId": "p_027",
+    "title": "Privacy by design checklist",
+    "description": "Engineering checklist embedded in the feature spec template to surface privacy considerations early.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_027_t015",
+    "projectId": "p_027",
+    "title": "DPIA for high-risk processing",
+    "description": "Formal Data Protection Impact Assessment for the new analytics pipeline processing behavioural data.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_027_t016",
+    "projectId": "p_027",
+    "title": "Staff GDPR training",
+    "description": "Annual GDPR awareness training for all staff with attestation tracking.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_027_t017",
+    "projectId": "p_027",
+    "title": "Privacy dashboard for users",
+    "description": "In-app privacy centre where users can view their data summary, download a copy, or request deletion.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_027_t018",
+    "projectId": "p_027",
+    "title": "Compliance monitoring",
+    "description": "Monthly review of DSAR SLA adherence, breach log, and consent rate trends.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_027_t019",
+    "projectId": "p_027",
+    "title": "Legal review",
+    "description": "External DPO review of the consent records, erasure workflow, and breach notification runbook.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t001",
+    "projectId": "p_028",
+    "title": "Spike: evaluate real-time protocols",
+    "description": "Prototype WebSocket, SSE, and CRDT approaches for multi-user presence; produce a recommendation ADR.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t002",
+    "projectId": "p_028",
+    "title": "Implement WebSocket gateway",
+    "description": "Horizontally scalable WebSocket server with Redis pub/sub for cross-instance message fan-out.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t003",
+    "projectId": "p_028",
+    "title": "Implement presence service",
+    "description": "Track which users are active in which resources; broadcast join/leave events with 1-second heartbeat.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t004",
+    "projectId": "p_028",
+    "title": "Presence indicator component",
+    "description": "Avatar stack component showing up to 5 active viewers with overflow count and tooltip names.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t005",
+    "projectId": "p_028",
+    "title": "Live cursor tracking",
+    "description": "Broadcast cursor position within a shared document at 30 fps; render other users' cursors with name labels.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t006",
+    "projectId": "p_028",
+    "title": "Implement operational transforms",
+    "description": "OT library for resolving concurrent edits to shared text fields; verify convergence with property tests.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t007",
+    "projectId": "p_028",
+    "title": "Conflict-free replicated data type for lists",
+    "description": "CRDT-based ordered list for collaborative task reordering; test convergence under network partition.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t008",
+    "projectId": "p_028",
+    "title": "Reconnection and state reconciliation",
+    "description": "On reconnect, fetch a snapshot and replay buffered operations to catch up without data loss.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t009",
+    "projectId": "p_028",
+    "title": "Offline edit queue",
+    "description": "Queue local edits while offline and sync on reconnect with conflict resolution.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t010",
+    "projectId": "p_028",
+    "title": "Collaborative comments",
+    "description": "Threaded comment threads on any entity with real-time delivery and @mention notifications.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t011",
+    "projectId": "p_028",
+    "title": "@mention notifications",
+    "description": "Push notification and email when a user is @mentioned in a comment.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t012",
+    "projectId": "p_028",
+    "title": "Activity feed",
+    "description": "Per-resource activity feed showing the last 50 events with actor, action, and timestamp.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t013",
+    "projectId": "p_028",
+    "title": "Optimistic UI updates",
+    "description": "Apply local edits instantly before the server acknowledgement; roll back on failure with a toast.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t014",
+    "projectId": "p_028",
+    "title": "Multiplayer undo/redo",
+    "description": "Per-user undo/redo stacks that do not conflict with concurrent changes from others.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t015",
+    "projectId": "p_028",
+    "title": "Session recording for debugging",
+    "description": "Capture operation logs server-side so engineers can replay a collaboration session to debug issues.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t016",
+    "projectId": "p_028",
+    "title": "Latency telemetry",
+    "description": "Track round-trip latency per WebSocket message; alert if P99 exceeds 300 ms.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t017",
+    "projectId": "p_028",
+    "title": "Load test: 500 concurrent users",
+    "description": "500 users in a single shared document; verify convergence and < 200 ms P99 latency.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t018",
+    "projectId": "p_028",
+    "title": "Security: authorisation on WS messages",
+    "description": "Verify each WebSocket message against the user's read/write permissions for the target resource.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t019",
+    "projectId": "p_028",
+    "title": "Security: rate limit WS messages",
+    "description": "Cap each connection to 100 messages per second to prevent a single client from flooding the gateway.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_028_t020",
+    "projectId": "p_028",
+    "title": "Documentation: collaboration model",
+    "description": "Developer guide explaining the OT model, CRDT list, and how to add new collaborative field types.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t001",
+    "projectId": "p_029",
+    "title": "Audit v1 component usage",
+    "description": "Catalogue every v1 component: how many instances, which teams use it, and known pain points.",
+    "status": "completed"
+  },
+  {
+    "id": "p_029_t002",
+    "projectId": "p_029",
+    "title": "Define v2 design principles",
+    "description": "Agree on the 3-5 design principles guiding v2 decisions (e.g. composable, accessible-first, themeable).",
+    "status": "completed"
+  },
+  {
+    "id": "p_029_t003",
+    "projectId": "p_029",
+    "title": "Token architecture redesign",
+    "description": "New three-tier token system: primitive → semantic → component; aligns with Figma variables.",
+    "status": "completed"
+  },
+  {
+    "id": "p_029_t004",
+    "projectId": "p_029",
+    "title": "Figma variables sync",
+    "description": "Pipeline syncing design tokens from the token JSON to Figma variables using Token Studio.",
+    "status": "completed"
+  },
+  {
+    "id": "p_029_t005",
+    "projectId": "p_029",
+    "title": "New colour system",
+    "description": "Revised palette with accessible contrast ratios for light and dark mode; no more hard-coded hex in components.",
+    "status": "completed"
+  },
+  {
+    "id": "p_029_t006",
+    "projectId": "p_029",
+    "title": "New typography scale",
+    "description": "Type scale update with fluid sizing steps and line-height tokens aligned to the 4px grid.",
+    "status": "completed"
+  },
+  {
+    "id": "p_029_t007",
+    "projectId": "p_029",
+    "title": "New spacing scale",
+    "description": "Spacing tokens on a 4px base with named steps (xs, sm, md, lg, xl, 2xl) replacing arbitrary pixel values.",
+    "status": "completed"
+  },
+  {
+    "id": "p_029_t008",
+    "projectId": "p_029",
+    "title": "Rebuild Button component",
+    "description": "New Button with intent (primary / secondary / danger), size, icon-slot, and loading state variants.",
+    "status": "completed"
+  },
+  {
+    "id": "p_029_t009",
+    "projectId": "p_029",
+    "title": "Rebuild Input component",
+    "description": "New Input with label, helper text, error state, prefix/suffix, and character count.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t010",
+    "projectId": "p_029",
+    "title": "Rebuild Select component",
+    "description": "Accessible select with combobox search, multi-select, and option group support.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t011",
+    "projectId": "p_029",
+    "title": "Rebuild Modal component",
+    "description": "Accessible modal with focus trap, scroll lock, backdrop dismiss, and size variants.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t012",
+    "projectId": "p_029",
+    "title": "Rebuild Table component",
+    "description": "Data table with sort, column resize, row selection, pagination, and virtual scroll for large datasets.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t013",
+    "projectId": "p_029",
+    "title": "Build new Chip component",
+    "description": "Chips for tags and filter pills with removable and non-removable variants.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t014",
+    "projectId": "p_029",
+    "title": "Build new DatePicker component",
+    "description": "Accessible date picker with range support, keyboard navigation, and locale-aware formatting.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t015",
+    "projectId": "p_029",
+    "title": "Build new Toast component",
+    "description": "Toast notification system with ARIA live announcements, auto-dismiss, and manual close.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t016",
+    "projectId": "p_029",
+    "title": "Build new Skeleton component",
+    "description": "Configurable skeleton loading placeholders matching the shape of specific content types.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t017",
+    "projectId": "p_029",
+    "title": "Storybook v3 setup",
+    "description": "Upgrade Storybook; add a11y addon, design-token addon, and automated interaction tests.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t018",
+    "projectId": "p_029",
+    "title": "Automated visual regression",
+    "description": "Chromatic snapshot testing for all components; block merge on visual diffs.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t019",
+    "projectId": "p_029",
+    "title": "Migration guide - v1 to v2",
+    "description": "Codemod-assisted migration guide for teams to upgrade from v1 to v2 components.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t020",
+    "projectId": "p_029",
+    "title": "Dogfood in one product team",
+    "description": "Pilot the v2 system with one product team; collect feedback before general release.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t021",
+    "projectId": "p_029",
+    "title": "Documentation site",
+    "description": "Component docs site with live examples, prop tables, and copy-paste code snippets.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_029_t022",
+    "projectId": "p_029",
+    "title": "Office hours and support channel",
+    "description": "Weekly design system office hours and a dedicated Slack channel for questions.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_030_t001",
+    "projectId": "p_030",
+    "title": "Audit existing CI configuration",
+    "description": "Document all CI jobs, their average durations, flake rates, and resource consumption.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t002",
+    "projectId": "p_030",
+    "title": "Identify slowest CI jobs",
+    "description": "Profile the 10 slowest jobs and estimate the impact of optimisations for each.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t003",
+    "projectId": "p_030",
+    "title": "Migrate from Jenkins to GitHub Actions",
+    "description": "Port the Jenkins pipeline to GitHub Actions reusable workflows; maintain feature parity.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t004",
+    "projectId": "p_030",
+    "title": "Set up self-hosted runners",
+    "description": "Provision GitHub Actions self-hosted runners on Kubernetes with auto-scaling.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t005",
+    "projectId": "p_030",
+    "title": "Implement build caching",
+    "description": "Cache node_modules, pip packages, and Docker layers between runs; measure time savings.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t006",
+    "projectId": "p_030",
+    "title": "Parallelise test suite",
+    "description": "Split the test suite across 4 runners using jest sharding; reduce test time from 18 min to 5 min.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t007",
+    "projectId": "p_030",
+    "title": "Test flakiness detection",
+    "description": "Track test flake rates in a Datadog dashboard; auto-quarantine tests with > 5% flake rate.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t008",
+    "projectId": "p_030",
+    "title": "Fix top 5 flaky tests",
+    "description": "Investigate and fix the 5 most flaky tests surfaced by the flakiness detector.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t009",
+    "projectId": "p_030",
+    "title": "Implement trunk-based deployment",
+    "description": "Every merge to main automatically deploys to staging after passing all checks.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t010",
+    "projectId": "p_030",
+    "title": "Feature branch preview environments",
+    "description": "Ephemeral preview environment per PR using Kubernetes namespaces; torn down on PR close.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t011",
+    "projectId": "p_030",
+    "title": "Automated database migrations in CI",
+    "description": "Run migration dry-run in CI to catch breaking schema changes before they reach staging.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t012",
+    "projectId": "p_030",
+    "title": "Security scanning integration",
+    "description": "Trivy container scanning, Semgrep SAST, and pip-audit integrated as non-blocking initial step.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t013",
+    "projectId": "p_030",
+    "title": "Secret scanning",
+    "description": "GitHub secret scanning enabled; gitleaks pre-commit hook to prevent accidental secret commits.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t014",
+    "projectId": "p_030",
+    "title": "Deployment approval gates",
+    "description": "Required approvals from 2 engineers for production deployments; Slack-based approval widget.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t015",
+    "projectId": "p_030",
+    "title": "Rollback automation",
+    "description": "One-command rollback script reverting to the previous stable deployment in under 2 minutes.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t016",
+    "projectId": "p_030",
+    "title": "Canary deployment pipeline",
+    "description": "Argo Rollouts canary steps wired into the GitHub Actions deploy workflow.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t017",
+    "projectId": "p_030",
+    "title": "DORA metrics dashboard",
+    "description": "Datadog dashboard tracking deployment frequency, lead time, MTTR, and change failure rate.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t018",
+    "projectId": "p_030",
+    "title": "CI cost optimisation",
+    "description": "Remove redundant jobs, increase caching, and right-size runner types; target 30% cost reduction.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t019",
+    "projectId": "p_030",
+    "title": "Documentation update",
+    "description": "Rewrite the development workflow guide covering the new CI structure and preview environments.",
+    "status": "completed"
+  },
+  {
+    "id": "p_030_t020",
+    "projectId": "p_030",
+    "title": "Team training",
+    "description": "Hands-on workshop walking engineers through the new pipeline, approval gates, and rollback procedure.",
+    "status": "completed"
+  },
+  {
+    "id": "p_031_t001",
+    "projectId": "p_031",
+    "title": "Define segmentation use cases",
+    "description": "Workshop with product and marketing to enumerate the 10 most valuable segmentation criteria.",
+    "status": "completed"
+  },
+  {
+    "id": "p_031_t002",
+    "projectId": "p_031",
+    "title": "Data model for segments",
+    "description": "Postgres schema for segment definitions: name, conditions (JSON), created_by, and last_evaluated_at.",
+    "status": "completed"
+  },
+  {
+    "id": "p_031_t003",
+    "projectId": "p_031",
+    "title": "Condition types - attributes",
+    "description": "Evaluator for static user attribute conditions (plan, country, company size, signup date).",
+    "status": "completed"
+  },
+  {
+    "id": "p_031_t004",
+    "projectId": "p_031",
+    "title": "Condition types - behaviour",
+    "description": "Evaluator for behavioural conditions (feature used in last N days, NPS score, login frequency).",
+    "status": "completed"
+  },
+  {
+    "id": "p_031_t005",
+    "projectId": "p_031",
+    "title": "Condition types - computed",
+    "description": "Evaluator for computed conditions (health score band, ARR tier, days until renewal).",
+    "status": "completed"
+  },
+  {
+    "id": "p_031_t006",
+    "projectId": "p_031",
+    "title": "Boolean logic engine",
+    "description": "AND/OR/NOT combinator for composing conditions into complex segment rules.",
+    "status": "completed"
+  },
+  {
+    "id": "p_031_t007",
+    "projectId": "p_031",
+    "title": "Segment builder UI",
+    "description": "Visual rule builder with drag-and-drop condition groups, a preview count, and save controls.",
+    "status": "completed"
+  },
+  {
+    "id": "p_031_t008",
+    "projectId": "p_031",
+    "title": "Real-time membership preview",
+    "description": "AJAX-powered count updating as the user edits rules; debounced at 500 ms.",
+    "status": "completed"
+  },
+  {
+    "id": "p_031_t009",
+    "projectId": "p_031",
+    "title": "Segment evaluation job",
+    "description": "Nightly batch job evaluating all segments and writing membership to a segment_members table.",
+    "status": "completed"
+  },
+  {
+    "id": "p_031_t010",
+    "projectId": "p_031",
+    "title": "Live segment evaluation for triggers",
+    "description": "On-write segment evaluation for action-triggered segments (e.g. user just hit 100 API calls).",
+    "status": "completed"
+  },
+  {
+    "id": "p_031_t011",
+    "projectId": "p_031",
+    "title": "Segment membership API",
+    "description": "REST endpoint: list segments a user belongs to; list users in a segment.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_031_t012",
+    "projectId": "p_031",
+    "title": "Integration: email campaigns",
+    "description": "Connect segments to the email sending platform so campaigns can be addressed to a segment.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_031_t013",
+    "projectId": "p_031",
+    "title": "Integration: feature flags",
+    "description": "Use segment membership as a targeting rule in the feature flag service.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_031_t014",
+    "projectId": "p_031",
+    "title": "Integration: in-app messaging",
+    "description": "Target in-app banners and modals to specific segments using the membership API.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_031_t015",
+    "projectId": "p_031",
+    "title": "Segment overlap report",
+    "description": "Admin tool showing how many users overlap between two selected segments.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_031_t016",
+    "projectId": "p_031",
+    "title": "Export segment to CSV",
+    "description": "One-click CSV export of segment members with configurable output columns.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_031_t017",
+    "projectId": "p_031",
+    "title": "Audit log for segment changes",
+    "description": "Log segment create, update, delete, and membership-rule changes with the actor and timestamp.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_031_t018",
+    "projectId": "p_031",
+    "title": "Performance: large segment queries",
+    "description": "Ensure segment membership queries on 1M+ user databases complete within 5 seconds.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_031_t019",
+    "projectId": "p_031",
+    "title": "Documentation",
+    "description": "Internal guide covering segment creation, condition types, and integration patterns.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_031_t020",
+    "projectId": "p_031",
+    "title": "User acceptance testing with marketing",
+    "description": "Guided UAT session with the marketing team using real campaign use cases.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_031_t021",
+    "projectId": "p_031",
+    "title": "Launch and adoption tracking",
+    "description": "Track segment creation rate and campaign usage of segments in the first 60 days.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t001",
+    "projectId": "p_032",
+    "title": "Audit existing push setup",
+    "description": "Document the current FCM/APNs integration: token storage, send path, and failure handling.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t002",
+    "projectId": "p_032",
+    "title": "Design unified push service",
+    "description": "Architecture for a language-agnostic push microservice with a simple REST API for callers.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t003",
+    "projectId": "p_032",
+    "title": "Implement FCM v1 API integration",
+    "description": "Migrate from legacy FCM HTTP v1 to the current FCM HTTP v1 API with OAuth2 auth.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t004",
+    "projectId": "p_032",
+    "title": "Implement APNs HTTP/2 integration",
+    "description": "APNs JWT-based auth with HTTP/2 connection pooling for high-throughput delivery.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t005",
+    "projectId": "p_032",
+    "title": "Notification template engine",
+    "description": "Store notification templates with variables; render title/body/data payload server-side.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t006",
+    "projectId": "p_032",
+    "title": "User preference API",
+    "description": "Endpoint for apps to read and write per-user, per-category notification preferences.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t007",
+    "projectId": "p_032",
+    "title": "Preference sync to push service",
+    "description": "Push service reads user preferences before sending; suppresses notifications for opted-out categories.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t008",
+    "projectId": "p_032",
+    "title": "Device token registration and refresh",
+    "description": "Endpoint for apps to register and refresh FCM/APNs tokens; handle token rotation on OS upgrades.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t009",
+    "projectId": "p_032",
+    "title": "Stale token cleanup",
+    "description": "Scheduled job removing tokens that have returned a 404 from FCM/APNs for > 7 days.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t010",
+    "projectId": "p_032",
+    "title": "Delivery status tracking",
+    "description": "Store per-notification delivery status: sent, delivered, failed, with gateway response code.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t011",
+    "projectId": "p_032",
+    "title": "Notification inbox API",
+    "description": "Persistent notification inbox API so apps can display past notifications even without OS delivery.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t012",
+    "projectId": "p_032",
+    "title": "Batch send API",
+    "description": "Endpoint for sending a notification to a segment of users with fan-out via a background queue.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t013",
+    "projectId": "p_032",
+    "title": "Rate limiting per user",
+    "description": "Cap at 10 push notifications per user per hour to avoid notification fatigue.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t014",
+    "projectId": "p_032",
+    "title": "Quiet hours support",
+    "description": "Per-user quiet hours setting; buffer notifications sent during quiet hours and deliver on wake.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t015",
+    "projectId": "p_032",
+    "title": "Rich notification support",
+    "description": "Support for image attachments, action buttons, and custom sounds in the payload.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t016",
+    "projectId": "p_032",
+    "title": "A/B testing integration",
+    "description": "Send notification variant A or B based on GrowthBook assignment; track open rates per variant.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t017",
+    "projectId": "p_032",
+    "title": "Delivery metrics dashboard",
+    "description": "Datadog dashboard: send volume, delivery rate, opt-out rate, and token registration rate.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t018",
+    "projectId": "p_032",
+    "title": "Load test: 500k sends/min",
+    "description": "Load test the fan-out queue at 500k notifications per minute; confirm FCM/APNs rate limits not exceeded.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t019",
+    "projectId": "p_032",
+    "title": "Security review",
+    "description": "Confirm APNs/FCM credentials are rotated quarterly and stored in Vault, not environment variables.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_032_t020",
+    "projectId": "p_032",
+    "title": "Developer documentation",
+    "description": "Integration guide for internal teams to trigger push notifications via the new service REST API.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_033_t001",
+    "projectId": "p_033",
+    "title": "Map current rev-rec process",
+    "description": "Document the existing manual steps: when revenue is recognised, who approves, and where entries are posted.",
+    "status": "completed"
+  },
+  {
+    "id": "p_033_t002",
+    "projectId": "p_033",
+    "title": "Identify automation candidates",
+    "description": "Classify each rev-rec step by automation feasibility; prioritise the highest-effort manual steps.",
+    "status": "completed"
+  },
+  {
+    "id": "p_033_t003",
+    "projectId": "p_033",
+    "title": "Design recognition event model",
+    "description": "Data model for recognition events: contract, period, amount, recognition_rule, posted_at.",
+    "status": "completed"
+  },
+  {
+    "id": "p_033_t004",
+    "projectId": "p_033",
+    "title": "Implement ASC 606 rule engine",
+    "description": "Configurable rule engine applying ASC 606 recognition criteria (point-in-time vs. over-time) per contract type.",
+    "status": "completed"
+  },
+  {
+    "id": "p_033_t005",
+    "projectId": "p_033",
+    "title": "Integrate with billing service",
+    "description": "Subscribe to billing events (invoice_paid, subscription_changed) to trigger recognition entries.",
+    "status": "completed"
+  },
+  {
+    "id": "p_033_t006",
+    "projectId": "p_033",
+    "title": "Implement deferred revenue schedule",
+    "description": "Generate a monthly deferred revenue roll-forward schedule for all active subscriptions.",
+    "status": "completed"
+  },
+  {
+    "id": "p_033_t007",
+    "projectId": "p_033",
+    "title": "Implement revenue waterfall report",
+    "description": "Period report showing bookings, recognised revenue, and deferred balance by month.",
+    "status": "completed"
+  },
+  {
+    "id": "p_033_t008",
+    "projectId": "p_033",
+    "title": "GL posting automation",
+    "description": "Automated journal entries posted to NetSuite via the REST API after recognition events are processed.",
+    "status": "completed"
+  },
+  {
+    "id": "p_033_t009",
+    "projectId": "p_033",
+    "title": "Multi-currency handling",
+    "description": "Recognise revenue in the contract currency; convert to USD at the month-end exchange rate.",
+    "status": "completed"
+  },
+  {
+    "id": "p_033_t010",
+    "projectId": "p_033",
+    "title": "Contract modifications",
+    "description": "Handle contract upsells, downgrades, and amendments by recalculating the remaining recognition schedule.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_033_t011",
+    "projectId": "p_033",
+    "title": "Refund and credit note handling",
+    "description": "Reverse recognition entries when refunds or credit notes are issued against recognised invoices.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_033_t012",
+    "projectId": "p_033",
+    "title": "Audit trail for recognition entries",
+    "description": "Immutable log of every recognition event with the rule applied, amount, and approver.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_033_t013",
+    "projectId": "p_033",
+    "title": "Reconciliation report",
+    "description": "Monthly report reconciling the recognition engine output against the NetSuite GL balance.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_033_t014",
+    "projectId": "p_033",
+    "title": "Finance team review workflow",
+    "description": "Review queue for finance to approve recognition entries above a configurable threshold before GL posting.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_033_t015",
+    "projectId": "p_033",
+    "title": "Variance alert",
+    "description": "Alert when the automated recognition amount differs by > 1% from the prior manual calculation.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_033_t016",
+    "projectId": "p_033",
+    "title": "QA: parallel run",
+    "description": "Run the engine in shadow mode alongside the manual process for 2 months; compare outputs daily.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_033_t017",
+    "projectId": "p_033",
+    "title": "Finance training",
+    "description": "Training session for the finance team on the recognition model, review workflow, and reconciliation report.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_033_t018",
+    "projectId": "p_033",
+    "title": "Audit preparation",
+    "description": "Package engine outputs and audit trail for the external auditor's revenue recognition review.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_033_t019",
+    "projectId": "p_033",
+    "title": "Go-live: retire manual process",
+    "description": "Switch from shadow mode to live GL posting after auditor sign-off.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t001",
+    "projectId": "p_034",
+    "title": "Define target regions",
+    "description": "Select the two secondary regions based on customer geography and regulatory requirements.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t002",
+    "projectId": "p_034",
+    "title": "Design active-active vs active-passive",
+    "description": "ADR deciding the replication model; evaluate failover RTO and data residency trade-offs.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t003",
+    "projectId": "p_034",
+    "title": "Postgres multi-region replication",
+    "description": "Configure logical replication from primary to read replicas in each secondary region.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t004",
+    "projectId": "p_034",
+    "title": "Region-aware connection routing",
+    "description": "Application-level routing to direct read queries to the nearest regional replica.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t005",
+    "projectId": "p_034",
+    "title": "Cross-region session affinity",
+    "description": "Ensure user sessions are valid across regions so failover does not force re-login.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t006",
+    "projectId": "p_034",
+    "title": "DNS failover configuration",
+    "description": "Route 53 health-check-based failover records with a 60-second TTL for recovery.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t007",
+    "projectId": "p_034",
+    "title": "CDN distribution",
+    "description": "CloudFront distribution serving static assets from the nearest edge; configure origin failover.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t008",
+    "projectId": "p_034",
+    "title": "Data residency compliance - EU",
+    "description": "Ensure EU customer data does not leave the EU region; audit all cross-region data flows.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t009",
+    "projectId": "p_034",
+    "title": "Deploy application stack to EU region",
+    "description": "Terraform workspace for the EU region; deploy all services with EU-specific config.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t010",
+    "projectId": "p_034",
+    "title": "Deploy application stack to APAC region",
+    "description": "Terraform workspace for the APAC region; deploy all services with APAC-specific config.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t011",
+    "projectId": "p_034",
+    "title": "Global load balancer configuration",
+    "description": "AWS Global Accelerator routing traffic to the nearest healthy region.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t012",
+    "projectId": "p_034",
+    "title": "Health check endpoints",
+    "description": "Standardised /health/ready and /health/live endpoints in each service for load-balancer checks.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t013",
+    "projectId": "p_034",
+    "title": "Chaos test: primary region failure",
+    "description": "Simulate primary region failure in staging; verify failover completes within RTO.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t014",
+    "projectId": "p_034",
+    "title": "Chaos test: network partition",
+    "description": "Simulate a network split between regions; verify application handles degraded reads gracefully.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t015",
+    "projectId": "p_034",
+    "title": "Monitoring: cross-region latency",
+    "description": "Datadog synthetic checks measuring cross-region API latency from each region every minute.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t016",
+    "projectId": "p_034",
+    "title": "Monitoring: replication lag",
+    "description": "Alert if Postgres replication lag exceeds 30 seconds on any secondary.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t017",
+    "projectId": "p_034",
+    "title": "Runbook: region failover",
+    "description": "Step-by-step failover runbook for manually promoting a secondary region to primary.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t018",
+    "projectId": "p_034",
+    "title": "Runbook: region failback",
+    "description": "Procedure for failing back to the primary region after an incident is resolved.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t019",
+    "projectId": "p_034",
+    "title": "Cost analysis",
+    "description": "Model monthly infrastructure cost with multi-region vs single-region; present the delta to leadership.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t020",
+    "projectId": "p_034",
+    "title": "Customer communication",
+    "description": "Announce EU data residency to enterprise customers with EU data processing requirements.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t021",
+    "projectId": "p_034",
+    "title": "Compliance sign-off",
+    "description": "Legal sign-off on EU data residency compliance for GDPR Chapter V cross-border transfer rules.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_034_t022",
+    "projectId": "p_034",
+    "title": "Load test all regions",
+    "description": "k6 load test from each region at peak; confirm latency and error rates are within SLA.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t001",
+    "projectId": "p_035",
+    "title": "Define partner API scope",
+    "description": "Identify the 8 endpoints to expose in the partner API based on integration requests from partners.",
+    "status": "completed"
+  },
+  {
+    "id": "p_035_t002",
+    "projectId": "p_035",
+    "title": "Design partner API schema",
+    "description": "OpenAPI 3 spec for all partner endpoints; versioned under /partner/v1/.",
+    "status": "completed"
+  },
+  {
+    "id": "p_035_t003",
+    "projectId": "p_035",
+    "title": "Implement API key issuance",
+    "description": "Partner admin UI for generating, rotating, and revoking API keys with configurable scopes.",
+    "status": "completed"
+  },
+  {
+    "id": "p_035_t004",
+    "projectId": "p_035",
+    "title": "Implement OAuth2 client credentials",
+    "description": "OAuth2 client_credentials flow for server-to-server partner integrations.",
+    "status": "completed"
+  },
+  {
+    "id": "p_035_t005",
+    "projectId": "p_035",
+    "title": "Rate limiting for partner keys",
+    "description": "Per-key rate limits configurable by tier (starter / growth / enterprise partner).",
+    "status": "completed"
+  },
+  {
+    "id": "p_035_t006",
+    "projectId": "p_035",
+    "title": "Implement /partner/v1/accounts endpoint",
+    "description": "List and retrieve account data scoped to the partner's authorised tenants.",
+    "status": "completed"
+  },
+  {
+    "id": "p_035_t007",
+    "projectId": "p_035",
+    "title": "Implement /partner/v1/usage endpoint",
+    "description": "Return metered usage data for accounts the partner manages.",
+    "status": "completed"
+  },
+  {
+    "id": "p_035_t008",
+    "projectId": "p_035",
+    "title": "Implement /partner/v1/billing endpoint",
+    "description": "Expose invoice and subscription data for accounts under the partner's management.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t009",
+    "projectId": "p_035",
+    "title": "Implement /partner/v1/webhooks endpoint",
+    "description": "Allow partners to register webhook endpoints for account-lifecycle events.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t010",
+    "projectId": "p_035",
+    "title": "Partner sandbox environment",
+    "description": "Isolated sandbox with synthetic data for partners to test their integrations.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t011",
+    "projectId": "p_035",
+    "title": "Developer documentation portal",
+    "description": "Public-facing docs site with API reference, quickstart guide, and code samples in Python, Node, and Ruby.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t012",
+    "projectId": "p_035",
+    "title": "API changelog",
+    "description": "Versioned changelog tracking additions, deprecations, and breaking changes to the partner API.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t013",
+    "projectId": "p_035",
+    "title": "SDK: Python",
+    "description": "Official Python SDK wrapping the partner API with typed models and retry logic.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t014",
+    "projectId": "p_035",
+    "title": "SDK: Node.js",
+    "description": "Official Node.js SDK with promise-based interface and TypeScript types.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t015",
+    "projectId": "p_035",
+    "title": "Partner onboarding flow",
+    "description": "Self-serve partner portal for registering, accepting terms, and generating API credentials.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t016",
+    "projectId": "p_035",
+    "title": "Partner dashboard",
+    "description": "Partner portal showing API usage, error rates, and rate limit consumption over time.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t017",
+    "projectId": "p_035",
+    "title": "SLA definition",
+    "description": "Define partner API uptime SLA (99.9%), support response times, and deprecation notice periods.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t018",
+    "projectId": "p_035",
+    "title": "Legal: partner agreement",
+    "description": "Partner API terms of use covering data use restrictions, rate limits, and liability.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t019",
+    "projectId": "p_035",
+    "title": "Beta partner programme",
+    "description": "Invite 5 strategic partners to test the API in beta; collect integration feedback.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t020",
+    "projectId": "p_035",
+    "title": "General availability launch",
+    "description": "Public announcement of the partner API programme; blog post and email to the partner waitlist.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t021",
+    "projectId": "p_035",
+    "title": "Support workflow for partners",
+    "description": "Dedicated partner API support channel with SLA-governed response times.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t022",
+    "projectId": "p_035",
+    "title": "Monitoring: partner API health",
+    "description": "Datadog dashboard showing per-partner error rates, latency, and quota consumption.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_035_t023",
+    "projectId": "p_035",
+    "title": "Feedback-driven iteration",
+    "description": "Monthly review of partner feedback and API usage patterns to prioritise Phase 2 additions.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_036_t001",
+    "projectId": "p_036",
+    "title": "Audit current incident process",
+    "description": "Document the current ad-hoc incident process: detection, communication, mitigation, and post-mortem steps.",
+    "status": "completed"
+  },
+  {
+    "id": "p_036_t002",
+    "projectId": "p_036",
+    "title": "Define incident severity levels",
+    "description": "Agree on P0/P1/P2/P3 definitions with SLA targets for response, acknowledgement, and resolution.",
+    "status": "completed"
+  },
+  {
+    "id": "p_036_t003",
+    "projectId": "p_036",
+    "title": "Evaluate tooling options",
+    "description": "Compare PagerDuty, Incident.io, and Opsgenie for on-call scheduling, escalation, and post-mortem support.",
+    "status": "completed"
+  },
+  {
+    "id": "p_036_t004",
+    "projectId": "p_036",
+    "title": "Deploy chosen incident platform",
+    "description": "Configure the chosen tool with our alert sources, rotation schedules, and escalation policies.",
+    "status": "completed"
+  },
+  {
+    "id": "p_036_t005",
+    "projectId": "p_036",
+    "title": "Migrate alert routes from legacy tool",
+    "description": "Move all Datadog alert routes to the new platform; verify each alert fires correctly.",
+    "status": "completed"
+  },
+  {
+    "id": "p_036_t006",
+    "projectId": "p_036",
+    "title": "Set up on-call schedules",
+    "description": "Configure primary and secondary on-call rotations for each engineering team with fair rotation.",
+    "status": "completed"
+  },
+  {
+    "id": "p_036_t007",
+    "projectId": "p_036",
+    "title": "Configure escalation policies",
+    "description": "Escalation chains: primary → secondary → engineering manager at 5 min, 15 min, 30 min.",
+    "status": "completed"
+  },
+  {
+    "id": "p_036_t008",
+    "projectId": "p_036",
+    "title": "Slack integration for incidents",
+    "description": "Auto-create a dedicated Slack channel per incident with a structured status thread.",
+    "status": "completed"
+  },
+  {
+    "id": "p_036_t009",
+    "projectId": "p_036",
+    "title": "Incident status page integration",
+    "description": "Auto-post to the public status page (statuspage.io) when a P0 or P1 incident is opened.",
+    "status": "completed"
+  },
+  {
+    "id": "p_036_t010",
+    "projectId": "p_036",
+    "title": "Runbook library",
+    "description": "Structured runbook for each critical service in the on-call tool with alert-to-runbook deep links.",
+    "status": "completed"
+  },
+  {
+    "id": "p_036_t011",
+    "projectId": "p_036",
+    "title": "Automated timeline capture",
+    "description": "Bot that captures key events (alert fired, ack, mitigated, resolved) into the incident timeline.",
+    "status": "completed"
+  },
+  {
+    "id": "p_036_t012",
+    "projectId": "p_036",
+    "title": "Post-mortem template",
+    "description": "Standardised Confluence template for post-mortems: impact, timeline, root cause, action items.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_036_t013",
+    "projectId": "p_036",
+    "title": "Post-mortem workflow",
+    "description": "Automated creation of a post-mortem doc and action-item Jira tickets when a P0/P1 is resolved.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_036_t014",
+    "projectId": "p_036",
+    "title": "Action item tracking",
+    "description": "Dashboard tracking all open post-mortem action items by owner and due date.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_036_t015",
+    "projectId": "p_036",
+    "title": "Mean time to recovery metrics",
+    "description": "Automated MTTR calculation per team per month; displayed on the DORA metrics dashboard.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_036_t016",
+    "projectId": "p_036",
+    "title": "Training: on-call runbook authoring",
+    "description": "Workshop for all engineers on writing effective runbooks and using the new incident platform.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_036_t017",
+    "projectId": "p_036",
+    "title": "Game day: simulated P0",
+    "description": "Tabletop exercise simulating a database failure; test detection, escalation, and mitigation steps.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_036_t018",
+    "projectId": "p_036",
+    "title": "Incident comms templates",
+    "description": "Pre-approved customer communication templates for P0/P1 incidents to speed up external comms.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_036_t019",
+    "projectId": "p_036",
+    "title": "Post-mortem review cadence",
+    "description": "Monthly blameless post-mortem review meeting reviewing all incidents and action item progress.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_036_t020",
+    "projectId": "p_036",
+    "title": "Incident trend dashboard",
+    "description": "Grafana dashboard showing incident volume by severity, team, and service over the last 90 days.",
+    "status": "not_started"
+  },
+  {
+    "id": "p_036_t021",
+    "projectId": "p_036",
+    "title": "Continuous improvement process",
+    "description": "Quarterly process review adjusting severity definitions, escalation times, and tooling based on metrics.",
+    "status": "not_started"
+  }
+]

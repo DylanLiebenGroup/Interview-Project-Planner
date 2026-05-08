@@ -4,143 +4,725 @@
     "name": "Apollo Migration",
     "description": "Migrate legacy auth service to new platform",
     "status": "in_progress",
-    "owner": { "id": "u_01", "name": "Sarah Chen", "initials": "SC", "avatarColor": "#3B6EDF" },
+    "owner": {
+      "id": "u_01",
+      "name": "Sarah Chen",
+      "initials": "SC",
+      "avatarColor": "#3B6EDF"
+    },
     "dueDate": "2026-06-15",
     "progress": 0.65,
     "tasksTotal": 24,
     "tasksDone": 16,
-    "tags": ["backend", "infra"]
+    "tags": [
+      "backend",
+      "infra"
+    ]
   },
   {
     "id": "p_002",
     "name": "Customer Portal Redesign",
     "description": "Refresh the self-service portal with new IA",
     "status": "in_progress",
-    "owner": { "id": "u_02", "name": "Marcus Reed", "initials": "MR", "avatarColor": "#C83D3D" },
+    "owner": {
+      "id": "u_02",
+      "name": "Marcus Reed",
+      "initials": "MR",
+      "avatarColor": "#C83D3D"
+    },
     "dueDate": "2026-05-20",
-    "progress": 0.40,
+    "progress": 0.4,
     "tasksTotal": 32,
     "tasksDone": 13,
-    "tags": ["frontend", "design"]
+    "tags": [
+      "frontend",
+      "design"
+    ]
   },
   {
     "id": "p_003",
     "name": "Mobile App v2",
     "description": "Native rewrite of the customer mobile app",
     "status": "overdue",
-    "owner": { "id": "u_03", "name": "Aisha Patel", "initials": "AP", "avatarColor": "#187A23" },
+    "owner": {
+      "id": "u_03",
+      "name": "Aisha Patel",
+      "initials": "AP",
+      "avatarColor": "#187A23"
+    },
     "dueDate": "2026-04-15",
     "progress": 0.78,
     "tasksTotal": 48,
     "tasksDone": 37,
-    "tags": ["mobile", "frontend"]
+    "tags": [
+      "mobile",
+      "frontend"
+    ]
   },
   {
     "id": "p_004",
     "name": "Data Pipeline Refactor",
     "description": "Replace cron pipeline with event-driven architecture",
     "status": "completed",
-    "owner": { "id": "u_04", "name": "Tom Williams", "initials": "TW", "avatarColor": "#7A3BA0" },
+    "owner": {
+      "id": "u_04",
+      "name": "Tom Williams",
+      "initials": "TW",
+      "avatarColor": "#7A3BA0"
+    },
     "dueDate": "2026-03-30",
-    "progress": 1.0,
+    "progress": 1,
     "tasksTotal": 28,
     "tasksDone": 28,
-    "tags": ["backend", "data"]
+    "tags": [
+      "backend",
+      "data"
+    ]
   },
   {
     "id": "p_005",
     "name": "Analytics Dashboard",
     "description": "Internal dashboard for product metrics",
     "status": "in_progress",
-    "owner": { "id": "u_05", "name": "Nina Vasquez", "initials": "NV", "avatarColor": "#A66800" },
+    "owner": {
+      "id": "u_05",
+      "name": "Nina Vasquez",
+      "initials": "NV",
+      "avatarColor": "#A66800"
+    },
     "dueDate": "2026-07-01",
     "progress": 0.25,
     "tasksTotal": 20,
     "tasksDone": 5,
-    "tags": ["frontend", "data"]
+    "tags": [
+      "frontend",
+      "data"
+    ]
   },
   {
     "id": "p_006",
     "name": "SSO Integration",
     "description": "Add SAML and OIDC support for enterprise customers",
     "status": "completed",
-    "owner": { "id": "u_01", "name": "Sarah Chen", "initials": "SC", "avatarColor": "#3B6EDF" },
+    "owner": {
+      "id": "u_01",
+      "name": "Sarah Chen",
+      "initials": "SC",
+      "avatarColor": "#3B6EDF"
+    },
     "dueDate": "2026-04-01",
-    "progress": 1.0,
+    "progress": 1,
     "tasksTotal": 18,
     "tasksDone": 18,
-    "tags": ["backend", "security"]
+    "tags": [
+      "backend",
+      "security"
+    ]
   },
   {
     "id": "p_007",
     "name": "Payment Gateway Update",
     "description": "Migrate to new payment provider with 3DS2",
     "status": "overdue",
-    "owner": { "id": "u_02", "name": "Marcus Reed", "initials": "MR", "avatarColor": "#C83D3D" },
+    "owner": {
+      "id": "u_02",
+      "name": "Marcus Reed",
+      "initials": "MR",
+      "avatarColor": "#C83D3D"
+    },
     "dueDate": "2026-04-20",
     "progress": 0.55,
     "tasksTotal": 22,
     "tasksDone": 12,
-    "tags": ["backend", "billing"]
+    "tags": [
+      "backend",
+      "billing"
+    ]
   },
   {
     "id": "p_008",
     "name": "Search Indexing",
     "description": "Move full-text search to Elasticsearch",
     "status": "not_started",
-    "owner": { "id": "u_03", "name": "Aisha Patel", "initials": "AP", "avatarColor": "#187A23" },
+    "owner": {
+      "id": "u_03",
+      "name": "Aisha Patel",
+      "initials": "AP",
+      "avatarColor": "#187A23"
+    },
     "dueDate": "2026-08-01",
-    "progress": 0.0,
+    "progress": 0,
     "tasksTotal": 15,
     "tasksDone": 0,
-    "tags": ["backend", "search"]
+    "tags": [
+      "backend",
+      "search"
+    ]
   },
   {
     "id": "p_009",
     "name": "Audit Logging",
     "description": "Centralised, queryable audit log for admin actions",
     "status": "in_progress",
-    "owner": { "id": "u_04", "name": "Tom Williams", "initials": "TW", "avatarColor": "#7A3BA0" },
+    "owner": {
+      "id": "u_04",
+      "name": "Tom Williams",
+      "initials": "TW",
+      "avatarColor": "#7A3BA0"
+    },
     "dueDate": "2026-05-10",
-    "progress": 0.50,
+    "progress": 0.5,
     "tasksTotal": 16,
     "tasksDone": 8,
-    "tags": ["backend", "compliance"]
+    "tags": [
+      "backend",
+      "compliance"
+    ]
   },
   {
     "id": "p_010",
     "name": "Onboarding Flow",
     "description": "New user activation funnel with progressive disclosure",
     "status": "completed",
-    "owner": { "id": "u_05", "name": "Nina Vasquez", "initials": "NV", "avatarColor": "#A66800" },
+    "owner": {
+      "id": "u_05",
+      "name": "Nina Vasquez",
+      "initials": "NV",
+      "avatarColor": "#A66800"
+    },
     "dueDate": "2026-04-05",
-    "progress": 1.0,
+    "progress": 1,
     "tasksTotal": 21,
     "tasksDone": 21,
-    "tags": ["frontend", "growth"]
+    "tags": [
+      "frontend",
+      "growth"
+    ]
   },
   {
     "id": "p_011",
     "name": "Email Notifications",
     "description": "Templated transactional emails with i18n",
     "status": "overdue",
-    "owner": { "id": "u_01", "name": "Sarah Chen", "initials": "SC", "avatarColor": "#3B6EDF" },
+    "owner": {
+      "id": "u_01",
+      "name": "Sarah Chen",
+      "initials": "SC",
+      "avatarColor": "#3B6EDF"
+    },
     "dueDate": "2026-04-10",
     "progress": 0.85,
     "tasksTotal": 14,
     "tasksDone": 12,
-    "tags": ["backend", "comms"]
+    "tags": [
+      "backend",
+      "comms"
+    ]
   },
   {
     "id": "p_012",
     "name": "Knowledge Base",
     "description": "Customer-facing help docs platform",
     "status": "not_started",
-    "owner": { "id": "u_02", "name": "Marcus Reed", "initials": "MR", "avatarColor": "#C83D3D" },
+    "owner": {
+      "id": "u_02",
+      "name": "Marcus Reed",
+      "initials": "MR",
+      "avatarColor": "#C83D3D"
+    },
     "dueDate": "2026-09-01",
-    "progress": 0.0,
+    "progress": 0,
     "tasksTotal": 30,
     "tasksDone": 0,
-    "tags": ["frontend", "content"]
+    "tags": [
+      "frontend",
+      "content"
+    ]
+  },
+  {
+    "id": "p_013",
+    "name": "Two-Factor Auth Rollout",
+    "description": "Add TOTP and SMS-based two-factor authentication across all customer tiers.",
+    "status": "in_progress",
+    "owner": {
+      "id": "u_03",
+      "name": "Aisha Patel",
+      "initials": "AP",
+      "avatarColor": "#187A23"
+    },
+    "dueDate": "2026-06-30",
+    "progress": 0.45,
+    "tasksTotal": 20,
+    "tasksDone": 9,
+    "tags": [
+      "backend",
+      "security"
+    ]
+  },
+  {
+    "id": "p_014",
+    "name": "Webhook Delivery Hardening",
+    "description": "Improve webhook reliability with signed payloads, exponential backoff, and customer-facing delivery logs.",
+    "status": "in_progress",
+    "owner": {
+      "id": "u_04",
+      "name": "Tom Williams",
+      "initials": "TW",
+      "avatarColor": "#7A3BA0"
+    },
+    "dueDate": "2026-05-25",
+    "progress": 0.6,
+    "tasksTotal": 20,
+    "tasksDone": 12,
+    "tags": [
+      "backend",
+      "infra"
+    ]
+  },
+  {
+    "id": "p_015",
+    "name": "Customer Health Dashboard",
+    "description": "Internal CS tool showing account health scores, usage signals, and churn risk indicators.",
+    "status": "not_started",
+    "owner": {
+      "id": "u_05",
+      "name": "Nina Vasquez",
+      "initials": "NV",
+      "avatarColor": "#A66800"
+    },
+    "dueDate": "2026-08-15",
+    "progress": 0,
+    "tasksTotal": 22,
+    "tasksDone": 0,
+    "tags": [
+      "frontend",
+      "data",
+      "growth"
+    ]
+  },
+  {
+    "id": "p_016",
+    "name": "Kubernetes Migration",
+    "description": "Migrate all production services from bare-metal VMs to a managed Kubernetes cluster on EKS.",
+    "status": "in_progress",
+    "owner": {
+      "id": "u_06",
+      "name": "Priya Sundaram",
+      "initials": "PS",
+      "avatarColor": "#1A7A8A"
+    },
+    "dueDate": "2026-07-31",
+    "progress": 0.33,
+    "tasksTotal": 30,
+    "tasksDone": 10,
+    "tags": [
+      "infra",
+      "backend"
+    ]
+  },
+  {
+    "id": "p_017",
+    "name": "Feature Flag Service Refactor",
+    "description": "Replace the homegrown flag system with a self-hosted Unleash instance and enforce flag lifecycle policies.",
+    "status": "completed",
+    "owner": {
+      "id": "u_01",
+      "name": "Sarah Chen",
+      "initials": "SC",
+      "avatarColor": "#3B6EDF"
+    },
+    "dueDate": "2026-04-28",
+    "progress": 1,
+    "tasksTotal": 19,
+    "tasksDone": 19,
+    "tags": [
+      "backend",
+      "infra"
+    ]
+  },
+  {
+    "id": "p_018",
+    "name": "Vendor Compliance Review",
+    "description": "Annual review of all third-party vendors for SOC 2, GDPR, and data residency compliance.",
+    "status": "overdue",
+    "owner": {
+      "id": "u_07",
+      "name": "Lena Brandt",
+      "initials": "LB",
+      "avatarColor": "#8A3B6A"
+    },
+    "dueDate": "2026-04-30",
+    "progress": 0.69,
+    "tasksTotal": 16,
+    "tasksDone": 11,
+    "tags": [
+      "compliance",
+      "security"
+    ]
+  },
+  {
+    "id": "p_019",
+    "name": "Telemetry Pipeline",
+    "description": "Replace the Segment contract with a self-hosted RudderStack pipeline writing to ClickHouse.",
+    "status": "in_progress",
+    "owner": {
+      "id": "u_02",
+      "name": "Marcus Reed",
+      "initials": "MR",
+      "avatarColor": "#C83D3D"
+    },
+    "dueDate": "2026-06-15",
+    "progress": 0.38,
+    "tasksTotal": 21,
+    "tasksDone": 8,
+    "tags": [
+      "data",
+      "backend",
+      "infra"
+    ]
+  },
+  {
+    "id": "p_020",
+    "name": "GraphQL API Phase 2",
+    "description": "Extend the GraphQL schema with billing, teams, and real-time notification subscriptions.",
+    "status": "not_started",
+    "owner": {
+      "id": "u_06",
+      "name": "Priya Sundaram",
+      "initials": "PS",
+      "avatarColor": "#1A7A8A"
+    },
+    "dueDate": "2026-09-30",
+    "progress": 0,
+    "tasksTotal": 24,
+    "tasksDone": 0,
+    "tags": [
+      "backend",
+      "frontend"
+    ]
+  },
+  {
+    "id": "p_021",
+    "name": "API Rate Limiting Service",
+    "description": "Implement per-tier, per-endpoint rate limits with Redis sliding windows and developer-facing headers.",
+    "status": "completed",
+    "owner": {
+      "id": "u_04",
+      "name": "Tom Williams",
+      "initials": "TW",
+      "avatarColor": "#7A3BA0"
+    },
+    "dueDate": "2026-03-15",
+    "progress": 1,
+    "tasksTotal": 19,
+    "tasksDone": 19,
+    "tags": [
+      "backend",
+      "infra"
+    ]
+  },
+  {
+    "id": "p_022",
+    "name": "Data Retention Compliance",
+    "description": "Automate data purge and anonymisation schedules to meet GDPR, PCI DSS, and SOC 2 retention requirements.",
+    "status": "overdue",
+    "owner": {
+      "id": "u_07",
+      "name": "Lena Brandt",
+      "initials": "LB",
+      "avatarColor": "#8A3B6A"
+    },
+    "dueDate": "2026-04-01",
+    "progress": 0.47,
+    "tasksTotal": 19,
+    "tasksDone": 9,
+    "tags": [
+      "compliance",
+      "data",
+      "backend"
+    ]
+  },
+  {
+    "id": "p_023",
+    "name": "Internal Developer Platform",
+    "description": "Build a paved-road platform with service scaffolding, local dev tooling, and shared CI templates.",
+    "status": "in_progress",
+    "owner": {
+      "id": "u_08",
+      "name": "James Okafor",
+      "initials": "JO",
+      "avatarColor": "#5C4A1E"
+    },
+    "dueDate": "2026-07-15",
+    "progress": 0.44,
+    "tasksTotal": 18,
+    "tasksDone": 8,
+    "tags": [
+      "infra",
+      "backend"
+    ]
+  },
+  {
+    "id": "p_024",
+    "name": "Accessibility Compliance Initiative",
+    "description": "Achieve WCAG 2.1 AA compliance across the marketing site and application before the European Accessibility Act deadline.",
+    "status": "in_progress",
+    "owner": {
+      "id": "u_05",
+      "name": "Nina Vasquez",
+      "initials": "NV",
+      "avatarColor": "#A66800"
+    },
+    "dueDate": "2026-06-28",
+    "progress": 0.55,
+    "tasksTotal": 22,
+    "tasksDone": 12,
+    "tags": [
+      "frontend",
+      "design",
+      "compliance"
+    ]
+  },
+  {
+    "id": "p_025",
+    "name": "Infrastructure Cost Optimisation",
+    "description": "Reduce AWS spend by 20% through rightsizing, Reserved Instances, and Spot instance adoption.",
+    "status": "completed",
+    "owner": {
+      "id": "u_08",
+      "name": "James Okafor",
+      "initials": "JO",
+      "avatarColor": "#5C4A1E"
+    },
+    "dueDate": "2026-04-10",
+    "progress": 1,
+    "tasksTotal": 16,
+    "tasksDone": 16,
+    "tags": [
+      "infra"
+    ]
+  },
+  {
+    "id": "p_026",
+    "name": "Self-Serve Billing Portal",
+    "description": "Let customers manage invoices, payment methods, and plan changes without contacting support.",
+    "status": "in_progress",
+    "owner": {
+      "id": "u_01",
+      "name": "Sarah Chen",
+      "initials": "SC",
+      "avatarColor": "#3B6EDF"
+    },
+    "dueDate": "2026-05-30",
+    "progress": 0.59,
+    "tasksTotal": 22,
+    "tasksDone": 13,
+    "tags": [
+      "frontend",
+      "billing",
+      "backend"
+    ]
+  },
+  {
+    "id": "p_027",
+    "name": "GDPR & Privacy Tooling",
+    "description": "Build consent management, data subject request workflows, and a user-facing privacy centre.",
+    "status": "overdue",
+    "owner": {
+      "id": "u_07",
+      "name": "Lena Brandt",
+      "initials": "LB",
+      "avatarColor": "#8A3B6A"
+    },
+    "dueDate": "2026-04-22",
+    "progress": 0.63,
+    "tasksTotal": 19,
+    "tasksDone": 12,
+    "tags": [
+      "compliance",
+      "backend",
+      "frontend"
+    ]
+  },
+  {
+    "id": "p_028",
+    "name": "Real-Time Collaboration Features",
+    "description": "Introduce live presence, cursors, and collaborative editing to shared project workspaces.",
+    "status": "not_started",
+    "owner": {
+      "id": "u_06",
+      "name": "Priya Sundaram",
+      "initials": "PS",
+      "avatarColor": "#1A7A8A"
+    },
+    "dueDate": "2026-10-31",
+    "progress": 0,
+    "tasksTotal": 20,
+    "tasksDone": 0,
+    "tags": [
+      "backend",
+      "frontend"
+    ]
+  },
+  {
+    "id": "p_029",
+    "name": "Design System v2",
+    "description": "Rebuild the component library with a new token architecture, accessible components, and Storybook v3.",
+    "status": "in_progress",
+    "owner": {
+      "id": "u_02",
+      "name": "Marcus Reed",
+      "initials": "MR",
+      "avatarColor": "#C83D3D"
+    },
+    "dueDate": "2026-08-29",
+    "progress": 0.36,
+    "tasksTotal": 22,
+    "tasksDone": 8,
+    "tags": [
+      "frontend",
+      "design"
+    ]
+  },
+  {
+    "id": "p_030",
+    "name": "CI/CD Pipeline Modernisation",
+    "description": "Migrate from Jenkins to GitHub Actions with self-hosted runners, build caching, and per-PR preview environments.",
+    "status": "completed",
+    "owner": {
+      "id": "u_08",
+      "name": "James Okafor",
+      "initials": "JO",
+      "avatarColor": "#5C4A1E"
+    },
+    "dueDate": "2026-03-20",
+    "progress": 1,
+    "tasksTotal": 20,
+    "tasksDone": 20,
+    "tags": [
+      "infra"
+    ]
+  },
+  {
+    "id": "p_031",
+    "name": "Customer Segmentation Engine",
+    "description": "Build a visual rule-builder for defining dynamic customer segments used in campaigns and feature targeting.",
+    "status": "in_progress",
+    "owner": {
+      "id": "u_03",
+      "name": "Aisha Patel",
+      "initials": "AP",
+      "avatarColor": "#187A23"
+    },
+    "dueDate": "2026-07-10",
+    "progress": 0.48,
+    "tasksTotal": 21,
+    "tasksDone": 10,
+    "tags": [
+      "backend",
+      "frontend",
+      "growth"
+    ]
+  },
+  {
+    "id": "p_032",
+    "name": "Mobile Push Notification Service",
+    "description": "Centralised push notification microservice with FCM v1, APNs HTTP/2, user preferences, and delivery tracking.",
+    "status": "not_started",
+    "owner": {
+      "id": "u_03",
+      "name": "Aisha Patel",
+      "initials": "AP",
+      "avatarColor": "#187A23"
+    },
+    "dueDate": "2026-09-15",
+    "progress": 0,
+    "tasksTotal": 20,
+    "tasksDone": 0,
+    "tags": [
+      "backend",
+      "mobile"
+    ]
+  },
+  {
+    "id": "p_033",
+    "name": "Revenue Recognition Automation",
+    "description": "Automate ASC 606-compliant revenue recognition with GL posting to NetSuite and a finance review workflow.",
+    "status": "in_progress",
+    "owner": {
+      "id": "u_04",
+      "name": "Tom Williams",
+      "initials": "TW",
+      "avatarColor": "#7A3BA0"
+    },
+    "dueDate": "2026-06-01",
+    "progress": 0.47,
+    "tasksTotal": 19,
+    "tasksDone": 9,
+    "tags": [
+      "backend",
+      "billing",
+      "data"
+    ]
+  },
+  {
+    "id": "p_034",
+    "name": "Multi-Region Deployment",
+    "description": "Extend the production infrastructure to EU and APAC regions for data residency compliance and lower latency.",
+    "status": "not_started",
+    "owner": {
+      "id": "u_06",
+      "name": "Priya Sundaram",
+      "initials": "PS",
+      "avatarColor": "#1A7A8A"
+    },
+    "dueDate": "2026-11-14",
+    "progress": 0,
+    "tasksTotal": 22,
+    "tasksDone": 0,
+    "tags": [
+      "infra",
+      "compliance"
+    ]
+  },
+  {
+    "id": "p_035",
+    "name": "Partner API Programme",
+    "description": "Launch a versioned partner API with OAuth2 authentication, SDKs, and a self-serve developer portal.",
+    "status": "in_progress",
+    "owner": {
+      "id": "u_01",
+      "name": "Sarah Chen",
+      "initials": "SC",
+      "avatarColor": "#3B6EDF"
+    },
+    "dueDate": "2026-09-01",
+    "progress": 0.3,
+    "tasksTotal": 23,
+    "tasksDone": 7,
+    "tags": [
+      "backend",
+      "growth"
+    ]
+  },
+  {
+    "id": "p_036",
+    "name": "Incident Management Tooling",
+    "description": "Adopt a structured incident platform with on-call schedules, automated timelines, and blameless post-mortems.",
+    "status": "overdue",
+    "owner": {
+      "id": "u_08",
+      "name": "James Okafor",
+      "initials": "JO",
+      "avatarColor": "#5C4A1E"
+    },
+    "dueDate": "2026-04-18",
+    "progress": 0.52,
+    "tasksTotal": 21,
+    "tasksDone": 11,
+    "tags": [
+      "infra",
+      "backend"
+    ]
   }
 ]
